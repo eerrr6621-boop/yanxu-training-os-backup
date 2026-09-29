@@ -1,0 +1,19 @@
+# This repository backs up source, not operating data or secrets.
+**/out/
+**/data/
+**/demo-data/
+**/__pycache__/
+**/node_modules/
+**/.venv*/
+**/model/
+*.db
+*.log
+*.pyc
+*.pem
+*.key
+.env
+.env.*
+*credentials*.json
+*auth-state*.json
+**/private*/
+.DS_Store
