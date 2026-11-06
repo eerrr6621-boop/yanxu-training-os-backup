@@ -1,0 +1,36 @@
+版本与证据边界
+
+A. 历史已验基线
+云归档 SHA c457ba28afded59143cc5c33793e07a850714a988c10eb56edccef39ffb82920：764个运行载荷文件，加内嵌清单共765个归档成员。R05的952个受验输入是源码/测试/文档/依赖集合，数量不同不表示版本矛盾。云源清单275个唯一项也不是部署文件数。
+历史构建收据记录一次全量 Java17 构建：152 Java→643 class（major61/minor0），没有复用旧class；952输入前后无漂移；归档另进程读回全部摘要/大小吻合。此次只校对原字节和既有收据，没有再次编译证明源码到class的转换。
+历史 R02 closeout 的范围是隔离云环境、合成业务、冷重启、停服完整data冷备及新目录恢复。记录包含主链49项、审批QA报告50项、补充推荐5例，以及恢复核心17/正式在线52/离线表格56项；这些是不同子集，不应相加为统一覆盖率。
+恢复记录明确 qualification_and_full_availability_verified=false、full_cloud_acceptance=false。不存在对真人教师资格、真实业务数据、正式生产/深圳部署、公共HTTPS/反代、跨设备/真实邮件、真实付款或CPA外调的完整验收结论。
+
+B. 纯规则当前事实与后续工作
+普通 V2 analyze/read/更多走规则，不调用外部模型；显式 advice 是另一条旧可选路径。历史 CPA 默认关闭，旧云包有15个相关class；不是“基线完全不存在CPA文件”。旧可选 semantic 也未带权重或Python环境，不能用其源码存在推定需要启动模型。
+基线UI仍保留可选 AI 按钮/额度话术，需未来获授权的纯规则产品收口；本包没有实施或宣称完成此改造，也没有进行锁定新发布包的无模型运行验收。
+本次不得启用模型、运行测试、启动服务、登录、连接服务器、推送或部署。
+
+C. 11月5日未独验增量明确排除
+以下仅说明停止记录，不包含 after 内容：
+修改 src/com/training/RecommendationCpaTransport.java
+修改 src/com/training/RecommendationCpaAdvisor.java
+修改 web/modules/teacher-recommendation/index.js
+修改 docs/CPA_ADVISORY.md
+修改 scripts/RecommendationCpaTransportTest.java
+修改 scripts/RecommendationCpaSemanticAdvisorTest.java
+修改 scripts/RecommendationCpaUI.test.cjs
+新增 scripts/RecommendationCpaClientAuthTest.java
+其中本包同路径文件仅取R05/云源清单一致的旧原字节再脱敏；新ClientAuthTest不在本包，旧CPA文档也未选入。
+停止记录状态 MODEL_WORK_STOPPED_DOCUMENTATION_ONLY；独立模型测试取消，编译/测试/服务/连接/真实模型调用均未开展；实现增量只保留、不部署。保留旧CPA源码不表示纳入新增量，也不表示恢复模型研究。
+
+D. 其他不能扩大之处
+M6（人员离岗后通用代办/改派）未实施；冻结人员、账号及当前授权仍有硬约束，不能承诺管理员可以任意手工解阻。
+按日H2在线备份、异机保存和容量/时延保证均未由现有冷备恢复证据证明；附件在data范围之外的运行布局也须单独核验完整性。
+本包没有真实名单、账号库、材料、简历附件、数据库或备份，不能验证这些原数据的质量。只读源码审查也不能证明服务器当前状态。
+持久推荐快照/人工差异记录不是现有TTL缓存的等价描述，如需要应单独设计。
+
+E. 本制作轮次实际行为
+读取冻结源码/清单/既有证据；在独立新目录制作脱敏副本、说明、私有映射和ZIP；只做文件清单、SHA、来源覆盖及敏感标记静态检查。
+没有修改产品、原件或sources，没有编译/运行产品测试，没有启动产品、浏览器、数据库或服务，没有网络探测/登录/改权限/推送/部署，没有联系Claude。GitHub附录由主控独立提供，非本制作代理重复远端查询。
+全部测试为“未在本次执行”。静态校验完成不等于独立QA通过；冻结候选仍应交独立QA复查隐私、清单和来源。

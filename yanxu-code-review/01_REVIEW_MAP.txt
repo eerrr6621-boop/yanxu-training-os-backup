@@ -1,0 +1,58 @@
+建议先读的入口与调用路径（路径均相对于本包）
+
+1. 系统入口与状态边界
+src/com/training/Main.java：HTTP 组合入口、初始化、V2 推荐路由转 Api、静态服务。
+src/com/training/Api.java：认证、权限、通用业务路由、MUTATION_LOCK；dispatch 确认转 DispatchConfirmationGuard。
+src/com/training/Db.java：H2 连接、基础 schema、事务与启动种子；演示身份和默认密码已脱敏。
+web/index.html、web/app.js：正式工作台和模块挂载；隐藏遗留入口应结合 hidden/inert/display:none 与 API 状态判断。
+web/modules/teacher-recommendation/index.js：V2 分池、前三/更多、事实核对、联合建议及旧可选 AI 展示。
+
+2. 推荐资格与事实
+RecommendationDecisionHost.java：V2 analyze/read/selection/assessment/advice 边界、授权 capture、事实和版本快照。
+RecommendationDecision.java、RecommendationQualification.java：候选资格及硬条件、状态及解释；应区分旧路径与 V2。
+CourseCatalog.java、CourseCatalogIntegration.java：逐课认证 certified/not_certified/unknown/revoked、有效期、来源、目录与绑定版本、授权维护。
+RecommendationAssessmentIntegration.java：当次服务/完整档期/实际行程事实、精确请求绑定、修订、时效、来源和幂等。
+TeacherIntelligence.java、RecommendationExperienceReview.java 及文本证据辅助类：历史/主题线索不等于正式课程资格；简历附件实体未提供。
+
+3. 分池与排序
+RecommendationRanking.java：正常、待确认、排除；本地/线上优先、高铁180分钟、飞机150分钟、其他已确认可行。超过偏好阈值不是自动硬排除。
+资格/服务/完整档期未知、线下实际可达/门到门/缓冲未知应进入待确认，明确否定应排除；待确认不得凑正常前三。
+同层按距离和费用的已知项覆盖，再在可比费用币种/口径及已知维度内做 Pareto 比较，稳定 teacher_id 兜底。线上免交通；仅费用或距离未知不等于实际可达性未知。
+不要把“费用→时长”“随机/散列轮换”“别名优先”当成当前排序的等价说明；这些是另议新政策。
+
+4. 联合、缓存与性能边界
+RecommendationJointPlanner.java：全正常池、最多3需求、100000访问节点，允许未分配；limited/coverageProof 不能被解释为全局费用最优；建议不预占。
+RecommendationDecisionHost.java：同会话/输入/privateVersions 缓存；全局64、每账号4、TTL10分钟。read/更多/选入仍重新授权 capture 和比版本；capture 会读事实/占用，缓存命中不是免读库。
+179×3 是候选-需求组合，不是整个系统仅537次操作，更没有毫秒级或容量承诺。排序成对比较、事实读取、锁和有界联合搜索须分别审查；本轮未压测。
+
+5. 确认、事务和权限
+DispatchConfirmationGuard.java：expected_version/request_id、当前授权、teacher 行锁、重算、持久回执、占用/状态/msg_log 同事务；重放仍核权限，不同内容不得复用编号。
+CourseActivityIntegration.java：标准课程明确关联；不能省略已关联课程绕过明确无资格。
+手工课程兼容边界：明确否定仍阻断，未知可提示待核；正常推荐的完整性门槛不能未经决策一概强加给原手工确认路径。
+Auth.java、OrganizationAccess.java、OrganizationAccessStore.java、WorkflowReadAccessBridge.java、WorkflowLegacyAccess.java：当前身份、授权、撤权、跨组织可见性。
+FirstBind*、LoginVerification*、NotificationChannels*、TrustedDevice*：首次绑定、邮件证明和设备恢复；不含真实身份/会话/密钥数据。
+ApprovalTemplateDefinition.java、ApprovalTemplateDemandExecution.java、ApprovalTemplatesIntegration.java、ApprovalWorkflow*.java、WorkflowIntegration.java、TrainingSummariesWorkflow.java：冻结审批人、模板和总结状态；管理员不能因此自动代办冻结节点。M6 未实现通用改派。
+
+6. 其他全系统调用依赖
+保留全部152个 Java 文件，便于从 Main/Api 跟踪结算、报告、问卷、总结、附件处理和组织管理的现存调用链。没有仅截取推荐算法造成未声明 Java 文件缺口。所有业务原数据和上传附件均省略。
+61个一方 web 文本保留正式云运行源清单范围内逻辑；未带第三方 JS、图片和字体，不能据缺视觉资源判产品缺陷。
+semantic/ 的5个旧可选文本及 LocalSemantic 保留用于检查边界；无权重、无Python环境，也不表示普通 V2 规则需要启动它。
+
+7. schema 定位
+基础表在 Db.java，其余模块在 init/schema 边界创建/迁移自己的表；见 08_SCHEMA_INDEX.txt 的静态行号。
+推荐重点：recommendation_assessment_heads/events/requests、dispatch_confirmation_occupancy/requests、目录/绑定版本与认证存储、组织授权及审批冻结记录。
+不要把内存 analysisId 缓存等同持久推荐快照。事实审计和最终确认审计不等于持久记录每次推荐及人工差异。
+
+8. 有意义测试（本次只供阅读，未执行）
+scripts/RecommendationV2RankingTest.java：分层、未知值、可比性与180/150边界。
+scripts/RecommendationV2JointPlannerTest.java：全池覆盖、冲突、不预占、截断边界。
+scripts/RecommendationV2HostTest.java + RecommendationV2Fixture.java：179合成教师/3授权上下文、授权隔离、缓存失效、确认并发、回执幂等、缓冲占用、明确资格阻断；该历史测试还包含 mock 模型边界，不等于批准模型路线。
+scripts/RecommendationV2BoundaryTest.java、RecommendationV2Http.cjs、RecommendationV2UI.test.cjs：参数、HTTP和界面边界。
+scripts/M04CourseCatalogTest.java、M04CertificationMaintenanceTest.java、M04CourseMaintenanceTest.java、M04RecommendationQualificationTest.java：认证、目录、范围与资格。
+scripts/IntegrationApiRequestIsolationTest.java、IntegrationRoleScopesTest.java、IntegrationSessionRevocationTest.java、IntegrationIdentityTest.java：请求/权限/会话隔离。
+scripts/M03*、NextApprovalTemplate*、ApprovalTemplatePublishPreflightTest.java、IntegrationWorkflowTest.java、M08*：审批/总结状态及兼容链；其辅助类已按静态引用纳入。
+scripts/FirstBind*、IntegrationLoginVerificationHostTest.java、TrustedDevicesTest.java：绑定及证明；仅合成 fixture。
+scripts/DbMigrationCheck.java、ReleaseMigrationCheck.java：迁移保护意图，不是本副本的运行证明。
+scripts/RecommendationCpa*：仅基线旧版本的明确关闭/限界/输出过滤合同，不能据文件名认定为11/5增量。
+
+请提出可定位、可复现的审查意见，并区分代码事实与需要未来运行验证的结论。本包制作方的静态清单检查不是独立QA验收。

@@ -1,0 +1,4214 @@
+{
+  "manifest_union_count": 970,
+  "selected_count": 271,
+  "omitted_count": 699,
+  "files": [
+    {
+      "path": "README.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "README_zh.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/ACTIVE_TEACHING_FIELDS_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/AUDIENCE_CONTRACT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/AUDIENCE_INTENT_CONTRACT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/AUDIENCE_TEST_CONTRACT_MIGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/BUSINESS_ICONS_V13.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CAPABILITY_SENTENCE_RECOVERY_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CHINESE_NLI_POSTTRAIN_20260908.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CITY_PLANNING_COLLECTION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CITY_PLANNING_INDEX.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CITY_PLANNING_REFERENCE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CITY_TRAVEL_REFERENCE_SCHEMA.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CLOUD_ASSISTED_GOAL_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CONTRACT_REPAIR_ACCEPTANCE_20260908.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/COORDINATED_HISTORY_REPAIR.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CORRECTED_FIELD_MODEL_REPLAY_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CPA_ADVISORY.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CURATED_CITY_DURATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/CURATED_PLANNING_WIRE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/DELIVERY_MODE_WORDING_TRAINING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/DESIGN_V13.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/EVENT_MODE_BINDING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/EVIDENCE_ACTOR_EVENT_FIX.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/EVIDENCE_CONTEXT_FIX.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/EVIDENCE_FACT_RECOVERY.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/EVIDENCE_GRAMMAR_FIX.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/FACULTY_GUIDE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/FOCUSED_QUERY_SCHEMA.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/FUTURE_ACTIVITY_AUDIENCE_FIX_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/FUTURE_AUDIENCE_REPLAY_20260908.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/GUIDED_FIELD_RESOLUTION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/GUIDED_REQUIREMENT_CONTRACT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/HISTORICAL_REQUEST_BINDING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/INSTRUCTIONAL_STATUS_SCOPE_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/INSTRUCTOR_MODE_ATTRIBUTION_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/LEADING_PROFILE_SCOPE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/LEARNER_ARTIFACT_SCOPE_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/LIGHTWEIGHT_RERANKER_TRIAL_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/LOCAL_COURSE_DENIAL_SCOPE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/LOCAL_SEMANTIC_VALIDATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/MAPPED_CITY_CORRIDORS_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/METHOD_CONTRAST_RECOVERY_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/MINILM_FACT_POSTTRAIN_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/MINILM_SIX_EPOCH_TRIAL_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/MINILM_SIX_LAYER_TRIAL_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/MIXED_EVIDENCE_SCOPES.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NAMED_PASSIVE_TEACHING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NARRATIVE_ENTITY_BINDING.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NARRATIVE_TEACHING_EVENTS.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NEARBY_GRAY_VALIDATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NLI_CAPACITY_PROBE_20260908.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NORTH_SOUTH_CITY_EXPANSION_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NORTH_SOUTH_CITY_MAPPING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NORTH_SOUTH_CORRIDOR_COLLECTION_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/NORTH_SOUTH_HUB_MAPPING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/ONSITE_HISTORY_BINDING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PAIRED80_DURATION20_20260908.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PAIRED80_POSTTRAIN_20260908.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PAIRED_EVIDENCE_PILOT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PASSIVE_RECIPIENT_BINDING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PERSONAL_COURSE_OFFER_FIX_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PHYSICAL_CONTINUATION_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/POSTPOSED_REQUIREMENT_EXCLUSION_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/POSTTRAINING_PILOT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/POSTTRAINING_V2.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/POSTTRAINING_V3.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/POSTTRAINING_V4.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/POSTTRAINING_V5.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/POSTTRAINING_V6.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PUBLIC_CITY_BOUNDS.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PUBLIC_CITY_REFERENCE_MERGE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PUBLIC_CITY_TRAVEL_REFERENCE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PUBLIC_STOP_CHAIN.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PUBLIC_UI_DATE_BASIS_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PUBLIC_UI_POPUP_TABLE_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/PUBLIC_UI_STOP_TABLE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/QUALIFICATION_SOURCE_CLAIM_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/RAIL_TIMETABLE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/REAL_HISTORY_REGRESSION_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/RECOMMENDATION_V6.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/REGION_DATA.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "docs/REGION_DATA_LICENSE.txt",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "docs/RELATIVE_HISTORY_REQUEST_TRAINING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/RELEASE_HISTORY.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/RELEASE_READINESS_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/RELEASE_V13.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/RELEASE_V1_10.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/REQUIREMENT_ATOMIC_REPAIR.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/REQUIREMENT_NARRATIVE_BINDING.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/REQUIREMENT_OBJECT_GRAMMAR.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/REQUIREMENT_TOPIC_CONTRACT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/REQUIREMENT_TOPIC_INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/SECURITY.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/SEMANTIC_CHALLENGE_REVIEW.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/SEMANTIC_POSTTRAINING_PLAN.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/SEMANTIC_REVIEW_RECALL_TRIAL_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/STRUCTURED_FACT_TRAINING_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TEACHING_EVENT_FIELDS.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TINY_EXTRACTOR_CAPACITY_PROBE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TOPIC_QUERY_DIAGNOSTIC_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TRAINED_RANKER_BUSINESS_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TRAINING_PROGRESS_AUDIT_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TRANSPORT_AUDIT_WORKFLOW.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TRANSPORT_COVERAGE_V7.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TRANSPORT_REFERENCE_POLICY.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/TWENTY_ROUND_EVALUATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/V5_CURRENT_PIPELINE_REPLAY_20260909.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/WEATHER.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/background-v13r10.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/endorsement-v13r8.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/flat-dashboard-final.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/flat-group-a.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/flat-group-b.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/flat-group-c.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/flat-recommend.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/headlines-v13r9.json",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/headlines-v13r9.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/login-coursebook-v13.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/new-v13r11.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/design-prompts/paper-v13r7.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/INTEGRATION_IDENTITY.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/INTEGRATION_WORKFLOW.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/ACCOUNT_ACCESS_INSPECTION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/ACCOUNT_IMPORT_HOST.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/ACCOUNT_IMPORT_INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/ACCOUNT_PROVISIONING.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/ACCOUNT_RELATIONSHIPS.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/BRANCH_COVERAGE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M01/ORGANIZATION_DISPLAY_NAME.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M02/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M03/COMBINED_APPROVAL_20260922.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M03/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M04/CERTIFICATION_MAINTENANCE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M04/COURSE_MAINTENANCE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M04/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M04/PERSISTENCE_CONTRACT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M04/RECOMMENDATION_INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M04/TEACHER_ROSTER_IMPORT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/APPROVED_POLICY_PREVIEW.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/DELIVERY_COMPONENT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/DELIVERY_HISTORY.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/FORMAL_WORKFLOW.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/FRONTEND.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/HTTP_CASES.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/HTTP_FORMAL.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/INTEGRATION_PERSISTENCE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M05/POLICY_PREVIEW_UI.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M06/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M06/INTEGRATION_TEACHING.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M06/SETTLEMENT_BRIDGE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M06/TEACHING_EXPORT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M07/FORMAL_CONTRACT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M07/HTTP_PREVIEW.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M07/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M07/LEGACY_CSV.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M07/VALIDATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M08/COMBINED_API.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M08/COMPARISON.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M08/DELIVERY_SOURCE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M08/FORMAL_API.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M08/HTTP_DRAFTS.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M08/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/M08/PHOTO_API.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/ACCOUNT_EMAIL_MAINTENANCE.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/ACCOUNT_EMAIL_MAINTENANCE_UI.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/ACCOUNT_EMAIL_PREPARATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/LOGIN_VERIFICATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/LOGIN_VERIFICATION_MAIL_ADAPTER.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/PERSISTENT_INTEGRATION.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/modules/S01/TRUSTED_DEVICE_CONTRACT.md",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/release-history-before-daily.json",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/screenshots/dashboard-cockpit.png",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/screenshots/dashboard-mobile.png",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/screenshots/login-desktop.png",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "docs/screenshots/report.png",
+      "reason": "historical_docs_not_forwarded_self_contained_summary_supplied",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "lib/ecj.jar",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "lib/h2.jar",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "lib/ip2region-3.3.7.jar",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "lib/ip2region/LICENSE.md",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "lib/ip2region/README.md",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "lib/ip2region/ip2region_v4.xdb",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "lib/ip2region/ip2region_v6.xdb",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "lib/pdfbox-app-3.0.8.jar",
+      "reason": "dependency_or_reference_asset_excluded_no_binaries",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "scripts/ActiveTeachingFieldsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/AudienceContractTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/AudienceIntentTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/AudienceNamedSubjectTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/B1-summary-review-policy-ui.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/B1SummaryReviewPolicyTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CapabilitySentenceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CityPlanningCollectionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CityPlanningIndexTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CityPlanningPresentationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CityPlanningPresentationV2Test.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CityPlanningReferenceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CityPlanningSelectionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CityTravelReferenceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CompleteAudienceHistoryTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ContextBaselinePlanningTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ContextBusinessConfigurationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ContextRequestPlanningTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ContextSharedPlanningAdapterTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ContextSharedPlanningIntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CoordinatedAudienceHistoryTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CuratedCityDurationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CuratedClockNotationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CuratedHalfHourTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CuratedPlanningIntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/CuratedSubcentreTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/DashboardSettlementReadFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/DeliveryModeWordingTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/DispatchPreferenceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EventModeBindingTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidenceActorEventTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidenceAdversarialTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidenceContextTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidenceFactsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidenceGrammarTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidencePartitionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidenceRoleContextTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/EvidenceScopeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/FirstBind-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/FirstBindUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/FocusedQuerySchemaTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/FutureActivityAudienceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/HistoricalRequestTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/InstructorModeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountBindingsUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountCatalogHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountCatalogHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountEmailBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountEmailHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountEmailHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountEmailUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountImportBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountImportBrowserFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountImportUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountPermissionsBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountPermissionsHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountPermissionsHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountPermissionsUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountProvisioningBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountProvisioningHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountProvisioningHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountProvisioningUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountRelationshipsBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountRelationshipsHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountRelationshipsHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationAccountRelationshipsUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationBranchCoverageBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationBranchCoverageHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationBranchCoverageHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationBranchCoverageUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCertificationMaintenanceBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCertificationMaintenanceHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCertificationMaintenanceHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCertificationMaintenanceUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCombinedPolicyBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCombinedWorkflowHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCourseMaintenanceBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCourseMaintenanceHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCourseMaintenanceHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationCourseMaintenanceUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationDeliveryCatalogUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationDeliveryHistoryBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationDeliveryHistoryHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationDeliveryHistoryHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationDeliveryHistoryUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationDeliveryHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationDeliveryHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationFinancialReportsUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationFormalCasesUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationFormalSettlementHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationFormalSettlementHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationFormalSettlementUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationHttpFixtures.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationIdentity-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationLegacyHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationLimitedProjectUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationLoginVerificationBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationLoginVerificationHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationLoginVerificationHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationLoginVerificationUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationManagementSupplementUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationNotificationsHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationNotificationsHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationNotificationsUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationPolicyPreviewHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationPolicyPreviewHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationPolicyPreviewUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationRecommendationUi_test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationReportsHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationReportsHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationReportsUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummariesHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummariesHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummariesUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryCombinedUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryComparisonHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryComparisonHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryDeliveryBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryDeliveryHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryDeliveryHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryFormalUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryPhotosUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryPreviewBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryPreviewUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSummaryStateUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSurveyFormalEntryUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSurveyFormalUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSurveyHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSurveyHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationSurveyUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationTeacherRosterBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationTeacherRosterHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationTeacherRosterHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationTeacherRosterUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationTeachingExportBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationTeachingExportHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationTeachingExportHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationWorkflow-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationWorkflowHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationWorkflowHttpFixture.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/IntegrationWorkflowUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/LeadingProfileScopeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/LearnerArtifactTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/LegacyOwnershipTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/LegacyStartupGuardTest.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/LocalCourseDenialTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/LocalSemanticTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-account-access-inspection-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-account-bindings-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-account-import-cli-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-account-import-preview-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-account-import-preview.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-account-provisioning-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-account-relationships-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-approval-role-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-approval-role-cli-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-approval-role-fixture.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-approval-role-preview.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-branch-coverage-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-identity-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-import-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-import-host-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-import-ui-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01-organization-display-name-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01AccountAccessInspectionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01AccountProvisioningTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01AccountRelationshipsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01BranchCoverageTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M01OrganizationDisplayNameTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M02-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M02-ui-test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M02DemandIntakeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M03-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M03frontendUI.test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04Integration_check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04ReadonlyUi_test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04RecommendationDecisionUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04RecommendationQualification_check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04TeacherRosterImportTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04_check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04_conformance_test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M04_ui_test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05ApprovedPolicyTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05CasesTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05CodingTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05DeliveryHistory-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05DeliveryHistoryTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05DeliverySettlementDemo.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05DeliverySettlementHoursTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05DeliverySettlementPolicyTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05DeliverySettlementTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05ExecutionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05FormalWorkflow-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05FormalWorkflowTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05Integration-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05IntegrationBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05IntegrationFrozenTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05IntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05IntegrationUI.test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05PolicyPreviewBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05PolicyPreviewUI.test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05ReferencesTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05StatisticsBridgeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05_check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M05_compare_hours.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06Integration-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06IntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06ReportsProbe.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06ReportsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06Settlement-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06SettlementAccountingTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06SettlementBridge-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06SettlementBridgeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06SettlementCodingContractTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06SettlementCodingFlowTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06TeachingExport-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06TeachingExportTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06WorkbookTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06_check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06_compare_frontend.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M06_monthly_test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07-build-preview.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07-frontend-check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07-response-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07Formal-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07FormalTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07Integration-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07IntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07ResponseImportsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M07SurveySummaryImportsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08Comparison-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08ComparisonTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08Compatibility-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08DeliverySource-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08DomainTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08Formal-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08Integration-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08PhotoLegacyWordTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08ReviewedSurvey-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08ReviewedSurveyTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08_check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/M08_ui_check.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementGroupHttpBoundaryTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementGroupHttpFlow.py",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementGroupPublicationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementPublicationFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementPublicationStoreTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementSupplementHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementSupplementHttpTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementSupplementIntakeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/ManagementSupplementSourceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/MergeCityPlanningReferences.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/MergeCityPlanningReferencesTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/MethodContrastTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/MixedEvidenceScopeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/NamedPassiveHistoryTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/NarrativeEntityBindingTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/NarrativeSafetyTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/NarrativeTeachingEventsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/NearbySelectionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/NextApprovalTemplateUI.test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/NextApprovalTemplateVisual.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/OnsiteHistoryBindingTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/OrganizationAccountImportHostTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/OrganizationAccountImportSourceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/OrganizationAccountImportTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PassiveRecipientTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PersonalCourseOfferTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PhysicalContinuationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PostposedExclusionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PosttrainingMixedProtocolTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PosttrainingV2Probe.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PrepareCityPlanningCollection.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PrepareMappedCityCorridors.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PrepareMappedCityCorridorsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PrepareStationCityReview.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PrepareStationCityReviewTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicCityBoundsIntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicCityBoundsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicCityContextTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicCityReferencePrepare.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicHeadedEndpointTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicRailJourneyContextTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicReferenceResolutionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicScheduleBaselineTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicStopChainTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicTransportEvidenceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicUiDateBasisTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicUiNamedStationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicUiPopupTableTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/PublicUiStopTableTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/QualificationSourceClaimTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RailTimetableTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RecommendationCpaBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RecommendationCpaHostTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RecommendationLegacyContextTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RecommendationQualifiedJobsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RelativeHistoricalRequestTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementAtomicTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementAudienceScopeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementContractTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementGenericTopicTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementInputResolutionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementInputTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementNarrativeTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementNumericActionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementObjectGrammarTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementTopicIntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/RequirementTopicTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01-notifications-ui-test.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01-store-163-keychain.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01AccountEmailMaintenance-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01AccountEmailMaintenanceHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01AccountEmailMaintenanceHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01AccountEmailMaintenanceTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01AccountEmailMaintenanceUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01AccountEmailPreparation-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01AccountEmailPreparationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01Integration-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01IntegrationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01LoginVerification-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01LoginVerificationMailAdapter-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01LoginVerificationMailAdapterTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01LoginVerificationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/S01NotificationChannelsTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/SemanticChallengeProbe.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/SharedCityDurationTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/SharedCityPlanningSelectionTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TeacherDraftTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TeacherUploadLimitTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TeachingEventBindingTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TeachingEvidenceDiagnosticProbe.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TransportCoverageAudit.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TransportReferencePolicyTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TravelMatrixTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TrustedDeviceBrowser.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TrustedDeviceHttp.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TrustedDeviceHttpFixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TrustedDeviceUI.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TrustedDevices-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TwentyRoundDispatchTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/TwentyRoundSemanticProbe.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/WeatherTest.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/approval-visual-A-ui.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_business_art.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_frontend.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_local_esm.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_management_group.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_management_supplement.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_management_supplement_http.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_r7_http.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_release_extensions.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_release_migration.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_settlement_coding.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_settlement_coding_workbooks.py",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/check_summary_combined.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/fixtures/m08-ordinary-workflow-v1/TrainingSummariesWord.java.fixture",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/fixtures/m08-ordinary-workflow-v1/TrainingSummariesWorkflow.java.fixture",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/prepare_icons.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/prepare_new_wordmark_v13r11.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/prepare_public_popup_corridors.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage1-catalog-fixture.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage1-catalog-http.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage1-catalog-ui.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage1-dashboard-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage1-dashboard-dom.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-course-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-course-read.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-course-regression.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-course-stats-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-course-stats-test.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-course-stats-ui.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-course-ui.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-team-check.sh",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-team-todo-test.java",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/stage2-team-ui.test.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_book_binding.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_book_geometry.mjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_book_headlines.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_city_planning_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_city_presentation_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_city_presentation_v2_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_city_reference_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_context_planning_http.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_context_planning_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_environment.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_frontend.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_local_esm.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_login_background.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_login_book.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_login_return.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_module_host.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_posttraining_audit.py",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_public_popup_corridors.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_r7.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_rail_api.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_regions.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_release_days.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_release_packaging.py",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_requirement_input_http.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_requirement_input_resolution_http.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_requirement_input_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_semantic_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_teacher_draft_http.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_teacher_draft_ui.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_teacher_upload.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_teaching_event_protocol.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_transport_research.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "scripts/test_ui_sample_dates.cjs",
+      "reason": "outside_selected_test_and_build_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "third_party_licenses/ECHARTS-D3-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/ECHARTS-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/ECHARTS-NOTICE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/ECJ-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/ECJ-NOTICE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/H2-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/IP2REGION-LICENSE.md",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/LUCIDE-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/PDFBOX-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/PDFBOX-NOTICE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/README.md",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "third_party_licenses/THREE-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": false,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/LUCIDE-LICENSE.txt",
+      "reason": "omitted_third_party_asset_license_no_corresponding_asset_in_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/book-endorsement-v13r8.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/book-headline-delivery-v13r9.webp",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/book-headline-faculty-v13r9.webp",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/book-headline-operations-v13r9.webp",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/book-headline-projects-v13r9.webp",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/book-paper-v13r7.jpg",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/design/yx-dashboard-ledger-concept.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/design/yx-login-ledger-concept.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/glass-calendar-v2.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/glass-caustic-v2.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/glass-demand-v2.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/glass-payment-v2.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/glass-project-v2.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/icons/access-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/calendar-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/collection-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/contract-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/costs-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/dashboard-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/documents-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/evaluation-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/faculty-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/fees-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/materials-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/projects-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/recommend-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/icons/report-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/login-background-v13r10.webp",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/new-wordmark-v13r11.webp",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/yx-ledger-v4.jpg",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/yx-ledger-v4.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/yx-mark-v10.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/yx-mark-v13.png",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/assets/yx-mark.svg",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/yx-operations-thread.jpg",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/assets/yx-tech-orbit-v10.jpg",
+      "reason": "visual_asset_not_needed_for_static_logic_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/echarts.min.js",
+      "reason": "third_party_frontend_not_vendored_in_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/lucide.min.js",
+      "reason": "third_party_frontend_not_vendored_in_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/modules/approvals/README.md",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/approvals/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/approvals/demo.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/approvals/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/approvals/style.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/catalog/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/catalog/demo.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/catalog/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/catalog/model.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/catalog/style.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/course-catalog/README.md",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/host.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/host.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/identity/account-import-preview.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/identity/approval-role-preview.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/identity/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/identity/fixture.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/identity/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/identity/styles.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/index.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/intake/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/intake/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/intake/intake.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/intake/model.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/notifications/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/notifications/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/notifications/style.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/reports/UI-NOTES.md",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/reports/demo-model.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/reports/demo-model.test.mjs",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/reports/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/reports/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/reports/monthly-workbook.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/reports/styles.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/settlement/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/settlement/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/settlement/styles.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/summaries/demo.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/summaries/docx.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/summaries/index.js",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/summaries/styles.css",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/survey-results/preview.html",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/survey-results/synthetic-issues.csv",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/modules/survey-results/synthetic-normal.csv",
+      "reason": "outside_frozen_cloud_runtime_text_scope",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": false
+    },
+    {
+      "path": "web/vendor/three-r171/LICENSE",
+      "reason": "third_party_frontend_not_vendored_in_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/vendor/three-r171/three.core.min.js",
+      "reason": "third_party_frontend_not_vendored_in_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    },
+    {
+      "path": "web/vendor/three-r171/three.module.min.js",
+      "reason": "third_party_frontend_not_vendored_in_review",
+      "in_r05_manifest": true,
+      "in_cloud_source_manifest": true
+    }
+  ],
+  "not_enumerated_external_categories": [
+    "real teacher/user lists",
+    "databases and backups",
+    "runtime configuration and secrets",
+    "session and audit logs",
+    "materials/resumes attachments",
+    "model weights and Python environments",
+    "build caches and node_modules",
+    "compiled class files",
+    "private production/deployment evidence",
+    "11/5 unaccepted CPA after-increment",
+    "private preparation scripts and identity mappings"
+  ]
+}

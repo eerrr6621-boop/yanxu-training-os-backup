@@ -1,0 +1,88 @@
+{
+  "statement": "Historical frozen build facts only. No build or test was performed for this sanitized copy.",
+  "java_version": "openjdk version \"17.0.16\" 2025-07-15 LTS\nOpenJDK Runtime Environment Zulu17.60+17-CA (build 17.0.16+8-LTS)\nOpenJDK 64-Bit Server VM Zulu17.60+17-CA (build 17.0.16+8-LTS, mixed mode, sharing)",
+  "ecj_version": "Eclipse Compiler for Java(TM) v20251118-1623, 3.44.0, Copyright IBM Corp 2000, 2020. All rights reserved.",
+  "actual_compile_contract": "ECJ -17 --system <verified Java17 runtime> -encoding UTF-8 -proc:none -nowarn; not --release",
+  "historical_fresh_compile_invocations": 1,
+  "historical_java_sources": 152,
+  "historical_class_count": 643,
+  "class_major": 61,
+  "class_minor": 0,
+  "historical_classes_reused": false,
+  "historical_952_inputs_drift": 0,
+  "toolchain_hashes": {
+    "compiler_sha256": "14c46ddc2e511c46c998da728f6a80f13a689c920f3832402f7ad150f6a6188d",
+    "java_binary_sha256": "6f9bd957446f612ce72b774574941fb3b5ed8dbc4ffaa20435a2a2a0fbeabe59",
+    "runtime_release_sha256": "9f2073cf3657a89a7ad10d9c3bae91882711f1c9fa657aa882f30dee9eb20945",
+    "runtime_system_modules_sha256": "cb597c22ebd7ba138062c7285d5bd5fac6517a636c5b042f34604e54fce71481"
+  },
+  "dependency_versions": {
+    "h2": "2.2.224 (frozen JAR manifest)",
+    "pdfbox-app": "3.0.8 (frozen JAR manifest)",
+    "ip2region": "3.3.7 (frozen filename; no Implementation-Version in main manifest)",
+    "ecj": "3.44.0.v20251118-1623 (frozen JAR manifest)",
+    "three": "r171 (frozen path; omitted)"
+  },
+  "dependencies": [
+    {
+      "path": "lib/ecj.jar",
+      "sha256": "14c46ddc2e511c46c998da728f6a80f13a689c920f3832402f7ad150f6a6188d",
+      "bytes": 3329741,
+      "included": false
+    },
+    {
+      "path": "lib/h2.jar",
+      "sha256": "b9d8f19358ada82a4f6eb5b174c6cfe320a375b5a9cb5a4fe456d623e6e55497",
+      "bytes": 2614933,
+      "included": false
+    },
+    {
+      "path": "lib/ip2region-3.3.7.jar",
+      "sha256": "0d8f392d55b6fd4acb6b33fc26e851b2717ac870c758dba74b61303efed54cab",
+      "bytes": 35819,
+      "included": false
+    },
+    {
+      "path": "lib/ip2region/LICENSE.md",
+      "sha256": "fe01f2f8fcaafac539154e6aa80b0b7f8af54e01dc4d52322f72971991c6280e",
+      "bytes": 12976,
+      "included": false
+    },
+    {
+      "path": "lib/ip2region/README.md",
+      "sha256": "6a06f1500bf5ddec58229c100e58e3711c181dc9a09dcaefeb5deb1d6d7a9d13",
+      "bytes": 1226,
+      "included": false
+    },
+    {
+      "path": "lib/ip2region/ip2region_v4.xdb",
+      "sha256": "6307a9696f5711f84bcb8b25f07894de68a64a0ed4a1cc7e990562dd3084f210",
+      "bytes": 11114380,
+      "included": false
+    },
+    {
+      "path": "lib/ip2region/ip2region_v6.xdb",
+      "sha256": "5b93da35ac28bc316dccc54a758381f7a874ae0461dd51ff5df5e34815586f11",
+      "bytes": 37258897,
+      "included": false
+    },
+    {
+      "path": "lib/pdfbox-app-3.0.8.jar",
+      "sha256": "f6b3a80c39747ff0ef5d06708bc03882152403de58dbef4a1fbffbee568eceb1",
+      "bytes": 13602031,
+      "included": false
+    }
+  ],
+  "optional_semantic": {
+    "state": "historical optional disabled path, source-only",
+    "requirements_file": "semantic/requirements.txt",
+    "weights_included": false,
+    "python_environment_included": false,
+    "ordinary_v2_dependency": false
+  },
+  "release_script_limit": "Included frozen scripts describe product boundaries, but the cloud package used a separate one-time compile recipe reflected above; neither is an instruction or authorization to build this review copy.",
+  "binary_assets_included": false,
+  "configuration_included": false,
+  "ready_to_run": false,
+  "ready_to_deploy": false
+}

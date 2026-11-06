@@ -1,0 +1,132 @@
+内嵌schema静态索引；行号对应本审查副本。没有读取或附带数据库。
+基础与模块DDL请结合调用入口、版本迁移和事务阅读；本表不宣称完整迁移正确性。
+
+src/com/training/ApprovalTemplatesIntegration.java:32  approval_template_heads
+src/com/training/ApprovalTemplatesIntegration.java:33  approval_template_revisions
+src/com/training/ApprovalTemplatesIntegration.java:34  approval_template_requests
+src/com/training/CourseActivityIntegration.java:21  m04_course_activity_heads
+src/com/training/CourseActivityIntegration.java:22  m04_course_activity_revisions
+src/com/training/CourseActivityIntegration.java:23  m04_course_activity_requests
+src/com/training/CourseCatalogIntegration.java:21  m04_catalog_scopes
+src/com/training/CourseCatalogIntegration.java:25  m04_catalog_batches
+src/com/training/CourseCatalogIntegration.java:30  m04_catalog_revisions
+src/com/training/CourseCatalogIntegration.java:36  m04_teacher_bindings
+src/com/training/CourseCatalogIntegration.java:39  m04_catalog_events
+src/com/training/Db.java:30  users
+src/com/training/Db.java:33  demands
+src/com/training/Db.java:37  bids
+src/com/training/Db.java:40  projects
+src/com/training/Db.java:45  teachers
+src/com/training/Db.java:49  teacher_evals
+src/com/training/Db.java:52  dispatches
+src/com/training/Db.java:57  questionnaires
+src/com/training/Db.java:60  q_sends
+src/com/training/Db.java:63  q_responses
+src/com/training/Db.java:66  charges
+src/com/training/Db.java:69  fees
+src/com/training/Db.java:72  costs
+src/com/training/Db.java:75  materials
+src/com/training/Db.java:81  schema/index statement
+src/com/training/Db.java:82  teacher_resumes
+src/com/training/Db.java:90  schema/index statement
+src/com/training/Db.java:92  schema/index statement
+src/com/training/Db.java:94  teacher_resumes
+src/com/training/Db.java:97  teachers
+src/com/training/Db.java:98  teachers
+src/com/training/Db.java:99  teachers
+src/com/training/Db.java:100  demands
+src/com/training/Db.java:101  demands
+src/com/training/Db.java:102  demands
+src/com/training/Db.java:103  demands
+src/com/training/Db.java:104  projects
+src/com/training/Db.java:105  projects
+src/com/training/Db.java:106  projects
+src/com/training/Db.java:107  projects
+src/com/training/Db.java:108  projects
+src/com/training/Db.java:109  dispatches
+src/com/training/Db.java:110  dispatches
+src/com/training/Db.java:111  dispatches
+src/com/training/Db.java:112  dispatches
+src/com/training/Db.java:113  dispatches
+src/com/training/DeliverySettlementCases.java:28  m05_cases
+src/com/training/DeliverySettlementCases.java:29  m05_case_revisions
+src/com/training/DeliverySettlementCases.java:30  m05_case_requests
+src/com/training/DeliverySettlementCoding.java:31  m05_coding_heads
+src/com/training/DeliverySettlementCoding.java:32  m05_coding_revisions
+src/com/training/DeliverySettlementCoding.java:33  m05_coding_previews
+src/com/training/DeliverySettlementCoding.java:34  m05_coding_requests
+src/com/training/DeliverySettlementEvidence.java:16  m05_evidence_records
+src/com/training/DeliverySettlementIntegration.java:21  m05_delivery_facts
+src/com/training/DeliverySettlementIntegration.java:22  m05_fact_revisions
+src/com/training/DeliverySettlementIntegration.java:23  m05_policy_versions
+src/com/training/DeliverySettlementIntegration.java:24  m05_settlement_configs
+src/com/training/DeliverySettlementIntegration.java:25  m05_settlement_snapshots
+src/com/training/DeliverySettlementIntegration.java:26  m05_requests
+src/com/training/DeliverySettlementLedger.java:21  m05_financial_chains
+src/com/training/DeliverySettlementLedger.java:22  m05_financial_entries
+src/com/training/DeliverySettlementLedger.java:23  m05_payment_events
+src/com/training/DeliverySettlementWorkflow.java:25  m05_fee_claims
+src/com/training/DeliverySettlementWorkflow.java:26  m05_fee_claim_events
+src/com/training/DeliverySettlementWorkflow.java:27  m05_execution_settings
+src/com/training/DeliverySettlementWorkflow.java:28  m05_execution_settings_heads
+src/com/training/DispatchConfirmationGuard.java:21  dispatch_confirmation_occupancy
+src/com/training/DispatchConfirmationGuard.java:22  schema/index statement
+src/com/training/DispatchConfirmationGuard.java:23  dispatch_confirmation_requests
+src/com/training/FirstBindStore.java:22  s01_account_email_first_bind_receipts
+src/com/training/FirstBindStore.java:23  s01_account_email_first_bind
+src/com/training/FirstBindStore.java:24  s01_account_email_first_bind_events
+src/com/training/LegacyOwnershipIntegration.java:18  legacy_ownership
+src/com/training/LegacyOwnershipIntegration.java:19  legacy_ownership_requests
+src/com/training/NotificationChannelsAccountEmailMaintenance.java:24  s01_account_email_maintenance_heads
+src/com/training/NotificationChannelsAccountEmailMaintenance.java:25  s01_account_email_maintenance_revisions
+src/com/training/NotificationChannelsAccountEmailMaintenance.java:26  s01_account_email_maintenance_requests
+src/com/training/NotificationChannelsAccountEmailMaintenance.java:27  schema/index statement
+src/com/training/NotificationChannelsAccountEmailPreparation.java:23  s01_account_email_heads
+src/com/training/NotificationChannelsAccountEmailPreparation.java:24  s01_account_email_revisions
+src/com/training/NotificationChannelsAccountEmailPreparation.java:25  s01_account_email_requests
+src/com/training/NotificationChannelsAccountEmailPreparation.java:26  schema/index statement
+src/com/training/NotificationChannelsIntegration.java:21  s01_notification_events
+src/com/training/NotificationChannelsIntegration.java:22  s01_notifications
+src/com/training/NotificationChannelsIntegration.java:23  schema/index statement
+src/com/training/OrganizationAccessStore.java:18  organization_access_config
+src/com/training/OrganizationAccountImport.java:64  organization_account_import_state
+src/com/training/OrganizationAccountImport.java:66  organization_account_import_batches
+src/com/training/OrganizationAccountImport.java:70  organization_account_import_people
+src/com/training/OrganizationManagementGroupPublication.java:57  organization_management_group_publications
+src/com/training/RecommendationAssessmentIntegration.java:37  recommendation_assessment_heads
+src/com/training/RecommendationAssessmentIntegration.java:38  recommendation_assessment_events
+src/com/training/RecommendationAssessmentIntegration.java:39  recommendation_assessment_requests
+src/com/training/RecommendationAssessmentIntegration.java:40  schema/index statement
+src/com/training/SummaryReviewPolicyIntegration.java:33  m08_review_policy_revisions
+src/com/training/SummaryReviewPolicyIntegration.java:34  m08_review_policy_head
+src/com/training/SummaryReviewPolicyIntegration.java:35  m08_review_policy_requests
+src/com/training/SurveySummaryImportsFormal.java:28  m07_policy_revisions
+src/com/training/SurveySummaryImportsFormal.java:29  m07_policy_heads
+src/com/training/SurveySummaryImportsFormal.java:30  m07_result_heads
+src/com/training/SurveySummaryImportsFormal.java:31  m07_result_events
+src/com/training/SurveySummaryImportsFormal.java:32  m07_file_claims
+src/com/training/SurveySummaryImportsFormal.java:33  m07_result_requests
+src/com/training/TeacherRosterImport.java:29  teacher_roster_import_batches
+src/com/training/TeacherRosterImport.java:33  teacher_roster_import_people
+src/com/training/TeamTodoIntegration.java:15  workflow_team_todos
+src/com/training/TeamTodoIntegration.java:16  workflow_team_todo_events
+src/com/training/TrainingSummariesIntegration.java:32  m08_summary_heads
+src/com/training/TrainingSummariesIntegration.java:33  m08_summary_revisions
+src/com/training/TrainingSummariesIntegration.java:34  m08_summary_requests
+src/com/training/TrainingSummariesPhotos.java:26  m08_summary_photos
+src/com/training/TrainingSummariesPhotos.java:27  schema/index statement
+src/com/training/TrainingSummariesWorkflow.java:37  m08_summary_workflow_heads
+src/com/training/TrainingSummariesWorkflow.java:38  m08_summary_workflow_events
+src/com/training/TrainingSummariesWorkflow.java:39  m08_summary_workflow_requests
+src/com/training/TrustedDevices.java:50  s01_trusted_device_epochs
+src/com/training/TrustedDevices.java:51  s01_trusted_devices
+src/com/training/TrustedDevices.java:52  schema/index statement
+src/com/training/WorkflowIntegration.java:20  workflow_demands
+src/com/training/WorkflowIntegration.java:21  workflow_documents
+src/com/training/WorkflowIntegration.java:22  approval_workflows
+src/com/training/WorkflowIntegration.java:23  approval_events
+src/com/training/WorkflowIntegration.java:24  workflow_bid_results
+src/com/training/WorkflowIntegration.java:25  workflow_acceptances
+src/com/training/WorkflowIntegration.java:26  workflow_requests
+src/com/training/WorkflowIntegration.java:27  approval_reminders
+src/com/training/WorkflowIntegration.java:28  workflow_outbox
