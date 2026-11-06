@@ -349,11 +349,12 @@ public final class RecommendationDecisionHost {
         String root="/api/teacher-recommendations/decision/v2",path=ex.getRequestURI().getPath(),method=ex.getRequestMethod();
         if((method.equals("GET")||method.equals("HEAD"))&&path.equals(root)) {Map<String,String> q=Api.query(ex);if(!q.keySet().equals(Set.of("analysis_id")))throw failure(400,"请提供分析编号");Api.ok(ex,readV2(session,q.get("analysis_id")));return;}
         if((method.equals("GET")||method.equals("HEAD"))&&path.equals(root+"/contexts")){Map<String,String> q=Api.query(ex);if(!q.keySet().equals(Set.of("scope_id"))||!q.get("scope_id").matches("[1-9][0-9]{0,15}"))throw failure(400,"请选择机构课程范围");synchronized(Api.MUTATION_LOCK){Api.ok(ex,contextsV2(session,Long.parseLong(q.get("scope_id"))));}return;}
-        if(!Set.of(root,root+"/batch",root+"/selection",root+"/advice",root+"/assessments/read",root+"/assessments/save").contains(path))throw failure(404,"推荐接口不存在");
+        if(!Set.of(root,root+"/batch",root+"/selection",root+"/advice",root+"/assessments/read",root+"/assessments/save",root+"/assessments/travel-reference").contains(path))throw failure(404,"推荐接口不存在");
         if(!method.equals("POST"))throw failure(405,"请求方法不支持");if(ex.getRequestURI().getRawQuery()!=null)throw failure(400,"此接口不接受查询参数");
         String type=ex.getRequestHeaders().getFirst("Content-Type");if(type==null||!type.split(";",2)[0].trim().equalsIgnoreCase("application/json"))throw failure(415,"请提交JSON对象");
         Map<String,Object> b=parseBody(ex.getRequestBody().readNBytes(32769));
         if(path.endsWith("/advice"))throw failure(410,PureRulePolicy.ADVICE_DISABLED_MESSAGE); // Pure-rule policy: adviceV2 is kept for reference/tests but is no longer routed.
+        if(path.endsWith("/assessments/travel-reference")){synchronized(Api.MUTATION_LOCK){Api.ok(ex,travelReferenceV2(session,b));}return;}
         if(path.endsWith("/assessments/read")||path.endsWith("/assessments/save")){synchronized(Api.MUTATION_LOCK){Api.ok(ex,assessmentV2(session,b,path.endsWith("/save")));}return;}
         if(path.endsWith("/selection")){if(!b.keySet().equals(Set.of("analysis_id","request_id","candidate_id")))throw failure(400,"备选参数无效");Api.ok(ex,selectV2(session,string(b.get("analysis_id")),string(b.get("request_id")),string(b.get("candidate_id"))));return;}
         List<Map<String,Object>> requests;
@@ -403,6 +404,17 @@ public final class RecommendationDecisionHost {
             view.put("experience_review_status",status);view.put("experience_review_reason",status.equals("STALE")?"经历确认的材料版本或核对有效期已变化，请重新核对后保存":"");
         }catch(RecommendationCpaPayload.PrivacyException unavailable){view.put("experience_sources",List.of());view.put("experience_review_status","UNAVAILABLE");view.put("experience_review_reason","完整来源超出本次确认容量，未截断或省略；仍可保存原有服务和交通事实");}
         return view;
+    }
+    /** Read-only pre-fill for the staff assessment form from the reviewed city travel table; never saves or ranks by itself. */
+    static Map<String,Object> travelReferenceV2(Auth.Session s,Map<String,Object> b)throws Exception {
+        if(!b.keySet().equals(Set.of("input","teacher_id","destination_city")))throw failure(400,"交通参考参数无效");
+        V2Input in=inputV2(objectV2(b.get("input")));authorizeV2(s,in,true);if(in.contextType.equals("UNSAVED"))throw failure(409,"请先关联已保存且有权操作的真实需求或项目");
+        if("ONLINE".equals(in.base.request().mode()))throw failure(409,"线上授课无需填写出行信息");
+        var context=RecommendationAssessmentIntegration.context(s,in.base.scope(),in.contextType,in.contextId,false);long teacher=number(b.get("teacher_id"),false);
+        RecommendationAssessmentIntegration.key(s,context,teacher,in.factRequest(),false); // same binding and visibility checks as reading the assessment
+        Map<String,Object> row=Db.one("SELECT base_city FROM teachers WHERE id=?",teacher);if(row==null)throw failure(404,"教师档案不存在");
+        String destination;try{destination=bounded(string(b.get("destination_city")),64,true);}catch(IllegalArgumentException bad){throw failure(400,"授课城市无效");}
+        return TravelReference.suggest(TravelReference.load(),text(row,"base_city"),destination,java.time.LocalDate.now(java.time.ZoneId.of("Asia/Shanghai"))).value();
     }
     private static List<Evidence> experienceSources(Auth.Session s,V2Input in,long teacher)throws Exception {
         Map<Long,List<Evidence>> sources=new LinkedHashMap<>();capture(s,in.base,true,sources,Set.of(teacher));

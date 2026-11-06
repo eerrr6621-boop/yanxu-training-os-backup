@@ -244,6 +244,7 @@ export function mountRecommendationDecision(root,context){
     for(const [name,label]of [['available_from','可用开始（本地时间）'],['available_until','可用结束（本地时间）']])field(grid,f,name,label,'datetime-local').value=toLocal(v[name]);
     field(grid,f,'transport_mode','交通方式','select',[['UNKNOWN','待核实'],['LOCAL','本地出行'],['RAIL','高铁'],['AIR','飞机'],['OTHER','其他']]).value=v.transport_mode||'UNKNOWN';
     field(grid,f,'departure_place','本次实际出发地').value=v.departure_place||'';field(grid,f,'teaching_place','本次授课地点').value=a.input.teaching_place;f.teaching_place.readOnly=true;
+    if(a.input.mode!=='ONLINE'){field(grid,f,'reference_city','授课城市（查交通参考表用，例如：杭州）').maxLength=64;a.travelButton=button('按交通参考表预填出行信息','assessment-travel-reference',()=>prefillTravel(a));grid.append(a.travelButton);}
     for(const [name,label]of [['leg_minutes','车程或航程（分钟）'],['door_to_door_minutes','门到门时长（分钟）'],['before_buffer_minutes','课前出行缓冲（分钟）'],['after_buffer_minutes','课后出行缓冲（分钟）']]){field(grid,f,name,label,'number').value=v[name]??'';f[name].min='0';f[name].step='1';}
     field(grid,f,'travel_cost','已核交通费用（未知留空）').value=v.travel_cost??'';field(grid,f,'currency','费用币种').value=v.currency||'';f.currency.maxLength=3;
     field(grid,f,'cost_coverage','费用覆盖范围','select',[['','未知'],['ONE_WAY','单程'],['ROUND_TRIP','往返'],['TOTAL_REQUEST','覆盖本次整段请求']]).value=v.cost_coverage||'';
@@ -252,7 +253,7 @@ export function mountRecommendationDecision(root,context){
     field(grid,f,'source_note','本次事实说明','textarea').value=v.source_note||'';f.source_note.maxLength=1000;field(grid,f,'reason','本次保存理由','textarea').maxLength=1000;
     form.append(el('p','空白表示未知，0 表示已明确核实为零。确认可用窗口须覆盖授课及已知出行缓冲；线上无需填写出行。单程报价不当整次费用，未知不作最低成本判断。'));
     renderExperienceSection(a,form);
-    const actions=el('div',undefined,'toolbar'),save=el('button','保存本次核对记录','btn');save.type='submit';save.setAttribute('data-recommend-action','assessment-save');const close=button('关闭核对','assessment-close',()=>closeAssessment());a.actions=[save,close];a.retryButton=button('核对同一次保存结果','assessment-retry',()=>saveAssessment(true));a.retryButton.hidden=true;actions.append(save,close,a.retryButton);form.append(actions);section.append(form);assessmentArea.append(section);
+    const actions=el('div',undefined,'toolbar'),save=el('button','保存本次核对记录','btn');save.type='submit';save.setAttribute('data-recommend-action','assessment-save');const close=button('关闭核对','assessment-close',()=>closeAssessment());a.actions=[save,close,...(a.travelButton?[a.travelButton]:[])];a.retryButton=button('核对同一次保存结果','assessment-retry',()=>saveAssessment(true));a.retryButton.hidden=true;actions.append(save,close,a.retryButton);form.append(actions);section.append(form);assessmentArea.append(section);
     const edited=event=>{if(assessment===a&&!busy&&!a.unknown){a.dirty=true;experienceEdited(a,event.target);}};form.addEventListener('input',edited);form.addEventListener('change',edited);form.addEventListener('submit',event=>{event.preventDefault();return saveAssessment(false);});controls();
   }
   function experienceEdited(a,target){const exp=a.experience;if(!exp||target===exp.finalConfirm)return;if(exp.finalConfirm)exp.finalConfirm.checked=false;if(Object.values(exp.fields).includes(target)||exp.requirementLimits?.some(v=>v.input===target))exp.reviewRequirement&&(exp.reviewRequirement.checked=false);for(const row of exp.rows)if(row.controls.includes(target)&&target!==row.confirmed)row.confirmed.checked=false;}
@@ -310,6 +311,28 @@ export function mountRecommendationDecision(root,context){
     const leg=number('leg_minutes'),door=number('door_to_door_minutes');if(leg!==null&&door!==null&&door<leg)throw Error('门到门时长不能小于车程或航程');
     if(!f.source_note.value.trim()||f.source_note.value.length>1000||!f.reason.value.trim()||f.reason.value.length>1000)throw Error('请填写不超过 1000 字的事实说明及保存理由');
     return{...confirmations,available_from:from,available_until:until,transport_mode:f.transport_mode.value,departure_place:f.departure_place.value.trim(),teaching_place:a.input.teaching_place,leg_minutes:leg,door_to_door_minutes:door,before_buffer_minutes:number('before_buffer_minutes'),after_buffer_minutes:number('after_buffer_minutes'),travel_cost:cost||null,currency,cost_coverage:coverage,distance_km:distance||null,distance_coverage:distance?'DEPARTURE_TO_TEACHING':'',source_observed_at:observed,valid_until:valid,source_note:f.source_note.value.trim(),source_kind:'STAFF_RECORDED'};
+  }
+  // Pre-fill only: values land in the form; nothing is stored until staff review them and press save.
+  const TRAVEL_KEYS=['travel_feasibility','transport_mode','departure_place','leg_minutes','door_to_door_minutes','before_buffer_minutes','after_buffer_minutes','travel_cost','currency','cost_coverage','valid_until','source_note'];
+  function applyTravel(a,s){
+    if(!exactKeys(s,TRAVEL_KEYS)||s.travel_feasibility!=='CONFIRMED'||!['LOCAL','RAIL','AIR'].includes(s.transport_mode)||!boundedText(s.departure_place,200)||!boundedText(s.source_note,1000))throw Error('交通参考回执无法核实');
+    for(const k of ['leg_minutes','door_to_door_minutes','before_buffer_minutes','after_buffer_minutes'])if(!Number.isSafeInteger(s[k])||s[k]<0||s[k]>20160)throw Error('交通参考回执无法核实');
+    const f=a.fields,limit=Date.parse(s.valid_until);if(!Number.isFinite(limit))throw Error('交通参考回执无法核实');
+    for(const k of ['travel_feasibility','transport_mode','departure_place','leg_minutes','door_to_door_minutes','before_buffer_minutes','after_buffer_minutes'])f[k].value=String(s[k]);
+    f.travel_cost.value=s.travel_cost??'';f.currency.value=s.currency||'';f.cost_coverage.value=s.cost_coverage||'';
+    if(!f.source_observed_at.value)f.source_observed_at.value=toLocal(new Date(context.now?.()??Date.now()).toISOString());
+    const existing=f.valid_until.value?new Date(f.valid_until.value).getTime():NaN;if(!Number.isFinite(existing)||existing>limit)f.valid_until.value=toLocal(s.valid_until);
+    const note=f.source_note.value.trim();if(!note.includes(s.source_note))f.source_note.value=(note?note+'\n':'')+s.source_note;
+  }
+  async function prefillTravel(a){
+    if(!guard()||assessment!==a||busy||a.unknown)return;const city=a.fields.reference_city.value.trim();if(!city){a.notice.textContent='请先填写授课城市。';return;}
+    const {ticket,signal}=start('assessment-travel');
+    try{const value=await context.api(`${ROOT}/assessments/travel-reference`,{method:'POST',body:{input:copy(a.input),teacher_id:a.candidate.teacherId,destination_city:city},quiet:true,signal});if(!current(ticket)||assessment!==a)return;
+      if(!value||typeof value.status!=='string'||!boundedText(value.message,500))throw Error('交通参考回执无法核实');
+      if(value.suggestion){applyTravel(a,value.suggestion);a.dirty=true;}
+      a.notice.textContent=value.message;}
+    catch(error){if(current(ticket)&&assessment===a)a.notice.textContent=error.message||'交通参考暂不可用，请手工填写。';}
+    finally{finish(ticket);}
   }
   async function saveAssessment(retry){
     if(!guard()||!assessment||busy)return;const a=assessment;if(a.unknown&&!retry)return;

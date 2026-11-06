@@ -36,8 +36,24 @@ Claude 审查优化分支说明（2026-11-06）
    - 影响：超过 5 年的旧请求编号若被重放，不再按旧回执返回，而会因该排课已有冻结确认而得到 409。
    - 新增 scripts/DispatchConfirmationArchiveTest.java（只测年限计算；归档 SQL 需在有 H2 的环境验证）。
 
+第三批（用户 2026-11-06 确认：交通信息可由预先核对的城市交通参考表预填；同城不留路上时间；预填后须人工点保存）
+7. 新增 src/com/training/TravelReference.java
+   - 读取数据目录（data.dir，与 H2 数据库同目录）下的 travel-reference.csv；表头固定为：
+     出发城市,到达城市,交通方式,单程时长分钟,单程参考票价元,核对日期,核对人,备注
+   - 支持 UTF-8（含 BOM）与 GBK/GB18030；按文件修改时间缓存，改文件无需重启；坏行跳过并给出行号，不猜测。
+   - 规则：同城 → 本地出行、0 分钟；否则按原则选择：高铁≤180 分钟优先，其次飞机≤150 分钟，否则有高铁选高铁、无则飞机；
+     进出站另加：高铁 90 分钟、飞机 150 分钟（RAIL_ACCESS_MINUTES / AIR_ACCESS_MINUTES，可调）；
+     门到门 = 单程 + 进出站，并同时作为课前、课后缓冲；票价按单程 CNY，未知留空不当 0；
+     行核对日期起 90 天内有效（REVIEW_DAYS），过期不预填；只有反方向记录时使用并在说明中注明。
+   - 只预填交通相关字段；服务意愿、完整档期从不预填。
+8. RecommendationDecisionHost：新增只读接口 /api/teacher-recommendations/decision/v2/assessments/travel-reference，
+   权限与读取本次核对相同（同一机构范围、已绑定且可见的教师），线上授课拒绝；不写库、不参与排序。
+9. web/modules/teacher-recommendation/index.js：线下核对表单增加“授课城市”与“按交通参考表预填出行信息”按钮；
+   预填只改表单，工作人员核对后点“保存本次核对记录”才生效。
+10. 测试：新增 scripts/TravelReferenceTest.java（32 项，含与排序规则的端到端分档检查）；RecommendationV2UI.test.cjs 新增 9 项预填界面检查（共 62 项）。
+
 本地实际运行（使用仅供编译的 pdfbox/ip2region 桩类，未带 H2 驱动）
-- 全部 154 个 Java 源文件可编译（第二批后）。
+- 全部 155 个 Java 源文件可编译（第三批后）。
 - 通过：LegacyLoginThrottleTest 22、RecommendationV2RankingTest 63、RecommendationV2JointPlannerTest 30、
   M01OrganizationAccessTest 108、M03ApprovalSnapshotsTest 47、M03ApprovalWorkflowTest 84、
   M03CombinedApprovalTest 135、M04CourseCatalogTest 95、RecommendationCpa*（Deadline 11 / Payload 64 /
