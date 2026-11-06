@@ -64,9 +64,18 @@ final class LoginVerificationHost {
                 fields(body, Set.of("username", "password"));
                 String username = text(body, "username", 200), password = text(body, "password", 1024);
                 if (!required()) {
+                    // Legacy mode had no attempt limit; count failures only (see LegacyLoginThrottle).
+                    String source;
+                    try { source = remote(ex); } catch (Api.ApiException unknownPeer) { source = null; }
+                    LegacyLoginThrottle throttle = LegacyLoginThrottle.shared();
+                    throttle.check(username, source);
                     synchronized (Api.MUTATION_LOCK) {
                         String token = Auth.login(username, password);
-                        if (token == null) throw new Api.ApiException(401, "用户名或密码错误（或账号已停用）");
+                        if (token == null) {
+                            throttle.failure(username, source);
+                            throw new Api.ApiException(401, "用户名或密码错误（或账号已停用）");
+                        }
+                        throttle.success(username);
                         Api.loginSuccess(ex, token);
                     }
                 } else {

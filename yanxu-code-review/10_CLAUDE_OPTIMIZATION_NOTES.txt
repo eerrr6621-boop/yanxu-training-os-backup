@@ -1,0 +1,23 @@
+Claude 审查优化分支说明（2026-11-06）
+
+基线：提交 5e067b2（review/verified-cloud-20261104-20261106）。本分支未合并、未部署、未连接任何服务器。
+09_FILE_MANIFEST.json 是制作方对原审查包的清单，本分支新增/修改的文件不在其中，未改动该清单。
+
+本分支改动
+1. 新增 src/com/training/LegacyLoginThrottle.java
+   默认 legacy 登录模式（login.email.mode 未设置时）原先对密码错误没有次数限制。
+   现在只统计失败：同一账号 15 分钟内失败 10 次、或同一来源地址 15 分钟内失败 100 次，后续尝试返回 429。
+   登录成功清零该账号计数；内存保存、最多 1 万个键，重启清空；不改账号、角色或密码。
+2. 修改 src/com/training/LoginVerificationHost.java（legacy 分支）
+   在校验密码前检查限流，失败计数，成功清零。来源地址沿用 LoginRequestPeer 的规则；
+   若反代配置导致无法识别来源，则只按账号限流，不阻断登录。邮箱核验（required）模式不变。
+3. 新增 scripts/LegacyLoginThrottleTest.java（纯合成，无数据库/网络）。
+
+本地实际运行（使用仅供编译的 pdfbox/ip2region 桩类，未带 H2 驱动）
+- 全部 153 个 Java 源文件可编译。
+- 通过：LegacyLoginThrottleTest 22、RecommendationV2RankingTest 63、RecommendationV2JointPlannerTest 30、
+  M01OrganizationAccessTest 108、M03ApprovalSnapshotsTest 47、M03ApprovalWorkflowTest 84、
+  M03CombinedApprovalTest 135、M04CourseCatalogTest 95、RecommendationCpa*（Deadline 11 / Payload 64 /
+  Semantic 98 / Transport 145 / SemanticAdvisor）、RecommendationV2UI.test.cjs 53、RecommendationCpaUI.test.cjs 207。
+- 不稳定：M04RecommendationDecisionTest（旧可选模型模拟路径，1 秒计时断言，3 次运行 1 次通过），与本次改动无关。
+- 未运行：所有需要 H2 数据库的集成测试（包内未带 h2.jar，环境不能联网安装）。
