@@ -120,12 +120,14 @@ export function mountRecommendationDecision(root,context){
     catch(error){if(current(ticket)){if(Number(error?.status||error?.code)===429&&previous&&JSON.stringify(previous.inputs)===JSON.stringify(inputs)){analysis=previous;selected=previousSelected;render();}fail(error);}}finally{finish(ticket);}
   }
   function register(item,enabled=()=>true){resultButtons.push({item,enabled});return item;}
+  // Pure-rule policy: AI controls appear only if the server explicitly reports an enabled channel, which the pure-rule server never does.
+  function aiEnabled(value){return value?.aiUsage?.enabled===true;}
   function render(){
-    const bundle=analysis;if(!bundle)return;const value=bundle.value;results.replaceChildren();resultButtons=[];if(value.aiUsage)results.append(el('p',usageNotice(value.aiUsage),'recommend-notice'));
+    const bundle=analysis;if(!bundle)return;const value=bundle.value;results.replaceChildren();resultButtons=[];if(aiEnabled(value))results.append(el('p',usageNotice(value.aiUsage),'recommend-notice'));
     for(const [index,r]of value.results.entries()){
       const input=bundle.inputs[index],section=el('section');section.append(el('div',inputLabel(input),'recommend-results-head'));
-      const notice=el('div',undefined,'recommend-notice');notice.append(el('span',`${modelNotice(r.model)} ${r.notice||''}`));section.append(notice);
-      const aiToolbar=el('div',undefined,'toolbar');aiToolbar.append(register(button('AI 辅助比较本次短名单','ai-advice',()=>advice(r.requestId,bundle)),()=>analysis===bundle&&!bundle.stoppedAdvice.has(r.requestId)&&bundle.value.aiUsage?.remaining!==0&&r.candidates.some(c=>c.decision!=='EXCLUDED')));section.append(aiToolbar,el('p','仅发送编号、操作人本次明确确认的单课程需求和经历事实及固定模板脱敏摘要，不从履历推断、不发送原文。每次最多 6 位候选；人工核对后仍须另行点击才调用 AI，不生成资格或派课。','recommend-input-foot'));
+      const notice=el('div',undefined,'recommend-notice');notice.append(el('span',`${aiEnabled(value)?modelNotice(r.model):'规则筛选结果'} ${r.notice||''}`));section.append(notice);
+      if(aiEnabled(value)){const aiToolbar=el('div',undefined,'toolbar');aiToolbar.append(register(button('AI 辅助比较本次短名单','ai-advice',()=>advice(r.requestId,bundle)),()=>analysis===bundle&&!bundle.stoppedAdvice.has(r.requestId)&&bundle.value.aiUsage?.remaining!==0&&r.candidates.some(c=>c.decision!=='EXCLUDED')));section.append(aiToolbar,el('p','仅发送编号、操作人本次明确确认的单课程需求和经历事实及固定模板脱敏摘要，不从履历推断、不发送原文。每次最多 6 位候选；人工核对后仍须另行点击才调用 AI，不生成资格或派课。','recommend-input-foot'));}
       if(bundle.stoppedAdvice.has(r.requestId))section.append(el('p','本页已停止等待。上游可能继续处理并产生用量或费用；该需求的 AI 按钮已禁用，请重新核对候选后再决定是否调用。查看更多或刷新范围不会调用模型。','recommend-notice'));
       const head=el('div',undefined,'recommend-results-head');head.append(el('h2',`正常候选 · ${r.normalCount} 位`),el('small',r.shortage?`不足 3 位，尚缺 ${r.shortage} 位；不以待确认或已排除者补足。`:`已核对 ${r.scanned} 位，默认展示前三。`));section.append(head);
       const normal=r.candidates.filter(c=>c.decision==='READY_FOR_REVIEW'),list=el('div',undefined,'teacher-match-list');for(const c of bundle.expanded.has(r.requestId)?normal:normal.slice(0,3))list.append(card(c,r,input,bundle));section.append(list);
@@ -195,7 +197,7 @@ export function mountRecommendationDecision(root,context){
     const advised=r.candidates.filter(candidate=>candidate.topicAdvice);for(const candidate of advised)validateTopicAdvice(candidate,model);if(advised.length>6||model.source==='AI'&&advised.length===0)throw Error('AI 短名单数量无效');return r;
   }
   async function advice(requestId,bundle){
-    if(!guard()||assessment||busy||analysis!==bundle||bundle.stoppedAdvice.has(requestId)||bundle.value.aiUsage?.remaining===0)return;let received=false;const {ticket,signal}=start('ai-advice');aiPending={ticket,requestId,bundle,timer:setTimeout(()=>{if(aiPending?.ticket===ticket)stopAdvice('TIMED_OUT');},50000)};controls();say('AI 处理中：模型最多等待45秒，另预留5秒接收回执；停止等待不保证上游停止或不计费。');
+    if(!guard()||!aiEnabled(bundle.value)||assessment||busy||analysis!==bundle||bundle.stoppedAdvice.has(requestId)||bundle.value.aiUsage?.remaining===0)return;let received=false;const {ticket,signal}=start('ai-advice');aiPending={ticket,requestId,bundle,timer:setTimeout(()=>{if(aiPending?.ticket===ticket)stopAdvice('TIMED_OUT');},50000)};controls();say('AI 处理中：模型最多等待45秒，另预留5秒接收回执；停止等待不保证上游停止或不计费。');
     try{const value=await context.api(`${ROOT}/advice`,{method:'POST',body:{analysis_id:bundle.value.analysisId,request_id:requestId},quiet:true,signal});received=true;if(!current(ticket)||analysis!==bundle)return;for(const [id,status]of bundle.stoppedAdvice)stoppedResult(value,id,status);const result=validateAdvice(value,bundle,requestId);bundle.value=value;render();say(modelNotice(result.model));}
     catch(error){if(!current(ticket)||analysis!==bundle)return;const code=Number(error?.status||error?.code);if([401,403,404,409].includes(code)){fail(error);return;}
       const r=bundle.value.results.find(item=>item.requestId===requestId);if(r){r.model={source:'RULES',status:code===429?'USAGE_LIMIT':error?.name==='AbortError'?'CANCELLED':received?'INVALID_OUTPUT':'CLIENT_ERROR'};for(const c of r.candidates)delete c.topicAdvice;render();say(modelNotice(r.model));}}

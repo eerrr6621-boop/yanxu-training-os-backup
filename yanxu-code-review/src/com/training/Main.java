@@ -38,6 +38,7 @@ public class Main {
 
     /** Package-local startup composition for a trusted in-process host; never configurable by HTTP. */
     static void start(String[] args, NotificationChannelsLoginVerification suppliedLoginService) throws Exception {
+        PureRulePolicy.requireNoModelChannels();
         configureHttpLimits();
         int port = 8080;
         if (args.length > 0) {

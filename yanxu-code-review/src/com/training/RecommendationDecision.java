@@ -116,7 +116,7 @@ final class RecommendationDecision {
     }
     static boolean matchesTopic(String text,String topic) { return topicTerms(topic).stream().anyMatch(text::contains); }
     private static boolean validTime(String value) { return value != null && value.matches("(?:[01][0-9]|2[0-3]):[0-5][0-9]"); }
-    private static boolean validDate(String value) {
+    static boolean validDate(String value) {
         try { return value != null && value.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}") && !value.startsWith("0000") && LocalDate.parse(value).toString().equals(value); }
         catch (java.time.format.DateTimeParseException invalid) { return false; }
     }

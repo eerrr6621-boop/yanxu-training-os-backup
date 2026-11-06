@@ -189,8 +189,7 @@ public final class RecommendationDecisionHost {
             String ids=bindings.stream().map(b->Long.toString(number(b.get("teacher_id"),false))).collect(java.util.stream.Collectors.joining(","));
             for(Map<String,Object> t:Db.query("SELECT id,name,status,base_city,field,intro FROM teachers WHERE id IN ("+ids+")"))allTeachers.put(number(t.get("id"),false),t);
             for(Map<String,Object> p:Db.query("SELECT id,teacher_id,LEFT(manual_profile,16000) AS manual_profile,LEFT(extracted_text,16000) AS extracted_text,updated_at FROM teacher_resumes WHERE is_current=TRUE AND teacher_id IN ("+ids+")"))allProfiles.computeIfAbsent(number(p.get("teacher_id"),false),k->new ArrayList<>()).add(p);
-            List<Map<String,Object>> booked=Db.query("SELECT id,project_id,teacher_id,subject,teach_date,start_time,end_time,status FROM dispatches WHERE teacher_id IN ("+ids+") AND status IN ('已确认','已完成') ORDER BY id LIMIT 5001");if(booked.size()>5000)throw failure(413,"档期超出本次核对容量");
-            for(Map<String,Object> b:booked)allSchedules.computeIfAbsent(number(b.get("teacher_id"),false),k->new ArrayList<>()).add(b);
+            for(Map<String,Object> b:v2Bookings(ids,bindings,input.request().date()))allSchedules.computeIfAbsent(number(b.get("teacher_id"),false),k->new ArrayList<>()).add(b);
         }
 
         for(Map<String,Object> binding:bindings) {
@@ -226,7 +225,8 @@ public final class RecommendationDecisionHost {
             }
             List<Map<String,Object>> schedule=v2?allSchedules.getOrDefault(tid,List.of()):Db.query("SELECT id,project_id,teacher_id,subject,teach_date,start_time,end_time,status FROM dispatches WHERE teacher_id=? AND status IN ('待发送','已发送','已确认','已完成') ORDER BY id LIMIT "+(5001-totalBookings),tid);
             totalBookings+=schedule.size();
-            if(totalBookings>5000) throw failure(413,"本范围档期总量超出本次核验上限，请缩小范围");
+            // V2 reads are bounded in v2Bookings (conflict rows <=5000, history <=HISTORY_PER_TEACHER per bound teacher).
+            if(!v2&&totalBookings>5000) throw failure(413,"本范围档期总量超出本次核验上限，请缩小范围");
             List<Booking> bookings=new ArrayList<>();
             for(Map<String,Object> booking:schedule) {
                 for(Object value:booking.values()) if(value!=null) totalCharacters+=value.toString().length();
@@ -254,6 +254,47 @@ public final class RecommendationDecisionHost {
         }
         String digest=hash(Json.write(map("scope",scope,"catalogVersion",revision==null?"":hash(Json.write(revision)),"identityVersion",OrganizationAccessStore.configuration().version(),"person",person.personCode(),"account",session.uid,"request",input.request().value(),"qualificationContext",qualificationContext,"facts",facts)));
         return new Snapshot(org,digest,input.request(),candidates,false);
+    }
+    /** Completed-history clues kept per teacher (most recent first by id). Confirmed 2026-11-06: 50. */
+    static final int HISTORY_PER_TEACHER=50;
+    record ConflictDates(List<String> dates,boolean includeMissing) {}
+    /** Stored teach_date values whose confirmed/completed bookings can change decide(): the request day itself,
+     * plus any value decide() cannot read as a calendar date (it treats those as uncertain). Other days never matter. */
+    static ConflictDates conflictRelevantDates(String requestDate,Collection<?> storedDates) {
+        Set<String> dates=new LinkedHashSet<>();boolean missing=false;
+        if(requestDate!=null&&!requestDate.isEmpty())dates.add(requestDate);
+        for(Object stored:storedDates){if(stored==null){missing=true;continue;}String value=stored.toString();if(!RecommendationDecision.validDate(value))dates.add(value);}
+        return new ConflictDates(List.copyOf(dates),missing);
+    }
+    /** Replaces one unbounded all-history read (which failed beyond 5000 rows) with: rows that can affect the
+     * conflict check, plus each teacher's latest HISTORY_PER_TEACHER completed rows for topic clues. Same columns, id order. */
+    private static List<Map<String,Object>> v2Bookings(String ids,List<Map<String,Object>> bindings,String requestDate)throws Exception {
+        String columns="SELECT id,project_id,teacher_id,subject,teach_date,start_time,end_time,status FROM dispatches ";
+        List<Object> stored=new ArrayList<>();
+        for(Map<String,Object> row:Db.query("SELECT DISTINCT teach_date FROM dispatches WHERE teacher_id IN ("+ids+") AND status IN ('已确认','已完成')"))stored.add(row.get("teach_date"));
+        ConflictDates relevant=conflictRelevantDates(requestDate,stored);
+        TreeMap<Long,Map<String,Object>> rows=new TreeMap<>();
+        if(!relevant.dates().isEmpty()||relevant.includeMissing()) {
+            List<String> filters=new ArrayList<>();
+            if(!relevant.dates().isEmpty())filters.add("teach_date IN ("+String.join(",",Collections.nCopies(relevant.dates().size(),"?"))+")");
+            if(relevant.includeMissing())filters.add("teach_date IS NULL");
+            List<Map<String,Object>> conflict=Db.query(columns+"WHERE teacher_id IN ("+ids+") AND status IN ('已确认','已完成') AND ("+String.join(" OR ",filters)+") ORDER BY id LIMIT 5001",relevant.dates().toArray());
+            if(conflict.size()>5000)throw failure(413,"档期超出本次核对容量");
+            for(Map<String,Object> row:conflict)rows.put(number(row.get("id"),false),row);
+        }
+        // One narrow id scan (no schema change), keeping each teacher's latest HISTORY_PER_TEACHER completed ids.
+        Map<Long,ArrayDeque<Long>> latest=new HashMap<>();
+        for(Map<String,Object> row:Db.query("SELECT id,teacher_id FROM dispatches WHERE teacher_id IN ("+ids+") AND status='已完成' ORDER BY id")) {
+            ArrayDeque<Long> kept=latest.computeIfAbsent(number(row.get("teacher_id"),false),k->new ArrayDeque<>());
+            kept.addLast(number(row.get("id"),false));if(kept.size()>HISTORY_PER_TEACHER)kept.removeFirst();
+        }
+        List<Long> history=new ArrayList<>();for(ArrayDeque<Long> kept:latest.values())for(Long id:kept)if(!rows.containsKey(id))history.add(id);
+        for(int from=0;from<history.size();from+=500) {
+            List<Long> chunk=history.subList(from,Math.min(history.size(),from+500));
+            for(Map<String,Object> row:Db.query(columns+"WHERE id IN ("+String.join(",",Collections.nCopies(chunk.size(),"?"))+")",chunk.toArray()))
+                rows.putIfAbsent(number(row.get("id"),false),row);
+        }
+        return new ArrayList<>(rows.values());
     }
     private static long number(Object value,boolean zero) {
         if(!(value instanceof Number)) throw invalid("编号或版本必须为安全整数");
@@ -312,7 +353,7 @@ public final class RecommendationDecisionHost {
         if(!method.equals("POST"))throw failure(405,"请求方法不支持");if(ex.getRequestURI().getRawQuery()!=null)throw failure(400,"此接口不接受查询参数");
         String type=ex.getRequestHeaders().getFirst("Content-Type");if(type==null||!type.split(";",2)[0].trim().equalsIgnoreCase("application/json"))throw failure(415,"请提交JSON对象");
         Map<String,Object> b=parseBody(ex.getRequestBody().readNBytes(32769));
-        if(path.endsWith("/advice")){if(!b.keySet().equals(Set.of("analysis_id","request_id")))throw failure(400,"AI辅助参数无效");Api.ok(ex,adviceV2(session,string(b.get("analysis_id")),string(b.get("request_id")),CPA));return;}
+        if(path.endsWith("/advice"))throw failure(410,PureRulePolicy.ADVICE_DISABLED_MESSAGE); // Pure-rule policy: adviceV2 is kept for reference/tests but is no longer routed.
         if(path.endsWith("/assessments/read")||path.endsWith("/assessments/save")){synchronized(Api.MUTATION_LOCK){Api.ok(ex,assessmentV2(session,b,path.endsWith("/save")));}return;}
         if(path.endsWith("/selection")){if(!b.keySet().equals(Set.of("analysis_id","request_id","candidate_id")))throw failure(400,"备选参数无效");Api.ok(ex,selectV2(session,string(b.get("analysis_id")),string(b.get("request_id")),string(b.get("candidate_id"))));return;}
         List<Map<String,Object>> requests;

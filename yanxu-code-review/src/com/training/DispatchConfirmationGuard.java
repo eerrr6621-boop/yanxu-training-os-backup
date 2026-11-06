@@ -21,6 +21,19 @@ final class DispatchConfirmationGuard {
         Db.exec("CREATE TABLE IF NOT EXISTS dispatch_confirmation_occupancy(dispatch_id BIGINT PRIMARY KEY REFERENCES dispatches(id),teacher_id BIGINT NOT NULL,payload CLOB NOT NULL,digest VARCHAR(64) NOT NULL)");
         Db.exec("CREATE INDEX IF NOT EXISTS idx_dispatch_confirm_teacher ON dispatch_confirmation_occupancy(teacher_id)");
         Db.exec("CREATE TABLE IF NOT EXISTS dispatch_confirmation_requests(account_id BIGINT NOT NULL,request_id VARCHAR(96) NOT NULL,dispatch_id BIGINT NOT NULL,payload CLOB NOT NULL,result CLOB NOT NULL,digest VARCHAR(64) NOT NULL,PRIMARY KEY(account_id,request_id))");
+        // Archive keeps receipts older than ARCHIVE_YEARS byte-for-byte (same digest); no primary key so a later reuse of an archived request id can be archived too.
+        Db.exec("CREATE TABLE IF NOT EXISTS dispatch_confirmation_requests_archive(account_id BIGINT NOT NULL,request_id VARCHAR(96) NOT NULL,dispatch_id BIGINT NOT NULL,payload CLOB NOT NULL,result CLOB NOT NULL,digest VARCHAR(64) NOT NULL,archived_at VARCHAR(40) NOT NULL)");
+    }
+    /** Active receipt capacity (unchanged). Confirmed 2026-11-06: receipts older than 5 years move to the archive when it is reached. */
+    static final int MAX_ACTIVE_REQUESTS=20000, ARCHIVE_YEARS=5;
+    /** Confirmation time strings (dispatches.confirmed_at, written as Instant.toString() at confirmation) earlier than this are archived. */
+    static String archiveCutoff(Instant now){return now.atZone(ZONE).minusYears(ARCHIVE_YEARS).toInstant().toString();}
+    private static long activeRequests()throws Exception{return integer(Db.one("SELECT COUNT(*) n FROM dispatch_confirmation_requests").get("n"),true);}
+    /** Runs inside the confirmation transaction: copy first, then remove only rows that were copied. Nothing is deleted outright. */
+    private static void archiveOldRequests()throws Exception {
+        String cutoff=archiveCutoff(Instant.now()),now=Instant.now().toString();
+        Db.exec("INSERT INTO dispatch_confirmation_requests_archive(account_id,request_id,dispatch_id,payload,result,digest,archived_at) SELECT r.account_id,r.request_id,r.dispatch_id,r.payload,r.result,r.digest,? FROM dispatch_confirmation_requests r JOIN dispatches d ON d.id=r.dispatch_id WHERE d.confirmed_at IS NOT NULL AND d.confirmed_at<>'' AND d.confirmed_at<?",now,cutoff);
+        Db.exec("DELETE FROM dispatch_confirmation_requests WHERE EXISTS (SELECT 1 FROM dispatch_confirmation_requests_archive a WHERE a.account_id=dispatch_confirmation_requests.account_id AND a.request_id=dispatch_confirmation_requests.request_id AND a.archived_at=?)",now);
     }
     static String opaque(String value){try {Mac mac=Mac.getInstance("HmacSHA256");mac.init(new SecretKeySpec(SECRET,"HmacSHA256"));return HexFormat.of().formatHex(mac.doFinal(value.getBytes(StandardCharsets.UTF_8)));}catch(Exception e){throw new IllegalStateException(e);}}
     static Map<String,Object> preview(Auth.Session session,long id)throws Exception {
@@ -53,7 +66,7 @@ final class DispatchConfirmationGuard {
                 Db.exec("UPDATE dispatches SET status='已确认',confirmed_at=?,msg_log=? WHERE id=?",now,previous+(previous.isEmpty()?"":"\n")+"【"+now+"】"+name+"已确认授课安排。",id);
                 Map<String,Object> result=map("status","CONFIRMED","dispatch_id",id,"result_version",resultVersion,"message","师资已确认","qualification_certified",false,"pending",c.pending());
                 String response=canonical(result);
-                if(integer(Db.one("SELECT COUNT(*) n FROM dispatch_confirmation_requests").get("n"),true)>=20000)throw error(409,"确认审计已达到容量上限");
+                if(activeRequests()>=MAX_ACTIVE_REQUESTS){archiveOldRequests();if(activeRequests()>=MAX_ACTIVE_REQUESTS)throw error(409,"确认审计已达到容量上限：近 5 年内的确认记录已满 2 万条，请联系系统管理员");}
                 Db.exec("INSERT INTO dispatch_confirmation_requests VALUES(?,?,?,?,?,?)",session.uid,request,id,payload,response,receiptHash(session.uid,request,id,payload,response));
                 authorize(session,id);validateFrozen(authorize(session,id));return result;
             });
