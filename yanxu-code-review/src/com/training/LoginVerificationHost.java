@@ -65,11 +65,15 @@ final class LoginVerificationHost {
                 String username = text(body, "username", 200), password = text(body, "password", 1024);
                 if (!required()) {
                     // Legacy mode had no attempt limit; count failures only (see LegacyLoginThrottle).
+                    // An unidentified source (null) counts against one shared "unknown source" limit.
                     String source;
                     try { source = remote(ex); } catch (Api.ApiException unknownPeer) { source = null; }
                     LegacyLoginThrottle throttle = LegacyLoginThrottle.shared();
-                    throttle.check(username, source);
+                    throttle.check(username, source); // early rejection without waiting for the lock
                     synchronized (Api.MUTATION_LOCK) {
+                        // Re-check under the lock that serializes every legacy password check, so concurrent attempts
+                        // cannot pass the limit between the first check and the recorded failure.
+                        throttle.check(username, source);
                         String token = Auth.login(username, password);
                         if (token == null) {
                             throttle.failure(username, source);
