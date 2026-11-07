@@ -27,6 +27,9 @@ final class DispatchConfirmationGuard {
     }
     /** Active receipt capacity (unchanged). Confirmed 2026-11-06: receipts older than 5 years move to the archive when it is reached. */
     static final int MAX_ACTIVE_REQUESTS=20000, ARCHIVE_YEARS=5;
+    /** Effective capacity; equals MAX_ACTIVE_REQUESTS in service. Package-visible only so the H2 test can reach the
+     * archive path with a few real confirmations instead of 20000. */
+    static volatile int maxActiveRequests=MAX_ACTIVE_REQUESTS;
     /** Receipts confirmed before this instant (five calendar years earlier in Asia/Shanghai) may be archived. */
     static Instant archiveCutoff(Instant now){return now.atZone(ZONE).minusYears(ARCHIVE_YEARS).toInstant();}
     /** dispatches.confirmed_at is Instant.toString() text whose fractional digits vary, so it is parsed and compared as time,
@@ -82,7 +85,7 @@ final class DispatchConfirmationGuard {
                 Db.exec("UPDATE dispatches SET status='已确认',confirmed_at=?,msg_log=? WHERE id=?",now,previous+(previous.isEmpty()?"":"\n")+"【"+now+"】"+name+"已确认授课安排。",id);
                 Map<String,Object> result=map("status","CONFIRMED","dispatch_id",id,"result_version",resultVersion,"message","师资已确认","qualification_certified",false,"pending",c.pending());
                 String response=canonical(result);
-                if(activeRequests()>=MAX_ACTIVE_REQUESTS){archiveOldRequests();if(activeRequests()>=MAX_ACTIVE_REQUESTS)throw error(409,"确认审计已达到容量上限：近 5 年内的确认记录已满 2 万条，请联系系统管理员");}
+                if(activeRequests()>=maxActiveRequests){archiveOldRequests();if(activeRequests()>=maxActiveRequests)throw error(409,"确认审计已达到容量上限：近 5 年内的确认记录已满 2 万条，请联系系统管理员");}
                 Db.exec("INSERT INTO dispatch_confirmation_requests VALUES(?,?,?,?,?,?)",session.uid,request,id,payload,response,receiptHash(session.uid,request,id,payload,response));
                 authorize(session,id);validateFrozen(authorize(session,id));return result;
             });

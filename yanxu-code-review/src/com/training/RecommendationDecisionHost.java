@@ -281,7 +281,7 @@ public final class RecommendationDecisionHost {
      * (one distinct-date list, at most one value per calendar day, then only relevant rows), plus for each teacher the latest
      * HISTORY_PER_TEACHER usable completed rows, read in pages of HISTORY_PER_TEACHER and never more than
      * HISTORY_SCAN_PER_TEACHER rows. Same columns; newest first. */
-    private static List<Map<String,Object>> v2Bookings(String ids,List<Long> teacherIds,String requestDate,RowTest usableHistory)throws Exception {
+    static List<Map<String,Object>> v2Bookings(String ids,List<Long> teacherIds,String requestDate,RowTest usableHistory)throws Exception {
         String columns="SELECT id,project_id,teacher_id,subject,teach_date,start_time,end_time,status FROM dispatches ";
         List<Object> stored=new ArrayList<>();
         for(Map<String,Object> row:Db.query("SELECT DISTINCT teach_date FROM dispatches WHERE teacher_id IN ("+ids+") AND status IN ('已确认','已完成')"))stored.add(row.get("teach_date"));
