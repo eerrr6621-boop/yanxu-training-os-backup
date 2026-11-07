@@ -416,14 +416,18 @@ public final class RecommendationDecisionHost {
     }
     /** Read-only pre-fill for the staff assessment form from the reviewed city travel table; never saves or ranks by itself. */
     static Map<String,Object> travelReferenceV2(Auth.Session s,Map<String,Object> b)throws Exception {
-        if(!b.keySet().equals(Set.of("input","teacher_id","destination_city")))throw failure(400,"交通参考参数无效");
+        Set<String> keys=new HashSet<>(b.keySet());keys.remove("departure_city");
+        if(!keys.equals(Set.of("input","teacher_id","destination_city")))throw failure(400,"交通参考参数无效");
         V2Input in=inputV2(objectV2(b.get("input")));authorizeV2(s,in,true);if(in.contextType.equals("UNSAVED"))throw failure(409,"请先关联已保存且有权操作的真实需求或项目");
         if("ONLINE".equals(in.base.request().mode()))throw failure(409,"线上授课无需填写出行信息");
         var context=RecommendationAssessmentIntegration.context(s,in.base.scope(),in.contextType,in.contextId,false);long teacher=number(b.get("teacher_id"),false);
         RecommendationAssessmentIntegration.key(s,context,teacher,in.factRequest(),false); // same binding and visibility checks as reading the assessment
         Map<String,Object> row=Db.one("SELECT base_city FROM teachers WHERE id=?",teacher);if(row==null)throw failure(404,"教师档案不存在");
-        String destination;try{destination=bounded(string(b.get("destination_city")),64,true);}catch(IllegalArgumentException bad){throw failure(400,"授课城市无效");}
-        return TravelReference.suggest(TravelReference.load(),text(row,"base_city"),destination,java.time.LocalDate.now(java.time.ZoneId.of("Asia/Shanghai"))).value();
+        String destination,departure;
+        try{destination=bounded(string(b.get("destination_city")),64,true);}catch(IllegalArgumentException bad){throw failure(400,"授课城市无效");}
+        try{departure=b.get("departure_city")==null?"":bounded(string(b.get("departure_city")),64,true).strip();}catch(IllegalArgumentException bad){throw failure(400,"出发城市无效");}
+        // The actual departure city entered for this assessment comes first; the teacher's base city is only the default.
+        return TravelReference.suggest(TravelReference.load(),departure.isEmpty()?text(row,"base_city"):departure,destination,TravelReference.today()).value();
     }
     private static List<Evidence> experienceSources(Auth.Session s,V2Input in,long teacher)throws Exception {
         Map<Long,List<Evidence>> sources=new LinkedHashMap<>();capture(s,in.base,true,sources,Set.of(teacher));
