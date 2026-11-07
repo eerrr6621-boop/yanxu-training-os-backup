@@ -21,20 +21,34 @@ final class DispatchConfirmationGuard {
         Db.exec("CREATE TABLE IF NOT EXISTS dispatch_confirmation_occupancy(dispatch_id BIGINT PRIMARY KEY REFERENCES dispatches(id),teacher_id BIGINT NOT NULL,payload CLOB NOT NULL,digest VARCHAR(64) NOT NULL)");
         Db.exec("CREATE INDEX IF NOT EXISTS idx_dispatch_confirm_teacher ON dispatch_confirmation_occupancy(teacher_id)");
         Db.exec("CREATE TABLE IF NOT EXISTS dispatch_confirmation_requests(account_id BIGINT NOT NULL,request_id VARCHAR(96) NOT NULL,dispatch_id BIGINT NOT NULL,payload CLOB NOT NULL,result CLOB NOT NULL,digest VARCHAR(64) NOT NULL,PRIMARY KEY(account_id,request_id))");
-        // Archive keeps receipts older than ARCHIVE_YEARS byte-for-byte (same digest); no primary key so a later reuse of an archived request id can be archived too.
-        Db.exec("CREATE TABLE IF NOT EXISTS dispatch_confirmation_requests_archive(account_id BIGINT NOT NULL,request_id VARCHAR(96) NOT NULL,dispatch_id BIGINT NOT NULL,payload CLOB NOT NULL,result CLOB NOT NULL,digest VARCHAR(64) NOT NULL,archived_at VARCHAR(40) NOT NULL)");
+        // Archive keeps receipts older than ARCHIVE_YEARS byte-for-byte (same digest). Same key as the active table: a request id
+        // lives in exactly one of the two tables, so archiving never frees an id for reuse and old receipts still replay.
+        Db.exec("CREATE TABLE IF NOT EXISTS dispatch_confirmation_requests_archive(account_id BIGINT NOT NULL,request_id VARCHAR(96) NOT NULL,dispatch_id BIGINT NOT NULL,payload CLOB NOT NULL,result CLOB NOT NULL,digest VARCHAR(64) NOT NULL,archived_at VARCHAR(40) NOT NULL,PRIMARY KEY(account_id,request_id))");
     }
     /** Active receipt capacity (unchanged). Confirmed 2026-11-06: receipts older than 5 years move to the archive when it is reached. */
     static final int MAX_ACTIVE_REQUESTS=20000, ARCHIVE_YEARS=5;
-    /** Confirmation time strings (dispatches.confirmed_at, written as Instant.toString() at confirmation) earlier than this are archived. */
-    static String archiveCutoff(Instant now){return now.atZone(ZONE).minusYears(ARCHIVE_YEARS).toInstant().toString();}
-    private static long activeRequests()throws Exception{return integer(Db.one("SELECT COUNT(*) n FROM dispatch_confirmation_requests").get("n"),true);}
-    /** Runs inside the confirmation transaction: copy first, then remove only rows that were copied. Nothing is deleted outright. */
-    private static void archiveOldRequests()throws Exception {
-        String cutoff=archiveCutoff(Instant.now()),now=Instant.now().toString();
-        Db.exec("INSERT INTO dispatch_confirmation_requests_archive(account_id,request_id,dispatch_id,payload,result,digest,archived_at) SELECT r.account_id,r.request_id,r.dispatch_id,r.payload,r.result,r.digest,? FROM dispatch_confirmation_requests r JOIN dispatches d ON d.id=r.dispatch_id WHERE d.confirmed_at IS NOT NULL AND d.confirmed_at<>'' AND d.confirmed_at<?",now,cutoff);
-        Db.exec("DELETE FROM dispatch_confirmation_requests WHERE EXISTS (SELECT 1 FROM dispatch_confirmation_requests_archive a WHERE a.account_id=dispatch_confirmation_requests.account_id AND a.request_id=dispatch_confirmation_requests.request_id AND a.archived_at=?)",now);
+    /** Receipts confirmed before this instant (five calendar years earlier in Asia/Shanghai) may be archived. */
+    static Instant archiveCutoff(Instant now){return now.atZone(ZONE).minusYears(ARCHIVE_YEARS).toInstant();}
+    /** dispatches.confirmed_at is Instant.toString() text whose fractional digits vary, so it is parsed and compared as time,
+     * never as text. Blank or unreadable values are never archived. */
+    static boolean archivable(Object confirmedAt,Instant cutoff){
+        if(!(confirmedAt instanceof String text)||text.isBlank())return false;
+        try{return Instant.parse(text.strip()).isBefore(cutoff);}catch(DateTimeException unreadable){return false;}
     }
+    private static long activeRequests()throws Exception{return integer(Db.one("SELECT COUNT(*) n FROM dispatch_confirmation_requests").get("n"),true);}
+    /** Runs inside the confirmation transaction: each old receipt is copied, then removed from the active table by its key.
+     * Nothing is deleted outright, and a failure rolls back together with the confirmation. */
+    private static void archiveOldRequests()throws Exception {
+        Instant cutoff=archiveCutoff(Instant.now());String now=Instant.now().toString();int unreadable=0;
+        for(Map<String,Object> r:Db.query("SELECT r.account_id,r.request_id,d.confirmed_at FROM dispatch_confirmation_requests r LEFT JOIN dispatches d ON d.id=r.dispatch_id ORDER BY r.account_id,r.request_id")) {
+            Object at=r.get("confirmed_at");
+            if(!archivable(at,cutoff)){if(at!=null&&!at.toString().isBlank()&&!readable(at.toString()))unreadable++;continue;}
+            Db.exec("INSERT INTO dispatch_confirmation_requests_archive(account_id,request_id,dispatch_id,payload,result,digest,archived_at) SELECT account_id,request_id,dispatch_id,payload,result,digest,? FROM dispatch_confirmation_requests WHERE account_id=? AND request_id=?",now,r.get("account_id"),r.get("request_id"));
+            Db.exec("DELETE FROM dispatch_confirmation_requests WHERE account_id=? AND request_id=?",r.get("account_id"),r.get("request_id"));
+        }
+        if(unreadable>0)System.err.println("确认回执归档：有 "+unreadable+" 条确认时间无法识别，未归档，请管理员核对");
+    }
+    private static boolean readable(String text){try{Instant.parse(text.strip());return true;}catch(DateTimeException bad){return false;}}
     static String opaque(String value){try {Mac mac=Mac.getInstance("HmacSHA256");mac.init(new SecretKeySpec(SECRET,"HmacSHA256"));return HexFormat.of().formatHex(mac.doFinal(value.getBytes(StandardCharsets.UTF_8)));}catch(Exception e){throw new IllegalStateException(e);}}
     static Map<String,Object> preview(Auth.Session session,long id)throws Exception {
         synchronized(Api.MUTATION_LOCK){integer(id,false);Check c=check(session,id);return map("dispatch_id",id,"expected_version",c.version(),"can_confirm",c.blocks().isEmpty(),"blocks",c.blocks(),"pending",c.pending(),"buffer_verified",c.window().bufferKnown(),"notice","这是有权操作人登记的最终确认；不会把手工课程标为资格认证，备选名单不占用老师。");}
@@ -53,6 +67,8 @@ final class DispatchConfirmationGuard {
                 // Serialize this stable global teacher identity within the same transaction.
                 if(Db.one("SELECT id FROM teachers WHERE id=? FOR UPDATE",row.get("teacher_id"))==null)throw error(409,"教师档案已变化");
                 Map<String,Object> old=Db.one("SELECT * FROM dispatch_confirmation_requests WHERE account_id=? AND request_id=?",session.uid,request);
+                // Archived receipts keep the same replay and uniqueness contract as active ones.
+                if(old==null)old=Db.one("SELECT account_id,request_id,dispatch_id,payload,result,digest FROM dispatch_confirmation_requests_archive WHERE account_id=? AND request_id=?",session.uid,request);
                 if(old!=null){verifyReceipt(old);if(integer(old.get("dispatch_id"),false)!=id||!payload.equals(old.get("payload")))throw error(409,"同一请求编号不能用于不同确认内容");validateFrozen(row);return Json.parseMap((String)old.get("result"));}
                 Check c=check(session,id);
                 if(!version.equals(c.version()))throw error(409,"确认依据已变化，请刷新重新核对");
@@ -116,7 +132,7 @@ final class DispatchConfirmationGuard {
         }
         Occupied window=new Occupied(own.start().minusSeconds(before*60L),own.end().plusSeconds(after*60L),known,"");
         List<Object> occupation=new ArrayList<>();boolean unknown=false,conflict=false;
-        for(Map<String,Object> other:bookings(teacher)) {
+        for(Map<String,Object> other:bookings(teacher,window.start(),window.end())) {
             if(integer(other.get("id"),false)==id)continue;Occupied busy=occupied(other);occupation.add(hash(canonical(map("row",core(other),"status",other.get("status"),"frozen",busy==null?null:busy.internalVersion()))));
             if(busy==null){if(potentiallyRelevant(other,window))unknown=true;continue;}if(overlap(window,busy))conflict=true;
         }
@@ -126,7 +142,39 @@ final class DispatchConfirmationGuard {
         String version=opaque(canonical(map("account",session.uid,"basis",basis)));
         return new Check(row,version,window,List.copyOf(new LinkedHashSet<>(blocks)),List.copyOf(new LinkedHashSet<>(pending)),basis);
     }
-    static List<Map<String,Object>> bookings(long teacher)throws Exception {List<Map<String,Object>> rows=Db.query("SELECT * FROM dispatches WHERE teacher_id=? AND status IN ('已确认','已完成') ORDER BY id LIMIT 5001",teacher);if(rows.size()>5000)throw error(409,"教师档期超出本次安全核对容量");return rows;}
+    /** Server cap on any saved travel buffer (RecommendationAssessmentIntegration.minutes: 10080 minutes = 7 days). */
+    static final int MAX_BUFFER_DAYS=7;
+    /**
+     * Confirmed/completed rows of one teacher that can overlap a proposed occupied window [from,to] (which already
+     * includes the proposal's own buffers). Another row occupies its teaching day plus at most MAX_BUFFER_DAYS of
+     * frozen buffer each side, so rows dated more than MAX_BUFFER_DAYS+1 days outside the window can never overlap.
+     * Rows whose teach_date is empty or not a calendar date are always included, as before (unknown means possibly busy).
+     * Reads one distinct-date list (at most one value per calendar day), then only the relevant rows.
+     */
+    static List<Map<String,Object>> bookings(long teacher,Instant from,Instant to)throws Exception {
+        List<String> dates=new ArrayList<>();boolean missing=false;
+        for(Map<String,Object> r:Db.query("SELECT DISTINCT teach_date FROM dispatches WHERE teacher_id=? AND status IN ('已确认','已完成')",teacher)) {
+            Object value=r.get("teach_date");if(value==null){missing=true;continue;}
+            if(relevantDate(value.toString(),from,to))dates.add(value.toString());
+        }
+        TreeMap<Long,Map<String,Object>> rows=new TreeMap<>();
+        for(int i=0;i<dates.size();i+=500) {
+            List<String> chunk=dates.subList(i,Math.min(dates.size(),i+500));List<Object> args=new ArrayList<>();args.add(teacher);args.addAll(chunk);
+            for(Map<String,Object> row:Db.query("SELECT * FROM dispatches WHERE teacher_id=? AND status IN ('已确认','已完成') AND teach_date IN ("+String.join(",",Collections.nCopies(chunk.size(),"?"))+") ORDER BY id LIMIT 5001",args.toArray()))rows.put(integer(row.get("id"),false),row);
+            if(rows.size()>5000)break;
+        }
+        if(missing&&rows.size()<=5000)for(Map<String,Object> row:Db.query("SELECT * FROM dispatches WHERE teacher_id=? AND status IN ('已确认','已完成') AND teach_date IS NULL ORDER BY id LIMIT 5001",teacher))rows.put(integer(row.get("id"),false),row);
+        if(rows.size()>5000)throw error(409,"教师在本次时段附近的档期超出本次安全核对容量");
+        return new ArrayList<>(rows.values());
+    }
+    /** Whether a row dated teachDate can overlap [from,to]: unknown dates always can; calendar dates only within
+     * MAX_BUFFER_DAYS+1 days of the window (Shanghai calendar). */
+    static boolean relevantDate(String teachDate,Instant from,Instant to) {
+        LocalDate day=calendarDate(teachDate);if(day==null)return true;
+        return !day.isBefore(from.atZone(ZONE).toLocalDate().minusDays(MAX_BUFFER_DAYS+1))&&!day.isAfter(to.atZone(ZONE).toLocalDate().plusDays(MAX_BUFFER_DAYS+1));
+    }
+    /** Same reading as potentiallyRelevant: a value LocalDate.parse accepts, otherwise null (unknown date). */
+    static LocalDate calendarDate(String value){try{return LocalDate.parse(value);}catch(DateTimeException invalid){return null;}}
     static Occupied occupied(Map<String,Object> row)throws Exception {Map<String,Object> frozen=validateFrozen(row);if(frozen==null)return teaching(row);return new Occupied(Instant.parse((String)frozen.get("start")),Instant.parse((String)frozen.get("end")),Boolean.TRUE.equals(frozen.get("buffer_known")),hash(canonical(frozen)));}
     static boolean potentiallyRelevant(Map<String,Object> row,Occupied proposed) {
         try {LocalDate day=LocalDate.parse(Objects.toString(row.get("teach_date"),""));Occupied uncertain=new Occupied(day.atStartOfDay(ZONE).toInstant(),day.plusDays(1).atStartOfDay(ZONE).toInstant(),false,"");return overlap(uncertain,proposed);}catch(DateTimeException invalid){return true;}

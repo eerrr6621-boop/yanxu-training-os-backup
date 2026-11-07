@@ -189,7 +189,8 @@ public final class RecommendationDecisionHost {
             String ids=bindings.stream().map(b->Long.toString(number(b.get("teacher_id"),false))).collect(java.util.stream.Collectors.joining(","));
             for(Map<String,Object> t:Db.query("SELECT id,name,status,base_city,field,intro FROM teachers WHERE id IN ("+ids+")"))allTeachers.put(number(t.get("id"),false),t);
             for(Map<String,Object> p:Db.query("SELECT id,teacher_id,LEFT(manual_profile,16000) AS manual_profile,LEFT(extracted_text,16000) AS extracted_text,updated_at FROM teacher_resumes WHERE is_current=TRUE AND teacher_id IN ("+ids+")"))allProfiles.computeIfAbsent(number(p.get("teacher_id"),false),k->new ArrayList<>()).add(p);
-            for(Map<String,Object> b:v2Bookings(ids,bindings,input.request().date()))allSchedules.computeIfAbsent(number(b.get("teacher_id"),false),k->new ArrayList<>()).add(b);
+            List<Long> teacherIds=bindings.stream().map(b->number(b.get("teacher_id"),false)).toList();
+            for(Map<String,Object> b:v2Bookings(ids,teacherIds,input.request().date(),row->historySource(session,org,row)!=null))allSchedules.computeIfAbsent(number(b.get("teacher_id"),false),k->new ArrayList<>()).add(b);
         }
 
         for(Map<String,Object> binding:bindings) {
@@ -233,13 +234,9 @@ public final class RecommendationDecisionHost {
                 if(totalCharacters>(v2?8388608:262144)) throw failure(413,"本范围资料总量超出本次核验上限，请缩小范围");
                 if(!v2||Set.of("已确认","已完成").contains(booking.get("status")))bookings.add(new Booking(text(booking,"teach_date"),text(booking,"start_time"),text(booking,"end_time"),text(booking,"status")));
                 boolean ruleHistory=evidence.size()<3,advisoryHistory=recalled!=null;
-                if(!"已完成".equals(booking.get("status")) || !ruleHistory&&!advisoryHistory || text(booking,"subject").isBlank()) continue;
-                // catalog.read does not grant history access. Keep the original visibility check AND trusted same-org provenance.
-                if(WorkflowReadAccessBridge.listRows("dispatches",List.of(booking),session,Map.of()).isEmpty()) continue;
-                SurveySummaryImportsIntegration.Source source;
-                try { source=SurveySummaryImportsIntegration.trustedSource(number(booking.get("project_id"),false)); }
-                catch(Api.ApiException unsupported) { if(unsupported.code==403 || unsupported.code==409) continue; throw unsupported; }
-                if(!org.equals(source.org())) continue;
+                if(!ruleHistory&&!advisoryHistory) continue;
+                SurveySummaryImportsIntegration.Source source=historySource(session,org,booking);
+                if(source==null) continue;
                 String historyVersion=hash(Json.write(map("booking",booking,"acceptedRevision",source.revision(),"workflowVersion",source.workflowVersion(),"acceptedAt",source.acceptedAt())));
                 if(ruleHistory) {
                     List<String> snippets=topicSnippets(text(booking,"subject"),input.request().topic());
@@ -255,8 +252,20 @@ public final class RecommendationDecisionHost {
         String digest=hash(Json.write(map("scope",scope,"catalogVersion",revision==null?"":hash(Json.write(revision)),"identityVersion",OrganizationAccessStore.configuration().version(),"person",person.personCode(),"account",session.uid,"request",input.request().value(),"qualificationContext",qualificationContext,"facts",facts)));
         return new Snapshot(org,digest,input.request(),candidates,false);
     }
-    /** Completed-history clues kept per teacher (most recent first by id). Confirmed 2026-11-06: 50. */
-    static final int HISTORY_PER_TEACHER=50;
+    /** Completed-history clues kept per teacher: the most recent by teaching date (then id) among rows this session may
+     * use as same-organization history. Confirmed 2026-11-06: 50. At most HISTORY_SCAN_PER_TEACHER rows are examined. */
+    static final int HISTORY_PER_TEACHER=50,HISTORY_SCAN_PER_TEACHER=200;
+    interface RowTest{boolean test(Map<String,Object> row)throws Exception;}
+    /** A completed row this session may use as a same-organization history clue: its source, otherwise null.
+     * catalog.read does not grant history access: the original visibility check AND trusted same-org provenance both apply. */
+    private static SurveySummaryImportsIntegration.Source historySource(Auth.Session session,String org,Map<String,Object> booking)throws Exception {
+        if(!"已完成".equals(booking.get("status"))||text(booking,"subject").isBlank())return null;
+        if(WorkflowReadAccessBridge.listRows("dispatches",List.of(booking),session,Map.of()).isEmpty())return null;
+        SurveySummaryImportsIntegration.Source source;
+        try { source=SurveySummaryImportsIntegration.trustedSource(number(booking.get("project_id"),false)); }
+        catch(Api.ApiException unsupported) { if(unsupported.code==403 || unsupported.code==409) return null; throw unsupported; }
+        return org.equals(source.org())?source:null;
+    }
     record ConflictDates(List<String> dates,boolean includeMissing) {}
     /** Stored teach_date values whose confirmed/completed bookings can change decide(): the request day itself,
      * plus any value decide() cannot read as a calendar date (it treats those as uncertain). Other days never matter. */
@@ -266,14 +275,18 @@ public final class RecommendationDecisionHost {
         for(Object stored:storedDates){if(stored==null){missing=true;continue;}String value=stored.toString();if(!RecommendationDecision.validDate(value))dates.add(value);}
         return new ConflictDates(List.copyOf(dates),missing);
     }
-    /** Replaces one unbounded all-history read (which failed beyond 5000 rows) with: rows that can affect the
-     * conflict check, plus each teacher's latest HISTORY_PER_TEACHER completed rows for topic clues. Same columns, id order. */
-    private static List<Map<String,Object>> v2Bookings(String ids,List<Map<String,Object>> bindings,String requestDate)throws Exception {
+    /** Newest teaching date first, then newest id; empty dates last. */
+    static final Comparator<Map<String,Object>> NEWEST_FIRST=Comparator.<Map<String,Object>,String>comparing(r->Objects.toString(r.get("teach_date"),""),Comparator.reverseOrder()).thenComparing(r->((Number)r.get("id")).longValue(),Comparator.reverseOrder());
+    /** Replaces one unbounded all-history read (which failed beyond 5000 rows) with: rows that can affect the conflict check
+     * (one distinct-date list, at most one value per calendar day, then only relevant rows), plus for each teacher the latest
+     * HISTORY_PER_TEACHER usable completed rows, read in pages of HISTORY_PER_TEACHER and never more than
+     * HISTORY_SCAN_PER_TEACHER rows. Same columns; newest first. */
+    private static List<Map<String,Object>> v2Bookings(String ids,List<Long> teacherIds,String requestDate,RowTest usableHistory)throws Exception {
         String columns="SELECT id,project_id,teacher_id,subject,teach_date,start_time,end_time,status FROM dispatches ";
         List<Object> stored=new ArrayList<>();
         for(Map<String,Object> row:Db.query("SELECT DISTINCT teach_date FROM dispatches WHERE teacher_id IN ("+ids+") AND status IN ('已确认','已完成')"))stored.add(row.get("teach_date"));
         ConflictDates relevant=conflictRelevantDates(requestDate,stored);
-        TreeMap<Long,Map<String,Object>> rows=new TreeMap<>();
+        Map<Long,Map<String,Object>> rows=new HashMap<>();
         if(!relevant.dates().isEmpty()||relevant.includeMissing()) {
             List<String> filters=new ArrayList<>();
             if(!relevant.dates().isEmpty())filters.add("teach_date IN ("+String.join(",",Collections.nCopies(relevant.dates().size(),"?"))+")");
@@ -282,19 +295,15 @@ public final class RecommendationDecisionHost {
             if(conflict.size()>5000)throw failure(413,"档期超出本次核对容量");
             for(Map<String,Object> row:conflict)rows.put(number(row.get("id"),false),row);
         }
-        // One narrow id scan (no schema change), keeping each teacher's latest HISTORY_PER_TEACHER completed ids.
-        Map<Long,ArrayDeque<Long>> latest=new HashMap<>();
-        for(Map<String,Object> row:Db.query("SELECT id,teacher_id FROM dispatches WHERE teacher_id IN ("+ids+") AND status='已完成' ORDER BY id")) {
-            ArrayDeque<Long> kept=latest.computeIfAbsent(number(row.get("teacher_id"),false),k->new ArrayDeque<>());
-            kept.addLast(number(row.get("id"),false));if(kept.size()>HISTORY_PER_TEACHER)kept.removeFirst();
+        for(long teacher:teacherIds) {
+            int usable=0;
+            for(int offset=0;offset<HISTORY_SCAN_PER_TEACHER&&usable<HISTORY_PER_TEACHER;offset+=HISTORY_PER_TEACHER) {
+                List<Map<String,Object>> page=Db.query(columns+"WHERE teacher_id=? AND status='已完成' ORDER BY teach_date DESC,id DESC LIMIT "+HISTORY_PER_TEACHER+" OFFSET "+offset,teacher);
+                for(Map<String,Object> row:page){if(usable>=HISTORY_PER_TEACHER)break;if(usableHistory.test(row)){rows.putIfAbsent(number(row.get("id"),false),row);usable++;}}
+                if(page.size()<HISTORY_PER_TEACHER)break;
+            }
         }
-        List<Long> history=new ArrayList<>();for(ArrayDeque<Long> kept:latest.values())for(Long id:kept)if(!rows.containsKey(id))history.add(id);
-        for(int from=0;from<history.size();from+=500) {
-            List<Long> chunk=history.subList(from,Math.min(history.size(),from+500));
-            for(Map<String,Object> row:Db.query(columns+"WHERE id IN ("+String.join(",",Collections.nCopies(chunk.size(),"?"))+")",chunk.toArray()))
-                rows.putIfAbsent(number(row.get("id"),false),row);
-        }
-        return new ArrayList<>(rows.values());
+        List<Map<String,Object>> result=new ArrayList<>(rows.values());result.sort(NEWEST_FIRST);return result;
     }
     private static long number(Object value,boolean zero) {
         if(!(value instanceof Number)) throw invalid("编号或版本必须为安全整数");
@@ -530,9 +539,12 @@ public final class RecommendationDecisionHost {
                 versions.add(map("invitation",row));
             }
         }
+        // Occupation is only compared against this request's window (plus at most MAX_BUFFER_DAYS of its own buffer); without a
+        // complete window nothing is compared, so nothing needs reading.
+        java.time.Instant occupationBegin=RecommendationAssessmentIntegration.window(in.factRequest(),true),occupationEnd=RecommendationAssessmentIntegration.window(in.factRequest(),false);
         for(Candidate c:raw.candidates()) {var assessment=context==null?null:RecommendationAssessmentIntegration.captured(context,c.teacherId(),in.factRequest());var facts=assessment==null?null:assessment.facts();boolean current=facts!=null&&facts.current(java.time.Instant.now());if(assessment!=null){assessments.put(c.teacherId(),assessment);versions.add(map("id",c.teacherId(),"revision",assessment.revision(),"hash",assessment.internalHash(),"current",current));}
             Confirmation availability=current?facts.availability():Confirmation.UNKNOWN,service=current?facts.service():Confirmation.UNKNOWN;
-            candidates.add(new Candidate(c.teacherId(),c.name(),c.status(),c.baseCity(),c.qualificationCodes(),service,availability,c.bookings(),c.evidence()));List<Map<String,Object>> booked=DispatchConfirmationGuard.bookings(c.teacherId());occupation.put(c.teacherId(),booked);List<Object> safety=new ArrayList<>();for(Map<String,Object> booking:booked){var window=DispatchConfirmationGuard.occupied(booking);safety.add(map("id",booking.get("id"),"version",window==null?null:window.internalVersion(),"status",booking.get("status")));}versions.add(safety);
+            candidates.add(new Candidate(c.teacherId(),c.name(),c.status(),c.baseCity(),c.qualificationCodes(),service,availability,c.bookings(),c.evidence()));List<Map<String,Object>> booked=occupationBegin==null||occupationEnd==null?List.of():DispatchConfirmationGuard.bookings(c.teacherId(),occupationBegin.minusSeconds(DispatchConfirmationGuard.MAX_BUFFER_DAYS*86400L),occupationEnd.plusSeconds(DispatchConfirmationGuard.MAX_BUFFER_DAYS*86400L));occupation.put(c.teacherId(),booked);List<Object> safety=new ArrayList<>();for(Map<String,Object> booking:booked){var window=DispatchConfirmationGuard.occupied(booking);safety.add(map("id",booking.get("id"),"version",window==null?null:window.internalVersion(),"status",booking.get("status")));}versions.add(safety);
         }
         String privateVersion=hash(TrainingSummariesWorkflow.canonical(map("source",raw.snapshotId(),"facts",versions,"rule",RecommendationRanking.RULE_VERSION,"request",in.factRequest(),"context_type",in.contextType,"context_id",in.contextId)));
         Snapshot snapshot=new Snapshot(org,privateVersion,in.base.request(),candidates,false);List<Decision> decisions=new ArrayList<>(decide(snapshot));String requestKey=DispatchConfirmationGuard.opaque(TrainingSummariesWorkflow.canonical(map("context",in.contextType,"id",in.contextId,"request",in.factRequest(),"scope",in.base.scope())));
