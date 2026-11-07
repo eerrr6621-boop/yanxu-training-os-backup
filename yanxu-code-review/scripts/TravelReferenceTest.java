@@ -37,7 +37,7 @@ public final class TravelReferenceTest {
                 + "合成甲城,合成丙城,飞机,140,,2026-10-20,核对人B,\r\n"
                 + "合成甲城,合成丁城,高铁,200,,2026-10-20,核对人B,\r\n"
                 + "合成戊城,合成甲城,飞机,130,500,2026-11-02,核对人C,\r\n"
-                + "合成甲城,合成己城,高铁,90,100,2026-01-01,核对人D,\r\n"
+                + "合成甲城,合成己城,高铁,90,100,2025-10-01,核对人D,\r\n"
                 + "合成甲城,合成甲城,高铁,10,5,2026-11-01,核对人E,\r\n"
                 + "合成甲城,合成庚城,汽车,120,50,2026-11-01,核对人E,\r\n"
                 + "合成甲城,合成庚城,高铁,abc,50,2026-11-01,核对人E,\r\n"
@@ -66,7 +66,7 @@ public final class TravelReferenceTest {
         check(rail.facts().get("door_to_door_minutes").equals(60 + TravelReference.RAIL_ACCESS_MINUTES) && rail.facts().get("before_buffer_minutes").equals(150)
                 && rail.facts().get("after_buffer_minutes").equals(150), "rail adds 90 minutes access, used before and after");
         check(rail.facts().get("travel_cost").equals("73") && rail.facts().get("currency").equals("CNY") && rail.facts().get("cost_coverage").equals("ONE_WAY"), "fare is one-way CNY");
-        check(rail.facts().get("valid_until").equals("2027-01-29T16:00:00Z"), "usable 90 days after the check date (Asia/Shanghai midnight)");
+        check(rail.facts().get("valid_until").equals("2027-10-31T16:00:00Z"), "usable one year after the check date (Asia/Shanghai midnight)");
         check(((String) rail.facts().get("source_note")).contains("第 2 行") && ((String) rail.facts().get("source_note")).contains("核对人A"), "note cites the row and checker");
         check(rail.facts().get("travel_feasibility").equals("CONFIRMED") && !rail.facts().containsKey("service") && !rail.facts().containsKey("availability"), "only travel fields suggested");
 
@@ -83,7 +83,8 @@ public final class TravelReferenceTest {
         var reverse = TravelReference.suggest(table, "合成甲城", "合成戊城", TODAY);
         check(reverse.status().equals("FOUND") && ((String) reverse.facts().get("source_note")).contains("反方向"), "reverse row used and disclosed");
 
-        check(TravelReference.suggest(table, "合成甲城", "合成己城", TODAY).status().equals("EXPIRED"), "rows older than 90 days refused");
+        check(TravelReference.suggest(table, "合成甲城", "合成己城", TODAY).status().equals("EXPIRED"), "rows checked more than a year ago refused");
+        check(TravelReference.REVIEW_DAYS == 365, "review period is the confirmed one year");
         check(TravelReference.suggest(table, "合成甲城", "合成辛城", TODAY).status().equals("NOT_FOUND"), "unknown pair not guessed");
         check(TravelReference.suggest(table, "", "合成乙城", TODAY).status().equals("BASE_CITY_UNKNOWN"), "teacher without base city not guessed");
         check(TravelReference.suggest(table, "合成甲城", " ", TODAY).status().equals("DESTINATION_REQUIRED"), "destination required");

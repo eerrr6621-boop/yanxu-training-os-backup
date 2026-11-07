@@ -22,8 +22,8 @@ final class TravelReference {
     static final List<String> HEADER = List.of("出发城市", "到达城市", "交通方式", "单程时长分钟", "单程参考票价元", "核对日期", "核对人", "备注");
     /** Extra door-to-door time on top of the city-to-city leg (getting to the station/airport, waiting, reaching the venue). */
     static final int RAIL_ACCESS_MINUTES = 90, AIR_ACCESS_MINUTES = 150;
-    /** A row is usable for this many days after it was checked (same default as CityTravelReference). */
-    static final int REVIEW_DAYS = 90;
+    /** A row is usable for this many days after it was checked. Confirmed by the owner 2026-11-07: one year. */
+    static final int REVIEW_DAYS = 365;
     static final int MAX_BYTES = 2 * 1024 * 1024, MAX_ROWS = 5000;
     private static final ZoneId ZONE = ZoneId.of("Asia/Shanghai");
 
@@ -126,7 +126,7 @@ final class TravelReference {
         }
         if (pair.isEmpty()) return new Suggestion("NOT_FOUND", "参考表中没有“" + from + "→" + to + "”，请手工填写或先补充参考表。", null);
         List<Row> current = pair.stream().filter(row -> today.isBefore(row.checked().plusDays(REVIEW_DAYS))).toList();
-        if (current.isEmpty()) return new Suggestion("EXPIRED", "参考表中“" + from + "→" + to + "”已超过 " + REVIEW_DAYS + " 天未核对，请先更新参考表再预填。", null);
+        if (current.isEmpty()) return new Suggestion("EXPIRED", "参考表中“" + from + "→" + to + "”核对已超过 " + REVIEW_DAYS + " 天（一年），请先重新核对参考表再预填。", null);
         Row chosen = choose(current);
         int access = chosen.mode().equals("RAIL") ? RAIL_ACCESS_MINUTES : AIR_ACCESS_MINUTES;
         String modeName = chosen.mode().equals("RAIL") ? "高铁" : "飞机";
