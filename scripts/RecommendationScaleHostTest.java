@@ -108,8 +108,11 @@ public final class RecommendationScaleHostTest {
                 ok(archived.equals(state()), "replay from the archive changes nothing");
                 long other = dispatch(0, 28, "15:00", "16:00");
                 Map<String,Object> reuse = confirmation(actors[0], other, "scale-heavy-confirm");
+                // Snapshot after the new synthetic dispatch exists: the refused reuse itself must change nothing.
+                String beforeReuse = state();
                 rejects(409, () -> DispatchConfirmationGuard.confirm(actors[0], reuse));
-                ok(archived.equals(state()), "an archived request id cannot be reused for another dispatch");
+                ok(beforeReuse.equals(state()), "an archived request id cannot be reused for another dispatch, and the refusal changes nothing");
+                ok("已发送".equals(Db.one("SELECT status FROM dispatches WHERE id=?", other).get("status")), "the other dispatch stays unconfirmed");
             } finally { DispatchConfirmationGuard.maxActiveRequests = DispatchConfirmationGuard.MAX_ACTIVE_REQUESTS; }
 
             System.out.println("RecommendationScaleHostTest: " + checks + " checks passed; elapsed_ms=" + (System.nanoTime() - begin) / 1000000 + "; fresh synthetic H2 only; no listener.");
