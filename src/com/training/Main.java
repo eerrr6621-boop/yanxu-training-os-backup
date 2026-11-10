@@ -140,6 +140,10 @@ public class Main {
             setDefaultProperty("sun.net.httpserver.maxRspTime",Integer.toString(Math.max(30,minimum)));
         } else setDefaultProperty("sun.net.httpserver.maxRspTime", "30");
         setDefaultProperty("sun.net.httpserver.timerMillis", "1000");
+        // When a request is refused before its body is read (401/403/413 and similar), the JDK server drains only
+        // 64 KiB before closing; a client still sending a larger body then sees a connection reset instead of the
+        // refusal. Drain up to the largest body any route accepts (photo upload: 7 MiB) so the refusal is delivered.
+        setDefaultProperty("sun.net.httpserver.drainAmount", Integer.toString(8 * 1024 * 1024));
         setDefaultProperty("sun.net.httpserver.maxReqHeaderSize", "65536");
         setDefaultProperty("jdk.httpserver.maxConnections", "256");
     }
