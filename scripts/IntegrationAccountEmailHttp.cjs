@@ -15,9 +15,12 @@ const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms)),uuid=()=>crypto.ran
 function check(ok,label){checks++;if(!ok)failures.push(phase+': '+label);}
 function same(a,b,label){let ok=true;try{assert.deepEqual(a,b);}catch{ok=false;}check(ok,label);}
 function options(resume=false){return ['-Dbind.address=127.0.0.1','-Dbootstrap.demo=false','-Dbootstrap.admin.password='+password,'-Dintegration.account.email.root='+own,'-Dintegration.account.email.resume='+resume,'-Ddata.dir='+data,'-Dsemantic.port=','-Dsemantic.token=','-Daccount.import.manifest=','-Daccount.import.manifest.sha256=','-cp',classes+path.delimiter+path.join(repo,'lib','*')];}
+// Node's fetch drops a bare trailing "?" (Node 22 does; newer versions keep it), so the query-rejection checks
+// would silently test a URL without "?". Such URLs go through node:http, which sends the request path verbatim.
+function exactFetch(url,init){if(!url.endsWith('?'))return fetch(url,init);const http=require('node:http');return new Promise((resolve,reject)=>{const u=new URL(url),body=init.body;const req=http.request({host:u.hostname,port:u.port,method:init.method,path:url.slice(url.indexOf('/',url.indexOf('//')+2)),headers:{...init.headers,...(body!==undefined?{'Content-Length':Buffer.byteLength(body)}:{})},signal:init.signal},res=>{const chunks=[];res.on('data',c=>chunks.push(c));res.on('end',()=>{const text=Buffer.concat(chunks).toString('utf8');resolve({status:res.statusCode,text:async()=>text,headers:{get:n=>{const v=res.headers[n.toLowerCase()];return v===undefined?null:Array.isArray(v)?v.join(', '):v;},has:n=>res.headers[n.toLowerCase()]!==undefined}});});});req.on('error',reject);if(body!==undefined)req.write(body);req.end();});}
 async function request(route,body,actor='admin',overrides={}){
  const headers={...(tokens[actor]?{'X-Token':tokens[actor]}:{})};if(body!==undefined&&overrides.contentType!==null)headers['Content-Type']=overrides.contentType||'application/json';
- const r=await fetch(`http://127.0.0.1:${port}/api${route}`,{method:overrides.method||(body===undefined?'GET':'POST'),headers,body:body===undefined?undefined:overrides.raw?body:JSON.stringify(body),signal:AbortSignal.timeout(5000)});
+ const r=await exactFetch(`http://127.0.0.1:${port}/api${route}`,{method:overrides.method||(body===undefined?'GET':'POST'),headers,body:body===undefined?undefined:overrides.raw?body:JSON.stringify(body),signal:AbortSignal.timeout(5000)});
  const text=await r.text();let envelope=null;if(text){try{envelope=JSON.parse(text);}catch{throw new Error(route+': non-JSON response '+r.status);}}
  return {status:r.status,envelope,text,headers:r.headers};
 }
