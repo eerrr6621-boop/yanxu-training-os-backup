@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Loopback HTTP, synthetic users, fresh temporary H2; never uses the production database.
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),net=require('node:net');
 const crypto=require('node:crypto'),assert=require('node:assert/strict'),{spawn}=require('node:child_process');
@@ -49,9 +50,9 @@ async function waitJob(job,actor='owner') {for(let i=0;i<100;i++){const response
   const projectId=d.project_id;let project=(await api('/projects')).find(p=>p.id===projectId);
   check(project.bid_id===null&&project.amount===0&&project.participant_count===12,'Project has direct source, preserved count, no inferred contract value');
   check(project.workflow_source?.can_delete===false&&project.workflow_source?.demand_id===demandId,'Project includes server-owned source summary');
-  await denied('/projects',{...project,demand_id:0,bid_id:0},'owner','Cannot strip project source',[409]);
+  await denied('/projects',{...projectEditFields(project),demand_id:0,bid_id:0},'owner','Cannot strip project source',[409]);
   await denied('/projects/delete',{id:projectId},'owner','Cannot delete accepted project',[409]);
-  await api('/projects',{...project,owner:'SYNTHETIC OWNER',start_date:'2025-01-01',end_date:'2025-01-05',delivery_mode:'线上'});
+  await api('/projects',{...projectEditFields(project),owner:'SYNTHETIC OWNER',start_date:'2025-01-01',end_date:'2025-01-05',delivery_mode:'线上'});
   await api('/projects/start',{id:projectId},'team');
   const teacherId=await api('/teachers',{name:'SYNTHETIC TEACHER',status:'在库',base_province:'浙江',base_city:'杭州',field:'文档编号复核',intro:'本人主讲文档编号复核课程。',fee_rate:500});
   const dispatchId=await api('/dispatches',{project_id:projectId,teacher_id:teacherId,subject:'SYNTHETIC PRIVATE CLASS',teach_date:'2025-01-01',start_time:'09:00',end_time:'10:30',venue:'SYNTHETIC PRIVATE VENUE',hours:1.5,status:'待发送',material_status:'已齐备'},'team');
@@ -68,22 +69,17 @@ async function waitJob(job,actor='owner') {for(let i=0;i<100;i++){const response
   for(const key of ['demands','projects','teach_hours','eval_count','cost_amount','charge_amount'])check(overview[key]===0,'Unauthorized overview aggregate excludes '+key);
   const report=await api('/stats/report',undefined,'outsider');check(!report.includes('SYNTHETIC PRIVATE')&&report.includes('累计培训需求 0 项；已立项项目 0 个'),'Report has no private names/counts');
   const ownOverview=await api('/stats/overview');check(ownOverview.projects===1&&ownOverview.eval_count===1&&ownOverview.teach_hours===1.5,'Authorized aggregates still contain own records');
-  await denied('/teacher-recommendations',{demand_id:demandId,requirement:'文档编号复核',training_mode:'线上'},'outsider','Recommendation demand reference scope enforced',[403]);
-  await denied('/teacher-recommendations/jobs',{demand_id:demandId,requirement:'文档编号复核',training_mode:'线上'},'outsider','Unauthorized demand job is rejected before submission',[403]);
-  const req={requirement:'培训主题：文档编号复核\n培训日期：2025-01-02',training_mode:'线上',max_results:3};
-  const publicResult=await api('/teacher-recommendations',req,'outsider');const all=[...(publicResult.recommendations||[]),...(publicResult.review_candidates||[])];const match=all.find(p=>p.teacher_id===teacherId);
-  check(Boolean(match),'Public teacher remains recommendable');check(match?.performance?.evaluation_count===0&&match?.performance?.completed_hours===0,'Recommendation excludes private evaluation and delivery aggregates');
-  check(!JSON.stringify(publicResult).includes('SYNTHETIC PRIVATE VENUE'),'Recommendation hides private adjacent schedule venue');
-  const offlineResult=await api('/teacher-recommendations',{...req,training_mode:'线下',training_province:'浙江',training_city:'杭州',training_period:'下午'},'outsider');
-  const findCandidate=value=>{if(!value||typeof value!=='object')return null;if(value.teacher_id===teacherId&&value.dispatch_fit)return value;for(const child of Object.values(value)){const found=findCandidate(child);if(found)return found;}return null;};
-  const offline=findCandidate(offlineResult);
-  check(offline?.dispatch_fit?.departure_uncertain===true&&offline?.dispatch_fit?.local_priority===false,'Hidden adjacent booking still disables automatic local priority');
-  check(!JSON.stringify(offlineResult).includes('SYNTHETIC PRIVATE VENUE')&&offline?.dispatch_fit?.adjacent_schedule?.length===0,'Hidden adjacent booking exposes no venue or schedule details');
-  const job=await api('/teacher-recommendations/jobs',{demand_id:demandId,...req});const complete=await waitJob(job);check(complete.code===0&&complete.data.result?.demand_id===demandId,'Owner async recommendation completes');
-  await denied('/teacher-recommendations/jobs?id='+encodeURIComponent(job.job_id),undefined,'outsider','Different actor cannot read job',[404,403]);
-  const generalJob=await api('/teacher-recommendations/jobs',req);const generalComplete=await waitJob(generalJob);check(generalComplete.code===0&&Boolean(generalComplete.data.result),'Owner no-demand job completes');
+  // Old recommendation/results/jobs are retired, not rewritten as successful V2 semantics.
+  // Exact former scope/aggregation/async assertions are preserved in scripts/legacy/IntegrationWorkflowHttp.cjs.original.
+  const beforeRetirement=JSON.stringify(await Promise.all(['demands','projects','dispatches','teacher_evals','costs','charges'].map(m=>api('/'+m))));
+  for(const actor of ['owner','outsider'])for(const route of ['/teacher-recommendations','/teacher-recommendations/jobs','/teacher-recommendations/jobs/cancel']) {
+    const retired=await request(route,{demand_id:demandId,requirement:'文档编号复核',training_mode:'线上'},actor);
+    check(retired.code===410&&!retired.data,'Retired route refuses '+actor+' without results: '+route);
+    check(!JSON.stringify(retired).includes('SYNTHETIC PRIVATE'),'Retirement refusal leaks no private source, aggregate or schedule');
+  }
+  check(JSON.stringify(await Promise.all(['demands','projects','dispatches','teacher_evals','costs','charges'].map(m=>api('/'+m))))===beforeRetirement,'Retired calls do not change current business records');
   const oldVersion=configuration.version;configuration={...configuration,version:'synthetic-workflow-http-v2',grants:configuration.grants.filter(g=>!(g.roleCode==='FILLER'&&g.resource==='demand.read'))};await api('/organization/config',{expectedVersion:oldVersion,configuration});await renewPublishedSessions('Source grant revoked');
-  await denied('/teacher-recommendations/jobs?id='+encodeURIComponent(job.job_id),undefined,'owner','Revoked source scope cannot read cached job',[403,409]);
-  await denied('/teacher-recommendations/jobs?id='+encodeURIComponent(generalJob.job_id),undefined,'owner','Changed scope cannot read stale no-demand aggregates',[403,409]);
+  await denied('/demands/workflow?id='+demandId,undefined,'owner','Revoked source grant still blocks current demand reads',[403]);
+  await denied('/teacher-recommendations/jobs?id=synthetic-retired-job',undefined,'owner','No old cached job is accessible after source-grant change',[410]);
   const summary={suite:'workflow-http',checks,failures,production_touched:false,notifications_sent:false,artifacts:own};fs.writeFileSync(path.join(own,'result.json'),JSON.stringify(summary,null,2),{mode:0o600});console.log(JSON.stringify(summary));assert.equal(failures.length,0,failures.join('; '));
 })().catch(e=>{console.error(e.message);process.exitCode=1;}).finally(async()=>{if(child&&child.exitCode===null){child.kill('SIGTERM');await new Promise(r=>{child.once('exit',r);setTimeout(()=>{if(child.exitCode===null)child.kill('SIGKILL');r();},2000).unref();});}});

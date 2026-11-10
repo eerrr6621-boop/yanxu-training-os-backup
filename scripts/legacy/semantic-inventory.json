@@ -1,0 +1,319 @@
+{
+  "source_repo": "https://github.com/eerrr6621-boop/yanxu-training-os",
+  "source_commit": "5051764d3062843aba7597e6850b4784be50b5fe",
+  "entries": [
+    {
+      "path": "semantic/test_worker.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "unittest.mock:patch",
+        "worker:Encoder,MAX_CHARS,chunks,evidence_units,requirement_units"
+      ],
+      "sha256": "51bf476522c280b9a64ec899302c274b7c291eb47bc9e9ff11cba6de067a0b0e",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_requirement_content.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "itertools",
+        "unittest",
+        "requirement_content:is_instructional_status_comparison",
+        "worker:Encoder,evidence_units,requirement_units"
+      ],
+      "sha256": "8be7b2b82d321c4204a48a517a83b36415eca5d0eb76528f476ff6d1b28808c3",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_learner_artifact.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "itertools",
+        "json",
+        "os",
+        "subprocess",
+        "unittest",
+        "worker",
+        "learner_artifact:artifact_context_spans"
+      ],
+      "sha256": "129903c48106536510cabe0f0cf761cf0e3db3729e7d9072e1ae3e3ecc66d748",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_artifact_continuation.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "itertools",
+        "json",
+        "os",
+        "subprocess",
+        "unittest",
+        "worker",
+        "learner_artifact:artifact_context_spans"
+      ],
+      "sha256": "b48c9cc0f3cd9787269743548a800b511501e25752150c180652e729a5256eff",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_evidence_sections.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "worker:Encoder,evidence_units,scoring_sections,_global_qualification"
+      ],
+      "sha256": "c690615ece60bdbd54862bb8b7442a7b749b4afd7450712c76ddc50725c9e9d3",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_evidence_facts.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "worker:evidence_units,independent_fact_sections,FACT_SCOPE_VERSION",
+        "test_evidence_sections:compare"
+      ],
+      "sha256": "ab68f143a1f2ba0f33747545f416de79e00ff277da5b55f945d2d393bd9ce3eb",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_capability_sentence.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "worker"
+      ],
+      "sha256": "17f009964cac22b4e24673426f6dc95ea0730edd790cf3858a97f42b6fcb7d5d",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_evidence_role_context.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "test_evidence_sections:compare",
+        "worker:role_safe_at"
+      ],
+      "sha256": "22e9eb81d0c4029f211a7eb1c462e97cc6e113058ec17b6e183eaaa2252111a0",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_evidence_grammar.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "worker:evidence_units",
+        "test_evidence_sections:compare"
+      ],
+      "sha256": "92b8ad081f22a74737779695df80966e2fd3fd2398e23deb5b04e1f607259c65",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_evidence_actor_event.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "worker:_completed_personal_event",
+        "test_evidence_sections:compare"
+      ],
+      "sha256": "e32881ddf24dbfd879acb842512c664e7bc5a61a52bb11be36faf65c0b92fd09",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_server_event_scope.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "copy",
+        "unittest",
+        "worker:server_event_units,EVENT_SCOPE"
+      ],
+      "sha256": "dfe78ba7c56e8b21e423b4907767fe65c90b5716fdd9591f9bfbe18b42460b89",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_narrative_entity_evidence.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "worker"
+      ],
+      "sha256": "1525437a6d15179ba1e5856ed199108c71a035ee7b383537bc0a36560d14feaf",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_leading_profile_scope.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "worker:evidence_units,Encoder,server_event_units,EVENT_SCOPE"
+      ],
+      "sha256": "52d8a783d5d121ef83427e5e5d8575a8bfe60b42fc3b850d6c240465bf4a88aa",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_mixed_scope.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "copy",
+        "unittest",
+        "unittest.mock:patch",
+        "worker"
+      ],
+      "sha256": "d920dd171315d5a479a6e20a65e1c0e21466c725ae1319b9fc0a8d5f2990bec1",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_posttrain_v3_data.py",
+      "profile": "historical-training-metadata",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "collections:Counter,defaultdict",
+        "posttrain_v3_data:build_dataset,validate"
+      ],
+      "sha256": "11ea3ac2e65f1298b0b5148b79545277494f0dd5644687b9b31ac13884f18e6c",
+      "reason": "Historical posttraining data/protocol metrics; helpers absent from current source and no training/model channel allowed."
+    },
+    {
+      "path": "semantic/test_posttrain_v3_pipeline_validation.py",
+      "profile": "historical-training-metadata",
+      "current_production_python_reachable": false,
+      "imports": [
+        "copy:deepcopy",
+        "json",
+        "os",
+        "pathlib:Path",
+        "sys",
+        "tempfile",
+        "unittest",
+        "evaluate_posttrain_v3",
+        "export_posttrain_v3"
+      ],
+      "sha256": "fce0c514b088bbdc469b252e1f470075463fabb2f45c61f497928a03c64243a3",
+      "reason": "Historical posttraining data/protocol metrics; helpers absent from current source and no training/model channel allowed."
+    },
+    {
+      "path": "semantic/test_posttrain_v4_data.py",
+      "profile": "historical-training-metadata",
+      "current_production_python_reachable": false,
+      "imports": [
+        "unittest",
+        "collections:Counter",
+        "posttrain_v4_data:build_dataset,validate,NEW",
+        "posttrain_v3_data:build_dataset"
+      ],
+      "sha256": "2f6450010b59763cf7a830302bab5d190fe291e6b197bf74198a0af828524ab5",
+      "reason": "Historical posttraining data/protocol metrics; helpers absent from current source and no training/model channel allowed."
+    },
+    {
+      "path": "semantic/test_posttrain_v4_metrics.py",
+      "profile": "historical-training-metadata",
+      "current_production_python_reachable": false,
+      "imports": [
+        "copy",
+        "unittest",
+        "evaluate_posttrain_v4:attach_outcome,summarize,validate_cases"
+      ],
+      "sha256": "59cd1039a4e87745ae4901bfe201c5a1d00b8643a7a1c7fd889259643dd4d29b",
+      "reason": "Historical posttraining data/protocol metrics; helpers absent from current source and no training/model channel allowed."
+    },
+    {
+      "path": "semantic/test_posttrain_v4_audit.py",
+      "profile": "historical-training-metadata",
+      "current_production_python_reachable": false,
+      "imports": [
+        "ast",
+        "pathlib:Path",
+        "unittest",
+        "evaluate_posttrain_v4:attach_outcome,summarize"
+      ],
+      "sha256": "55ad568ab97b32d206d64df259132c8a647f481b84ce31517741d5b044ee4cc5",
+      "reason": "Historical posttraining data/protocol metrics; helpers absent from current source and no training/model channel allowed."
+    },
+    {
+      "path": "semantic/test_postposed_exclusion.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "json",
+        "os",
+        "subprocess",
+        "unittest",
+        "requirement_polarity:postposed_exclusion_spans",
+        "worker:requirement_units"
+      ],
+      "sha256": "d26ddfa3baf6a318546026b52caec22d3001de5bdd87fcf736452f8bd8e62b07",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_method_contrast.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "json",
+        "os",
+        "subprocess",
+        "unittest",
+        "worker"
+      ],
+      "sha256": "43bd23bf0e4c6e599e1990f1a608504a894defeb6f7ccb73f7b23bcd9a59b53e",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_evidence_actor_protocol.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "json",
+        "os",
+        "subprocess",
+        "unittest",
+        "worker:Encoder"
+      ],
+      "sha256": "6b00f699f6f39b1a755fbf2cff8dc4943d64ac3d2e934e0ab206a1ed4247812e",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_local_course_denial_protocol.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "json",
+        "os",
+        "subprocess",
+        "unittest",
+        "worker:Encoder"
+      ],
+      "sha256": "becdd07f91f49aa093ba2a7e368bd6a0dc3c251c96abda1ae16ee6414876a5c7",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    },
+    {
+      "path": "semantic/test_personal_course_offer_protocol.py",
+      "profile": "historical-offline-parser",
+      "current_production_python_reachable": false,
+      "imports": [
+        "json",
+        "os",
+        "subprocess",
+        "unittest",
+        "worker:Encoder"
+      ],
+      "sha256": "aba13c6d5bf825b88514ef5637d59d687d3a805e7e6ca21865dd1b341e7e7004",
+      "reason": "Retained Python worker offline rule/protocol reference. Main blocks semantic port/token; not a current routed product acceptance. Java deterministic tests are retained separately."
+    }
+  ]
+}

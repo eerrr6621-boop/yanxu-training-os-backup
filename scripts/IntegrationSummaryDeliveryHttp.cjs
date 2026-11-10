@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Actual Main/API/Auth/M01/M05/M08 with synthetic records and a private temporary loopback H2 only.
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path'), net = require('node:net');
 const crypto = require('node:crypto'), assert = require('node:assert/strict'), { spawn, execFile } = require('node:child_process');
@@ -76,7 +77,7 @@ async function project(title) {
   for (const actor of ['leader', 'bp']) d = (await api('/approvals/tasks/' + d.id + '/actions', { action: 'APPROVE', expectedVersion: d.approval.version, expectedStage: d.approval.stage, requestId: key + '-' + actor, comment: 'SYNTHETIC' }, actor)).workflow;
   const p = (await api('/demands/accept', { id: d.id, expected_version: d.version, request_id: key + '-ACCEPT', team_code: '900' }, 'team')).workflow.project_id;
   let row = (await api('/projects', undefined, 'team')).find(r => r.id === p);
-  await api('/projects', { ...row, owner: 'SYNTHETIC OWNER', start_date: '2025-01-01', end_date: '2025-01-05', delivery_mode: '线上', hours: 4, amount: 0 }, 'team'); await api('/projects/start', { id: p }, 'team'); return p;
+  await api('/projects', { ...projectEditFields(row), owner: 'SYNTHETIC OWNER', start_date: '2025-01-01', end_date: '2025-01-05', delivery_mode: '线上', hours: 4, amount: 0 }, 'team'); await api('/projects/start', { id: p }, 'team'); return p;
 }
 async function dispatch(project_id, teacher_id, day, rejected = false) {
   const id = await api('/dispatches', { project_id, teacher_id, subject: 'SYNTHETIC PRIVATE COURSE ' + day, teach_date: '2025-01-0' + day, start_time: '09:00', end_time: '10:00', hours: 9, status: '待发送', material_status: '已就绪' }, 'team');
@@ -142,7 +143,7 @@ async function runChecks() {
   doneFact = await verify(done, await fact(done, doneFact.version, '120', '2.25'));
   summary = await api(read(p)); hidden(summary, 'After invisible live change'); check(!summary.source_changed, 'Live hidden correction cannot be inferred from source_changed');
   const hiddenSaveBody = saveBody(p, 3, 'SUMMARY-HIDDEN-SAVE', 'SYNTHETIC BODY WITHOUT DELIVERY'); summary = await api(base + '/save', hiddenSaveBody); hidden(summary, 'Hidden ordinary save'); check(summary.version === 4 && !summary.source_changed, 'Summary edit remains usable without delivery permission');
-  let projectRow = (await api('/projects', undefined, 'team')).find(r => r.id === p); await api('/projects', { ...projectRow, participant_count: 7 }, 'team');
+  let projectRow = (await api('/projects', undefined, 'team')).find(r => r.id === p); await api('/projects', { ...projectEditFields(projectRow), participant_count: 7 }, 'team');
   check((await api(read(p))).source_changed, 'Visible project change remains detectable without delivery grant');
   summary = await api(base + '/refresh', cmd(p, 4, 'SUMMARY-HIDDEN-REFRESH')); hidden(summary, 'Hidden explicit refresh'); check(summary.sources.project.value.participant_count === 7 && !summary.source_changed && summary.version === 5, 'Hidden refresh updates visible project only');
   const neverGrantedBody = saveBody(empty, 0, 'SUMMARY-NO-GRANT', 'SYNTHETIC TEXT ONLY'); const noGrant = await api(base + '/save', neverGrantedBody, 'textonly'); hidden(noGrant, 'Never granted first save');

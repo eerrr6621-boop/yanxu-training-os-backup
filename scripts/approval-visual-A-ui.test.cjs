@@ -51,6 +51,9 @@ try {
   const frozen=demand(),before=JSON.stringify(frozen);renderDemand(frozen);check(JSON.stringify(frozen)===before,'component never mutates server input');check(requests===0,'pure visual performs no HTTP reads or writes');
   const host=fs.readFileSync(path.join(repo,'web/app.js'),'utf8'),index=fs.readFileSync(path.join(repo,'web/index.html'),'utf8');
   check(host.includes('renderDemand(workflow, code => workflowName(context.people, code))'),'demand uses only existing filtered context for labels');check(host.includes('renderSummary(flow)'),'summary consumes existing validated projection');
-  check(index.indexOf('/modules/approval-visual/index.js')<index.indexOf('/app.js?v='),'readonly renderer loads before original host');const hostVersion=(index.match(/\/app\.js\?v=([0-9]{8}[a-z0-9]*)"/)||[])[1]||'';check(/^[0-9]{8}/.test(hostVersion)&&hostVersion.slice(0,8)>='20261027'&&index.split('/app.js?v=').length===2,'host cache version advanced: one versioned app.js at or after the approval-visual release (not pinned to one release key)');
+  const rendererPosition=index.indexOf('/modules/approval-visual/index.js'),hostPosition=index.indexOf('/app.js?v=');
+  check(rendererPosition>=0,'readonly renderer script reference exists');
+  check(hostPosition>=0,'original host script reference exists');
+  check(rendererPosition<hostPosition,'readonly renderer loads before original host');const hostVersion=(index.match(/\/app\.js\?v=([0-9]{8}[a-z0-9]*)"/)||[])[1]||'';check(/^[0-9]{8}/.test(hostVersion)&&hostVersion.slice(0,8)>='20261027'&&index.split('/app.js?v=').length===2,'host cache version advanced: one versioned app.js at or after the approval-visual release (not pinned to one release key)');
   console.log(JSON.stringify({suite:'approval-visual-A-ui',checks:results.length,failures:[],results}));
 }catch(e){console.log(JSON.stringify({suite:'approval-visual-A-ui',checks:results.length,failures:[e.message],results}));process.exitCode=1;}

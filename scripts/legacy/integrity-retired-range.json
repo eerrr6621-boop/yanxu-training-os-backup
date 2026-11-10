@@ -1,0 +1,1 @@
+{"original":"scripts/legacy/test_integrity.js.original","original_lines":[837,865],"reason":"Six positive legacy ranking/semantics assertions require the retired API; original retained. Current tests assert non-successful 410 and preserve anonymous/viewer access controls and no mutation."}

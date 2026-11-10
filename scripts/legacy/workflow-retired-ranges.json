@@ -1,0 +1,5 @@
+{
+  "original": "scripts/legacy/IntegrationWorkflowHttp.cjs.original",
+  "reason": "Only the old recommendation/async-job positive/scope expectations are retired; direct current workflow scopes, aggregates, current grant revocation, and session refresh assertions remain active.",
+  "first_original_line": 71
+}

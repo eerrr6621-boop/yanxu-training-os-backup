@@ -45,6 +45,8 @@ public final class IntegrationWorkflowTest {
         Db.exec("CREATE TABLE projects(id IDENTITY PRIMARY KEY,demand_id BIGINT,bid_id BIGINT,title VARCHAR(200),unit VARCHAR(200),hours DOUBLE,amount DOUBLE,start_date VARCHAR(32),end_date VARCHAR(32),owner VARCHAR(64),participant_count INT,delivery_mode VARCHAR(500),status VARCHAR(16),remark CLOB)");
         Db.exec("CREATE TABLE bids(id IDENTITY PRIMARY KEY,demand_id BIGINT)");
         Db.exec("CREATE TABLE questionnaires(id IDENTITY PRIMARY KEY,project_id BIGINT)");
+        // Scope now resolves the persisted child, not a caller-supplied projection.
+        Db.exec("CREATE TABLE q_sends(id IDENTITY PRIMARY KEY,questionnaire_id BIGINT)");
         String synthetic="synthetic-workflow-password";String hash=Auth.hash(synthetic);Auth.Session[] actors=new Auth.Session[6];
         for(int i=1;i<=6;i++){Db.exec("INSERT INTO users VALUES(?,?,?,?,?,1)",i,"synthetic-"+i,hash,"SYNTHETIC "+i,i==1?"admin":"viewer");actors[i-1]=Auth.get(Auth.login("synthetic-"+i,synthetic));}
         admin=actors[0];filler=actors[1];leader=actors[2];bp=actors[3];team=actors[4];outsider=actors[5];
@@ -98,7 +100,7 @@ public final class IntegrationWorkflowTest {
         WorkflowIntegration.guardLegacyMutation("projects/start",project,Map.of());check(true,"legitimate project start allowed");
         reject(403,()->WorkflowIntegration.requireProjectAccess(project,outsider,false),"child project data denied cross scope");
         reject(409,()->WorkflowIntegration.guardLegacyMutation("projects",project,null),"managed project deletion blocked");
-        Db.exec("INSERT INTO questionnaires(project_id) VALUES(?)",project);check(WorkflowIntegration.visibleRows("q_sends",List.of(Map.of("id",1,"questionnaire_id",1)),outsider).isEmpty(),"questionnaire child scope enforced");
+        Db.exec("INSERT INTO questionnaires(project_id) VALUES(?)",project);Db.exec("INSERT INTO q_sends(questionnaire_id) VALUES(1)");check(WorkflowIntegration.visibleRows("q_sends",List.of(Map.of("id",1,"questionnaire_id",1)),outsider).isEmpty(),"questionnaire child scope enforced");
         check(WorkflowIntegration.visibleRows("demands",Db.query("SELECT * FROM demands"),outsider).isEmpty(),"list does not leak new demands");
         Map<String,Object> edit=command(d,"edit-after");edit.put("title","禁止修改");reject(409,()->call("draft",filler,edit),"accepted source immutable");
         check(Db.count("workflow_outbox")==4,"submit leader BP acceptance outbox plans persisted");

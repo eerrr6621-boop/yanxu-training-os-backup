@@ -1,0 +1,1 @@
+{"original":"scripts/legacy/test.js.original","original_lines":[121,135],"reason":"LegacyOwnershipIntegration.rejectPublicQuestionnaire now rejects external sends/public reads/answers with 409. Original seven positive/validation/statistics assertions retained; current internal create/publish/stats remain tested and current imported-survey rules remain in M07/M08 suites."}

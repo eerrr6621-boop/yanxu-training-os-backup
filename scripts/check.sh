@@ -2,10 +2,12 @@
 # Compile and test with isolated synthetic databases. No production input.
 set -euo pipefail
 export PYTHONDONTWRITEBYTECODE=1
+export YANXU_LOGIN_MAIL_TRANSPORT=disabled
 # Never inherit a production collection into isolated tests or their HTTP servers.
 export YANXU_CITY_PLANNING_COLLECTION_FILE=""
 cd "$(dirname "$0")/.."
 python3 scripts/test_release_packaging.py
+node scripts/project-edit-payload.test.cjs
 node scripts/check_frontend.cjs
 node scripts/test_local_esm.cjs
 node scripts/test_frontend.cjs
@@ -79,25 +81,9 @@ node scripts/test_r7.cjs
 node scripts/test_release_days.cjs
 node scripts/test_environment.cjs
 node scripts/test_public_popup_corridors.cjs
-python3 semantic/test_worker.py
-python3 semantic/test_requirement_content.py
-python3 semantic/test_learner_artifact.py
-python3 semantic/test_artifact_continuation.py
-python3 semantic/test_evidence_sections.py
-python3 semantic/test_evidence_facts.py
-python3 semantic/test_capability_sentence.py
-python3 semantic/test_evidence_role_context.py
-python3 semantic/test_evidence_grammar.py
-python3 semantic/test_evidence_actor_event.py
-python3 semantic/test_server_event_scope.py
-python3 semantic/test_narrative_entity_evidence.py
-python3 semantic/test_leading_profile_scope.py
-python3 semantic/test_mixed_scope.py
-python3 semantic/test_posttrain_v3_data.py
-python3 semantic/test_posttrain_v3_pipeline_validation.py
-python3 semantic/test_posttrain_v4_data.py
-python3 semantic/test_posttrain_v4_metrics.py
-python3 semantic/test_posttrain_v4_audit.py
+# The 24 Python worker/posttraining suites are explicitly historical, not current acceptance.
+# Original files and assertions are retained; explicit offline runner fails on skips/missing inputs.
+printf "Historical inventory: 24 Python suites and retired HTTP success assertions NOT RUN in current product gate; see scripts/check_legacy_semantic.py\n"
 check_root="$(mktemp -d "${TMPDIR:-/tmp}/yanxu-check.XXXXXX")"
 check_pid=""
 check_java="${TRAINING_CHECK_JAVA:-java}"
@@ -113,6 +99,8 @@ trap cleanup EXIT
 mkdir -p "$check_root/out"
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 \
   -cp 'lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar' -d "$check_root/out" src/com/training/*.java
+"$check_java" -Xmx512m -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out:lib/*" -d "$check_root/out" scripts/PureRulePolicyTest.java
+"$check_java" -Xmx512m -cp "$check_root/out:lib/*" com.training.PureRulePolicyTest
 TRUSTED_DEVICE_JAVA="$check_java" TRUSTED_DEVICE_PRODUCT_CLASSES="$check_root/out" bash scripts/TrustedDevices-check.sh
 FIRST_BIND_JAVA="$check_java" FIRST_BIND_PRODUCT_CLASSES="$check_root/out" bash scripts/FirstBind-check.sh
 # Verify identity/workflow adapters against fresh stores and real localhost routes.
@@ -164,7 +152,7 @@ mkdir -p "$check_root/course-maintenance-data"
 "$check_java" -Ddata.dir="$check_root/course-maintenance-data" -cp "$check_root/out:lib/h2.jar" com.training.M04CourseMaintenanceTest "$check_root/course-maintenance-data"
 mkdir -p "$check_root/stage2-course-read-data"
 "$check_java" -cp "$check_root/out:lib/h2.jar" com.training.Stage2CourseReadTest "$check_root/stage2-course-read-data"
-"$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out:lib/h2.jar" -d "$check_root/out" scripts/stage2-course-stats-test.java scripts/stage2-team-todo-test.java
+"$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out:lib/h2.jar" -d "$check_root/out" scripts/IntegrationWorkflowTest.java scripts/stage2-course-stats-test.java scripts/stage2-team-todo-test.java
 mkdir -p "$check_root/stage2-course-stats-data" "$check_root/stage2-team-todo-data"
 "$check_java" -cp "$check_root/out:lib/*" com.training.Stage2CourseStatsTest "$check_root/stage2-course-stats-data"
 "$check_java" -cp "$check_root/out:lib/*" com.training.Stage2TeamTodoTest "$check_root/stage2-team-todo-data"
@@ -236,7 +224,6 @@ mkdir -p "$check_root/summary-comparison-data"
 node scripts/IntegrationSummaryComparisonHttp.cjs --java "$check_java" --classes "$check_root/out"
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar" -d "$check_root/out" scripts/PosttrainingV2Probe.java scripts/PostposedExclusionTest.java
 "$check_java" -cp "$check_root/out:lib/h2.jar" com.training.PostposedExclusionTest
-ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar" python3 semantic/test_postposed_exclusion.py
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/InstructorModeTest.java
 "$check_java" -cp "$check_root/out" com.training.InstructorModeTest
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/NamedPassiveHistoryTest.java
@@ -245,13 +232,10 @@ ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar" 
 "$check_java" -cp "$check_root/out" com.training.CapabilitySentenceTest
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/MethodContrastTest.java
 "$check_java" -cp "$check_root/out" com.training.MethodContrastTest
-ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar" python3 semantic/test_method_contrast.py
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/LearnerArtifactTest.java
 "$check_java" -cp "$check_root/out" com.training.LearnerArtifactTest
-ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar" python3 semantic/test_learner_artifact.py
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/PhysicalContinuationTest.java
 "$check_java" -cp "$check_root/out" com.training.PhysicalContinuationTest
-ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar" python3 semantic/test_artifact_continuation.py
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/EventModeBindingTest.java
 "$check_java" -cp "$check_root/out" com.training.EventModeBindingTest
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/PassiveRecipientTest.java
@@ -272,9 +256,6 @@ python3 -B scripts/test_posttraining_audit.py --java "$check_java" \
   --standalone --output "$check_root/posttraining-audit.json"
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out" -d "$check_root/out" scripts/PosttrainingMixedProtocolTest.java
 "$check_java" -cp "$check_root/out" com.training.PosttrainingMixedProtocolTest >"$check_root/posttraining-mixed-protocol.json"
-ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar" python3 semantic/test_evidence_actor_protocol.py
-ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar" python3 semantic/test_local_course_denial_protocol.py
-ACTOR_TEST_JAVA="$check_java" ACTOR_TEST_CLASSPATH="$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar" python3 semantic/test_personal_course_offer_protocol.py
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar" -d "$check_root/out" scripts/DispatchPreferenceTest.java
 "$check_java" -cp "$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar" com.training.DispatchPreferenceTest
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar" -d "$check_root/out" scripts/LocalSemanticTest.java
@@ -351,8 +332,8 @@ done
 "$check_java" -cp "$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar" com.training.PublicStopChainTest
 "$check_java" -cp "$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar" com.training.PublicHeadedEndpointTest
 "$check_java" -cp "$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar" com.training.PublicReferenceResolutionTest
-# The original test_requirement_input_http.cjs is retained as the before-contract
-# baseline. This run checks the migrated 55 assertions, not the historical 55.
+# Current retirement contract, not a pass of the preserved historical 55 assertions.
+# Both historical requirement suites remain available; see docs/TEST_INVENTORY_20261110.md.
 node scripts/test_requirement_input_resolution_http.cjs --java "$check_java" --classes "$check_root/out"
 "$check_java" -jar lib/ecj.jar -17 -encoding UTF-8 -cp "$check_root/out:lib/ip2region-3.3.7.jar" -d "$check_root/out" scripts/WeatherTest.java
 "$check_java" -cp "$check_root/out:lib/ip2region-3.3.7.jar" com.training.WeatherTest
@@ -400,4 +381,4 @@ run_suite() {
 run_suite test.js
 run_suite test_integrity.js
 run_suite test_faculty.js
-printf 'All regression suites passed. Isolated logs: %s\n' "$check_root"
+printf 'Current regression suites passed; historical semantic and retired HTTP assertions not run here. Isolated logs: %s\n' "$check_root"

@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Real Main/Api, random credentials, loopback and fresh temporary H2 only. Never compiles or opens app/data.
 // Compile the scripts-only IntegrationDeliveryHttpFixture.java into --classes before running.
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path'), net = require('node:net');
@@ -135,7 +136,7 @@ async function acceptedProject() {
   d = (await api('/demands/accept', {...workflowCommand(d, 'delivery-accept'), team_code: '900'}, 'team')).workflow;
   let p = (await api('/projects', undefined, 'team')).find(row => row.id === d.project_id);
   check(p?.delivery_controlled === true && p.workflow_source?.demand_id === d.id, 'Real approval and acceptance produces a controlled project with trusted source');
-  await api('/projects', {...p, hours: 2, owner: 'SYNTHETIC', start_date: '2025-01-01', end_date: '2025-01-02', delivery_mode: '线上'}, 'team');
+  await api('/projects', {...projectEditFields(p), hours: 2, owner: 'SYNTHETIC', start_date: '2025-01-01', end_date: '2025-01-02', delivery_mode: '线上'}, 'team');
   await api('/projects/start', {id: p.id}, 'team'); return p.id;
 }
 async function runChecks() {
@@ -231,7 +232,11 @@ async function runChecks() {
   d = await api(verify, {...cmd(dispatchId, 5, 'VERIFY-2'), evidence_code: 'EVIDENCE-2'});
   phase = 'legacy source gates';
   row = (await api('/dispatches', undefined, 'team')).find(row => row.id === dispatchId);
-  for (const [field, value] of [['project_id', legacy.project_id], ['teacher_id', alternateId], ['teach_date', '2025-01-03']]) await denied('/dispatches', {...row, [field]: value}, 'team', 409, 'Saved fact prevents old edit of ' + field);
+  // The unregistered legacy destination is deliberately not in the team's scope.
+  // Preserve that 403 guard, then use the synthetic admin with access to both
+  // sources to reach (and retain) the original saved-fact 409 assertion.
+  await denied('/dispatches', {...row, project_id: legacy.project_id}, 'team', 403, 'Team cannot move a dispatch into unregistered historical ownership');
+  for (const [field, value] of [['project_id', legacy.project_id], ['teacher_id', alternateId], ['teach_date', '2025-01-03']]) await denied('/dispatches', {...row, [field]: value}, field === 'project_id' ? 'admin' : 'team', 409, 'Saved fact prevents old edit of ' + field);
   await denied('/dispatches/delete', {id: dispatchId}, 'team', 409, 'Saved fact prevents deleting its source dispatch');
   await api('/dispatches/complete', {id: dispatchId, expected_version: String(d.version)});
   row = (await api('/dispatches', undefined, 'team')).find(row => row.id === dispatchId);
@@ -250,7 +255,7 @@ async function runChecks() {
   check(state.ready === false && state.blockers.some(b => b.code === 'hours_gap'), 'Verified actual below project plan prevents project completion');
   await denied('/projects/complete', {id: projectId}, 'team', 400, 'Project transition cannot use inflated old schedule hours');
   let project = (await api('/projects', undefined, 'team')).find(p => p.id === projectId);
-  await api('/projects', {...project, hours: 1.33}, 'team');
+  await api('/projects', {...projectEditFields(project), hours: 1.33}, 'team');
   d = await api(save, {...cmd(dispatchId, 6, 'FACT-COMPLETED-EDIT'), planned_hours: '1.33'});
   state = await api('/projects/check?id=' + projectId, undefined, 'team');
   check(state.ready === false && state.delivery_hours.unverified_completed_count === 1 && state.delivery_hours.actual === null, 'Editing completed fact clears reviewed totals and blocks project completion');
@@ -283,14 +288,16 @@ async function runChecks() {
     await denied('/fees/pay', {id: fee.id}, 'team', 409, 'Old pay gate precedes ' + fee.status + ' shortcut');
     await denied('/fees/delete', {id: fee.id}, 'team', 409, 'Old delete cannot remove ' + fee.status + ' controlled history');
     await denied('/fees', {...fee, remark: 'SYNTHETIC ALTER'}, 'team', 409, 'Old fee save cannot alter controlled history');
-    await denied('/fees', {...fee, project_id: legacy.project_id}, 'team', 409, 'Old fee cannot move out of controlled project');
+    await denied('/fees', {...fee, project_id: legacy.project_id}, 'team', 403, 'Team cannot move a fee into unregistered historical ownership');
+    await denied('/fees', {...fee, project_id: legacy.project_id}, 'admin', 409, 'Old fee cannot move out of controlled project');
   }
   same((await api('/fees', undefined, 'team')).filter(f => f.project_id === historic.project_id), historicFees, 'All denied fee operations leave exact historical rows unchanged');
   await api('/dispatches/complete', {id: legacy.id}, 'admin');
   const oldRows = await api('/fees/calc', {project_id: legacy.project_id}, 'admin');
   check(oldRows.length === 1 && oldRows[0].hours === 2 && oldRows[0].amount === 200, 'Unmigrated old project retains legacy calculation');
   let oldFee = (await api('/fees', undefined, 'admin')).find(f => f.id === oldRows[0].id);
-  await denied('/fees', {...oldFee, project_id: historic.project_id}, 'team', 409, 'Old fee cannot move into controlled project');
+  await denied('/fees', {...oldFee, project_id: historic.project_id}, 'team', 403, 'Team cannot edit an unregistered historical fee');
+  await denied('/fees', {...oldFee, project_id: historic.project_id}, 'admin', 409, 'Old fee cannot move into controlled project');
   await api('/fees', {...oldFee, remark: 'SYNTHETIC OLD EDIT'}, 'admin');
   await api('/fees/delete', {id: oldFee.id}, 'admin');
   const regenerated = await api('/fees/calc', {project_id: legacy.project_id}, 'admin');

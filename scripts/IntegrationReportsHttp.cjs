@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Actual Main/Api HTTP, synthetic identities and fresh H2 only. No app/data, production or notification channel.
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path'), net = require('node:net');
 const crypto = require('node:crypto'), assert = require('node:assert/strict');
@@ -123,7 +124,7 @@ async function project(actor, org, person) {
   for (const approver of ['leader', 'bp']) d = (await api('/approvals/tasks/' + d.id + '/actions', {action: 'APPROVE', expectedVersion: d.approval.version, expectedStage: d.approval.stage, requestId: tag + '-' + approver, comment: 'SYNTHETIC'}, approver)).workflow;
   d = (await api('/demands/accept', {id: d.id, expected_version: d.version, request_id: tag + '-ACCEPT', team_code: '900'}, 'team')).workflow;
   const p = (await api('/projects', undefined, 'team')).find(row => row.id === d.project_id);
-  await api('/projects', {...p, hours: 10, amount: 0, owner: 'SYNTHETIC', start_date: '2025-01-01', end_date: '2025-01-31', delivery_mode: '线上'}, 'team');
+  await api('/projects', {...projectEditFields(p), hours: 10, amount: 0, owner: 'SYNTHETIC', start_date: '2025-01-01', end_date: '2025-01-31', delivery_mode: '线上'}, 'team');
   await api('/projects/start', {id: p.id}, 'team'); return p.id;
 }
 async function teaching(projectId, teacherId, subject, day, quantities, disposition = 'complete') {
@@ -179,7 +180,9 @@ async function runChecks() {
   const outside = await teaching(p2, teachers[0], 'SYNTHETIC OUTSIDE MONTH', '2024-12-31', {actual_minutes: '450', estimated_hours: '10', planned_hours: '10', payable_hours: '10'});
   const invalid = await teaching(p1, teachers[0], 'SYNTHETIC CORRUPT REVISION', '2025-01-17', {actual_minutes: '45'});
   const moved = await teaching(p1, teachers[0], 'SYNTHETIC DATE DRIFT', '2025-01-18', {actual_minutes: '45'});
-  const historic = await api('/dispatches', undefined, 'team');
+  // Fixture discovery needs the unregistered historical row too. A team member
+  // correctly cannot see it; report authorization remains exercised below.
+  const historic = await api('/dispatches', undefined, 'admin');
   const named = name => historic.find(row => row.subject === name).id;
   const missing = named('SYNTHETIC HISTORICAL FACT MISSING'), undated = named('SYNTHETIC HISTORICAL DATE UNKNOWN'), legacy = named('SYNTHETIC UNMIGRATED HOURS'), future = named('SYNTHETIC HISTORICAL FUTURE');
   await stop(); await offline('corrupt'); const before = await offline('inspect');

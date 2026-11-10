@@ -1,0 +1,50 @@
+{
+  "original": "scripts/legacy/test_faculty.js.original",
+  "reason": "These exact original line ranges require success/semantics from retired /api/teacher-recommendations. All non-recommendation CRUD/upload/reparse/residence/access assertions remain current.",
+  "ranges": [
+    [
+      169,
+      185
+    ],
+    [
+      191,
+      192
+    ],
+    [
+      205,
+      223
+    ],
+    [
+      229,
+      238
+    ],
+    [
+      248,
+      255
+    ],
+    [
+      265,
+      271
+    ],
+    [
+      273,
+      280
+    ],
+    [
+      282,
+      282
+    ],
+    [
+      285,
+      288
+    ],
+    [
+      302,
+      303
+    ],
+    [
+      306,
+      307
+    ]
+  ]
+}

@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Actual Main/Api HTTP, synthetic identities and fresh H2 only. No app/data, production or notification channel.
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path'), net = require('node:net');
 const crypto = require('node:crypto'), assert = require('node:assert/strict');
@@ -127,7 +128,7 @@ async function project(actor, org, person) {
   for (const approver of ['leader', 'bp']) d = (await api('/approvals/tasks/' + d.id + '/actions', {action: 'APPROVE', expectedVersion: d.approval.version, expectedStage: d.approval.stage, requestId: tag + '-' + approver, comment: 'SYNTHETIC'}, approver)).workflow;
   d = (await api('/demands/accept', {id: d.id, expected_version: d.version, request_id: tag + '-ACCEPT', team_code: '900'}, 'team')).workflow;
   const p = (await api('/projects', undefined, 'team')).find(row => row.id === d.project_id);
-  await api('/projects', {...p, hours: 10, amount: 0, owner: 'SYNTHETIC', start_date: '2025-01-01', end_date: '2025-01-31', delivery_mode: '线上'}, 'team');
+  await api('/projects', {...projectEditFields(p), hours: 10, amount: 0, owner: 'SYNTHETIC', start_date: '2025-01-01', end_date: '2025-01-31', delivery_mode: '线上'}, 'team');
   await api('/projects/start', {id: p.id}, 'team'); return p.id;
 }
 async function teaching(projectId, teacherId, subject, day, quantities, disposition = 'complete') {

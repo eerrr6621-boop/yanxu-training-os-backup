@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Genuine Auth/M01/M05/M08 HTTP, random loopback port and a fresh synthetic H2 only.
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),net=require('node:net'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const {spawn,execFile}=require('node:child_process'),{promisify}=require('node:util'),run=promisify(execFile),{workflowConfiguration}=require('./IntegrationWorkflowHttpFixture.cjs'),args={};
@@ -62,7 +63,7 @@ async function project(title) {
   for (const actor of ['leader', 'bp']) d = (await api('/approvals/tasks/' + d.id + '/actions', { action: 'APPROVE', expectedVersion: d.approval.version, expectedStage: d.approval.stage, requestId: key + '-' + actor, comment: 'SYNTHETIC' }, actor)).workflow;
   const p = (await api('/demands/accept', { id: d.id, expected_version: d.version, request_id: key + '-ACCEPT', team_code: '900' }, 'team')).workflow.project_id;
   let row = (await api('/projects', undefined, 'team')).find(r => r.id === p);
-  await api('/projects', { ...row, owner: 'SYNTHETIC OWNER', start_date: '2025-01-01', end_date: '2025-01-05', delivery_mode: '线上', hours: 4, amount: 0 }, 'team'); await api('/projects/start', { id: p }, 'team'); return p;
+  await api('/projects', { ...projectEditFields(row), owner: 'SYNTHETIC OWNER', start_date: '2025-01-01', end_date: '2025-01-05', delivery_mode: '线上', hours: 4, amount: 0 }, 'team'); await api('/projects/start', { id: p }, 'team'); return p;
 }
 async function dispatch(project_id, teacher_id, day, rejected = false) {
   const id = await api('/dispatches', { project_id, teacher_id, subject: 'SYNTHETIC PRIVATE COURSE ' + day, teach_date: '2025-01-0' + day, start_time: '09:00', end_time: '10:00', hours: 9, status: '待发送', material_status: '已就绪' }, 'team');
@@ -132,7 +133,7 @@ async function runChecks(){
  });
  phase='real frozen summary writes';await api(base+'/save',{...cmd(p,0,'FIRST'),content:contentA});revisions.set(1,await api(revision(p,1)));for(const digest of [revisions.get(1).sources.source_version,revisions.get(1).sources.delivery.source_version,revisions.get(1).sources.feedback.source_version])assert.match(digest,/^[a-f0-9]{64}$/,'Fully authorized baseline combined and both source hashes must exist');assert.equal(revisions.get(1).sources.feedback.status,'AVAILABLE');same(revisions.get(1).content,contentA,'First body retains exact original text, whitespace and sections');
  actual=await fact(done,actual.version,'90','1.75000000');await api(base+'/save',{...cmd(p,1,'SECOND'),content:contentB});revisions.set(2,await api(revision(p,2)));same(revisions.get(2).sources,revisions.get(1).sources,'Ordinary body save preserves the original frozen sources');
- actual=await verify(done,actual);let projectRow=(await api('/projects',undefined,'team')).find(row=>row.id===p);await api('/projects',{...projectRow,participant_count:7},'team');
+ actual=await verify(done,actual);let projectRow=(await api('/projects',undefined,'team')).find(row=>row.id===p);await api('/projects',{...projectEditFields(projectRow),participant_count:7},'team');
  await api(base+'/refresh',cmd(p,2,'REFRESH'));revisions.set(3,await api(revision(p,3)));same(revisions.get(3).content,contentB,'Refresh preserves exact saved body');check(revisions.get(3).sources.project.value.participant_count===7&&revisions.get(3).sources.delivery.value.actual==='2.00','Refresh freezes corrected project and reviewed teaching sources');
  await readOnly('exact empty adjacent and non-adjacent comparisons',async()=>{
   for(const [from,to]of [[0,1],[0,3],[1,2],[2,3],[1,3]]){const view=await comparison(p,from,to,3);if(from)same(view.before,revisions.get(from),'Before equals captured old version');same(view.after,revisions.get(to),'After equals captured old version');}
@@ -149,7 +150,7 @@ async function runChecks(){
   await denied(base+'/review',{...formal,request_id:'FORMAL-review',review_role:'BRANCH',decision:'APPROVE',note:'SYNTHETIC'},'editor',403,'Summary edit does not grant branch review');
   await denied(base+'/export',{...formal,request_id:'FORMAL-export'},'editor',403,'Summary edit does not grant formal export');
  });
- phase='new live sources and latest summary';actual=await verify(done,await fact(done,actual.version,'120','2.25000000'));projectRow=(await api('/projects',undefined,'team')).find(row=>row.id===p);await api('/projects',{...projectRow,participant_count:11},'team');
+ phase='new live sources and latest summary';actual=await verify(done,await fact(done,actual.version,'120','2.25000000'));projectRow=(await api('/projects',undefined,'team')).find(row=>row.id===p);await api('/projects',{...projectEditFields(projectRow),participant_count:11},'team');
  await readOnly('current sources cannot replace frozen comparison',async()=>{check((await api(base+'?project_id='+p)).source_changed===true,'Live project and teaching have really changed');const view=await comparison(p,1,3,3);same(view.before,revisions.get(1),'Live source change leaves old before exact');same(view.after,revisions.get(3),'Live source change leaves old after exact');});
  await api(base+'/save',{...cmd(p,3,'FOURTH'),content:{achievements:'SYNTHETIC FOURTH BODY',issues:'',nextSteps:''}});revisions.set(4,await api(revision(p,4)));same(revisions.get(4).sources,revisions.get(3).sources,'Later ordinary save keeps preceding frozen source');
  let stable;

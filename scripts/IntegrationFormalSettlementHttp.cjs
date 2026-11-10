@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Synthetic acceptance only: real Main/Auth/Api, fresh synthetic H2, explicit frozen classes.
 // HTTP_FORMAL.md plain-language evidence contract; unregistered technical IDs cannot substitute proof.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),net=require('node:net');
@@ -69,7 +70,7 @@ async function acceptedProject(org,title,amount){
   for(const reviewer of ['leader','bp'])d=(await api('/approvals/tasks/'+d.id+'/actions',{action:'APPROVE',expectedVersion:d.approval.version,expectedStage:d.approval.stage,requestId:id('APPROVAL'),comment:'SYNTHETIC'},reviewer)).workflow;
   d=(await api('/demands/accept',{...command(),team_code:'900'},'team')).workflow;
   const project=(await api('/projects',undefined,'team')).find(p=>p.id===d.project_id);assert.ok(project?.delivery_controlled);
-  await api('/projects',{...project,hours:org==='001'?2.33:1,amount,contract_no:'SYNTHETIC-CONTRACT-'+project.id,owner:'SYNTHETIC',start_date:metadata.service_date,end_date:metadata.service_date,delivery_mode:'线上'},'team');
+  await api('/projects',{...projectEditFields(project),hours:org==='001'?2.33:1,amount,contract_no:'SYNTHETIC-CONTRACT-'+project.id,owner:'SYNTHETIC',start_date:metadata.service_date,end_date:metadata.service_date,delivery_mode:'线上'},'team');
   await api('/projects/start',{id:project.id},'team');return project.id;
 }
 async function addDispatch(project,teacher,subject,start_time='09:00',end_time='10:00') {

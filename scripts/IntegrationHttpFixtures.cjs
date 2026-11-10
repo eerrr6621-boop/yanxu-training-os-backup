@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 const assert = require('node:assert/strict');
 
 /** Synthetic HTTP fixtures only. Caller already requires a fresh loopback instance. */
@@ -79,7 +80,7 @@ async function createIntegrationHttpFixtures(call, check = () => {}, refreshSess
   async function configureProject(projectId, fields = {}) {
     const row = (await data('/projects')).find(item => Number(item.id) === Number(projectId));
     assert.ok(row, 'Accepted project must be visible');
-    const update = { ...row, owner: fields.owner || '合成测试员', venue: fields.venue || '合成测试教室',
+    const update = { ...projectEditFields(row), owner: fields.owner || '合成测试员', venue: fields.venue || '合成测试教室',
       contract_no: fields.contract_no || 'SYNTHETIC-CONTRACT-' + projectId, amount: fields.amount ?? 0 };
     for (const key of ['title', 'unit', 'hours', 'start_date', 'end_date', 'participant_count', 'delivery_mode', 'remark'])
       if (Object.hasOwn(fields, key)) update[key] = fields[key];

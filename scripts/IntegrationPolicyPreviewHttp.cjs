@@ -1,4 +1,5 @@
 'use strict';
+const { projectEditFields } = require('./project-edit-payload.cjs');
 // Real Main/Api only; explicit isolated classes, random credentials, loopback and fresh temporary H2.
 // Compile scripts/IntegrationPolicyPreviewHttpFixture.java with the actual src tree before running.
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),net=require('node:net');
@@ -108,7 +109,7 @@ async function setup(){
  for(const actor of ['leader','bp'])d=(await api('/approvals/tasks/'+d.id+'/actions',{action:'APPROVE',expectedVersion:d.approval.version,expectedStage:d.approval.stage,requestId:'POLICY-'+actor,comment:'SYNTHETIC'},actor)).workflow;
  d=(await api('/demands/accept',{id:d.id,expected_version:d.version,request_id:'POLICY-ACCEPT',team_code:'900'},'team')).workflow;
  const project=(await api('/projects',undefined,'team')).find(p=>p.id===d.project_id);check(project.workflow_source?.demand_id===d.id&&project.delivery_controlled===true,'Fixture creates new project through real approval and team acceptance');
- await api('/projects',{...project,owner:'SYNTHETIC',start_date:'2025-01-01',end_date:'2025-01-02',delivery_mode:'线上',hours:1.33,amount:999999,contract_no:'SYNTHETIC-POLICY-CONTRACT'},'team');await api('/projects/start',{id:project.id},'team');
+ await api('/projects',{...projectEditFields(project),owner:'SYNTHETIC',start_date:'2025-01-01',end_date:'2025-01-02',delivery_mode:'线上',hours:1.33,amount:999999,contract_no:'SYNTHETIC-POLICY-CONTRACT'},'team');await api('/projects/start',{id:project.id},'team');
  const teacher=await api('/teachers',{name:'SYNTHETIC POLICY NEW TEACHER',status:'在库',teacher_level:'特级讲师',fee_rate:99999,in_date:'2020-01-01',base_province:'浙江',base_city:'杭州'},'admin');
  const dispatch=await api('/dispatches',{project_id:project.id,teacher_id:teacher,subject:'SYNTHETIC POLICY NEW CLASS',teach_date:'2025-01-01',start_time:'09:00',end_time:'10:00',hours:9,status:'待发送',material_status:'已就绪'},'team');
  await api('/dispatches/send',{id:dispatch},'team');await confirmDispatch(dispatch);
