@@ -1,0 +1,170 @@
+[
+  {
+    "original_line": 82,
+    "original_entry": "python3 semantic/test_worker.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 83,
+    "original_entry": "python3 semantic/test_requirement_content.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 84,
+    "original_entry": "python3 semantic/test_learner_artifact.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 85,
+    "original_entry": "python3 semantic/test_artifact_continuation.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 86,
+    "original_entry": "python3 semantic/test_evidence_sections.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 87,
+    "original_entry": "python3 semantic/test_evidence_facts.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 88,
+    "original_entry": "python3 semantic/test_capability_sentence.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 89,
+    "original_entry": "python3 semantic/test_evidence_role_context.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 90,
+    "original_entry": "python3 semantic/test_evidence_grammar.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 91,
+    "original_entry": "python3 semantic/test_evidence_actor_event.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 92,
+    "original_entry": "python3 semantic/test_server_event_scope.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 93,
+    "original_entry": "python3 semantic/test_narrative_entity_evidence.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 94,
+    "original_entry": "python3 semantic/test_leading_profile_scope.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 95,
+    "original_entry": "python3 semantic/test_mixed_scope.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 96,
+    "original_entry": "python3 semantic/test_posttrain_v3_data.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 97,
+    "original_entry": "python3 semantic/test_posttrain_v3_pipeline_validation.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 98,
+    "original_entry": "python3 semantic/test_posttrain_v4_data.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 99,
+    "original_entry": "python3 semantic/test_posttrain_v4_metrics.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 100,
+    "original_entry": "python3 semantic/test_posttrain_v4_audit.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 167,
+    "original_entry": "\"$check_java\" -jar lib/ecj.jar -17 -encoding UTF-8 -cp \"$check_root/out:lib/h2.jar\" -d \"$check_root/out\" scripts/stage2-course-stats-test.java scripts/stage2-team-todo-test.java",
+    "action": "ADD_MISSING_COMPILE_DEPENDENCY",
+    "reason": "Stage2TeamTodoTest calls IntegrationWorkflowTest before its original later compilation."
+  },
+  {
+    "original_line": 239,
+    "original_entry": "ACTOR_TEST_JAVA=\"$check_java\" ACTOR_TEST_CLASSPATH=\"$check_root/out:lib/h2.jar\" python3 semantic/test_postposed_exclusion.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 248,
+    "original_entry": "ACTOR_TEST_JAVA=\"$check_java\" ACTOR_TEST_CLASSPATH=\"$check_root/out:lib/h2.jar\" python3 semantic/test_method_contrast.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 251,
+    "original_entry": "ACTOR_TEST_JAVA=\"$check_java\" ACTOR_TEST_CLASSPATH=\"$check_root/out:lib/h2.jar\" python3 semantic/test_learner_artifact.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 254,
+    "original_entry": "ACTOR_TEST_JAVA=\"$check_java\" ACTOR_TEST_CLASSPATH=\"$check_root/out:lib/h2.jar\" python3 semantic/test_artifact_continuation.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 275,
+    "original_entry": "ACTOR_TEST_JAVA=\"$check_java\" ACTOR_TEST_CLASSPATH=\"$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar\" python3 semantic/test_evidence_actor_protocol.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 276,
+    "original_entry": "ACTOR_TEST_JAVA=\"$check_java\" ACTOR_TEST_CLASSPATH=\"$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar\" python3 semantic/test_local_course_denial_protocol.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 277,
+    "original_entry": "ACTOR_TEST_JAVA=\"$check_java\" ACTOR_TEST_CLASSPATH=\"$check_root/out:lib/h2.jar:lib/pdfbox-app-3.0.8.jar:lib/ip2region-3.3.7.jar\" python3 semantic/test_personal_course_offer_protocol.py",
+    "action": "MOVED_TO_EXPLICIT_HISTORICAL_OFFLINE",
+    "reason": "Python worker route forbidden by current Main/PureRulePolicy; not current acceptance; all original assertions restored and run separately."
+  },
+  {
+    "original_line": 356,
+    "original_entry": "node scripts/test_requirement_input_resolution_http.cjs --java \"$check_java\" --classes \"$check_root/out\"",
+    "action": "REPLACE_WITH_CURRENT_RETIREMENT_CONTRACT_KEEP_EXACT_ORIGINAL",
+    "reason": "TeacherIntelligence gates old recommendation/jobs at410; original55 remain historical, not declared passed."
+  }
+]

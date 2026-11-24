@@ -1,0 +1,2194 @@
+[
+  {
+    "file": "test.js",
+    "original_line": 40,
+    "label": "管理员登录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 47,
+    "label": "列表 ",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 52,
+    "label": "新增培训需求草稿",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 55,
+    "label": "投标需求提交后等待原签报结果",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 57,
+    "label": "新流程投标禁止旧入口绕过签报登记",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 59,
+    "label": "旧中标动作不能改绑新流程需求以绕过受理",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 61,
+    "label": "登记中标后仍须团队受理",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 64,
+    "label": "团队受理后生成待启动项目",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 67,
+    "label": "需求状态已更新为已立项",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 71,
+    "label": "新建师资调度",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 74,
+    "label": "记录已通知师资",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 76,
+    "label": "师资确认",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 79,
+    "label": "调度状态=已确认且含消息日志",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 82,
+    "label": "实际授课后完成交付记录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 84,
+    "label": "调度状态=已完成",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 88,
+    "label": "新流程正式规则未启用时不能套用旧师资费率",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 90,
+    "label": "受控项目不生成旧课酬记录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 95,
+    "label": "新增收费记录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 98,
+    "label": "部分收款",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 100,
+    "label": "结清收款",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 104,
+    "label": "新增授课成本",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 114,
+    "label": "新流程项目不能创建发送问卷",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 117,
+    "label": "创建问卷",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 120,
+    "label": "发布问卷",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 122,
+    "label": "模拟微信发送问卷",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 125,
+    "label": "公开页获取问卷",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 127,
+    "label": "伪造评分被拒绝",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 129,
+    "label": "伪造单选答案被拒绝",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 131,
+    "label": "学员提交问卷",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 133,
+    "label": "学员2提交问卷",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 135,
+    "label": "问卷统计分析",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 139,
+    "label": "新增师资评价",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 141,
+    "label": "师资出库",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 143,
+    "label": "师资重新入库",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 147,
+    "label": "统计看板",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 149,
+    "label": "分析报告生成",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 155,
+    "label": "只读用户禁止写入",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 157,
+    "label": "只读用户可查询",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 161,
+    "label": "业务管理员禁止用户管理",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 163,
+    "label": "业务管理员可写业务模块",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 167,
+    "label": "修改本人密码",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 169,
+    "label": "新密码登录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 172,
+    "label": "管理员重置密码",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 174,
+    "label": "管理员重置密码后旧会话立即失效",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 178,
+    "label": "原密码错误被拒绝",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test.js",
+    "original_line": 182,
+    "label": "未登录拦截401",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 298,
+    "label": "管理员登录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 303,
+    "label": "非法 project_id 返回 HTTP 400",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 305,
+    "label": "非法 teacher_id 返回 HTTP 400",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 307,
+    "label": "非法 questionnaire id 返回 HTTP 400",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 322,
+    "label": "新需求不能伪造完成状态或绕过草稿入口",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 324,
+    "label": "新需求不能伪造流标状态或绕过草稿入口",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 327,
+    "label": "创建合法待处理需求测试数据",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 330,
+    "label": "合法投标需求可提交并等待原签报",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 332,
+    "label": "中标结果登记不能自动立项",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 334,
+    "label": "团队受理创建待启动项目",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 344,
+    "label": "补齐自动立项项目的启动资料",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 346,
+    "label": "关联已立项需求的项目可合法启动",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 348,
+    "label": "合法启动后项目进入进行中",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 349,
+    "label": "合法启动后关联需求进入进行中",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 357,
+    "label": "新项目不能伪造归档状态或绕过团队受理",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 365,
+    "label": "新项目拒绝负数来源和绕过团队受理",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 368,
+    "label": "新项目由服务端设为待启动",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 370,
+    "label": "资料完整后可启动项目",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 373,
+    "label": "无待执行课程的师资可以出库",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 378,
+    "label": "出库师资不能参与新调度",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 380,
+    "label": "师资重新入库",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 387,
+    "label": "受控新调度明确拒绝伪造完成状态",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 390,
+    "label": "受控新调度可正常建立待发送记录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 394,
+    "label": "新调度从待发送开始且审计字段为空",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 397,
+    "label": "记录已通知师资",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 401,
+    "label": "邀请发送后不能偷改课时",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 403,
+    "label": "记录师资确认",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 406,
+    "label": "实际授课后标记完成",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 408,
+    "label": "已留存授课事实的课程不能删除",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 414,
+    "label": "受控项目不能由旧费用入口写入课酬",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 416,
+    "label": "受控项目不能套用旧师资费率",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 418,
+    "label": "被拦截的旧费用操作没有留下记录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 424,
+    "label": "新应收不能伪造实收与结清状态",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 428,
+    "label": "新应收从零实收开始",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 430,
+    "label": "收款不能超过剩余应收",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 432,
+    "label": "准确收款后结清",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 436,
+    "label": "已有收款后不能改应收金额",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 438,
+    "label": "已有收款记录不能删除",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 444,
+    "label": "新流程项目不能创建问卷或伪造发布状态",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 447,
+    "label": "历史项目新问卷不能伪造发布状态",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 450,
+    "label": "历史项目新问卷由服务端设为草稿",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 453,
+    "label": "交付事实完整后项目可完成",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 457,
+    "label": "项目完成后仍可维护课程材料状态",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 459,
+    "label": "项目完成后不能借材料维护修改计划课时",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 462,
+    "label": "材料维护不会改变已完成课程的计划课时和状态",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 467,
+    "label": "已完成项目不能新增排课",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 478,
+    "label": "不能把已有调度移动进已完成项目",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 481,
+    "label": "受控项目在正式支付核对未接入时不可归档",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 483,
+    "label": "受控项目归档明确阻断而不改变完成状态",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 488,
+    "label": "历史问卷所在seed项目按真实交付结算事实归档",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 490,
+    "label": "归档自动关闭未闭环问卷",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 495,
+    "label": "历史归档项目业务事实仍只读",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 497,
+    "label": "归档项目不能新增成本",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 499,
+    "label": "归档项目课酬不能删除",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 501,
+    "label": "归档项目不能重新计算课酬",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 520,
+    "label": "师资统计等于原始排课与课酬合计",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 526,
+    "label": "没有已完成授课记录的师资不能被评价",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 532,
+    "label": "管理员不能变更自己的角色",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 535,
+    "label": "会话撤销测试账号登录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 541,
+    "label": "用户编辑带短密码返回 HTTP 400",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 544,
+    "label": "短密码失败后姓名不发生部分更新",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 545,
+    "label": "短密码失败后角色不发生部分更新",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 546,
+    "label": "短密码失败后状态不发生部分更新",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 548,
+    "label": "短密码失败不误撤销既有会话",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 551,
+    "label": "管理员可单独修改其他用户姓名",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 553,
+    "label": "仅修改姓名不撤销既有会话",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 555,
+    "label": "姓名测试数据已恢复",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 560,
+    "label": "管理员可调整其他用户角色",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 562,
+    "label": "修改角色会撤销既有会话",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 564,
+    "label": "角色测试数据已恢复",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 569,
+    "label": "管理员可停用其他用户",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 571,
+    "label": "修改状态会撤销既有会话",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 573,
+    "label": "状态测试数据已恢复",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 578,
+    "label": "管理员可修改其他用户名",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 580,
+    "label": "修改用户名会撤销既有会话",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 582,
+    "label": "用户名测试数据已恢复",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 587,
+    "label": "管理员可修改其他用户密码",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 589,
+    "label": "修改密码会撤销既有会话",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 591,
+    "label": "密码测试数据已恢复",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 593,
+    "label": "恢复后测试账号可正常登录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 598,
+    "label": "未登录访客可读取公开资料目录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 609,
+    "label": "业务管理员可上传公开学习包",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 615,
+    "label": "只读用户不能进入资料维护模式",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 623,
+    "label": "扩展名与内容不符的上传被拒绝",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 627,
+    "label": "管理员目录记录文件校验与安全文件名",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 628,
+    "label": "失败上传不产生资料记录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 631,
+    "label": "上架资料立即出现在公开目录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 634,
+    "label": "公开下载支持 HEAD 且不泄露内联执行类型",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 636,
+    "label": "公开下载支持断点续传",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 641,
+    "label": "管理员可编辑并下架学习包",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 643,
+    "label": "下架资料不再出现在公开目录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 645,
+    "label": "下架资料的原下载地址立即失效",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 647,
+    "label": "业务管理员可读取资料维护目录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 649,
+    "label": "资料维护接口拒绝非 JSON 请求",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 651,
+    "label": "资料上传接口拒绝非 POST 方法",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 654,
+    "label": "管理员可删除学习包",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 656,
+    "label": "删除后资料记录与公开链接均失效",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 664,
+    "label": "未登录用户不能读取讲师简历目录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 669,
+    "label": "未登录用户不能上传讲师简历",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 671,
+    "label": "未登录用户不能下载讲师简历原件",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 673,
+    "label": "未登录用户不能修改简历结构化档案",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 675,
+    "label": "未登录用户不能触发简历重解析",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 677,
+    "label": "未登录用户不能删除讲师简历",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 679,
+    "label": "未登录用户不能发起师资推荐",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 682,
+    "label": "只读用户不能读取敏感简历目录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 687,
+    "label": "只读用户不能上传讲师简历",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 689,
+    "label": "只读用户不能下载讲师简历原件",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 691,
+    "label": "只读用户不能修改简历结构化档案",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 693,
+    "label": "只读用户不能触发简历重解析",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 695,
+    "label": "只读用户不能删除讲师简历",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 697,
+    "label": "只读用户不能发起师资推荐",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 715,
+    "label": "业务管理员可建立推荐测试师资档案",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 729,
+    "label": "业务管理员可为多名讲师上传有效 PDF/PPTX 简历",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 736,
+    "label": "结构正确且含文本层的最小 PDF 可以被解析",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 741,
+    "label": "结构正确的 PPTX 简历可解析且与 PDF 共用私有档案流程",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 749,
+    "label": "业务管理员可以触发并完成简历重解析",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 761,
+    "label": "业务管理员可以人工确认并校准解析档案",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 767,
+    "label": "简历管理目录仅返回安全元数据",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 768,
+    "label": "简历服务分别公开 PDF 与 PPTX 的受控大小边界",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 772,
+    "label": "简历原始文件名会移除路径穿越片段",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 775,
+    "label": "授权下载返回原始 PDF 且禁止缓存和类型嗅探",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 784,
+    "label": "讲师简历不会混入免登录公开资料目录",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 788,
+    "label": "讲师简历上传拒绝错误 PDF 签名",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 790,
+    "label": "讲师简历上传拒绝只有 PDF 标记的畸形文件",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 792,
+    "label": "讲师简历上传拒绝只有 ZIP 魔数的伪 PPTX",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 797,
+    "label": "讲师简历上传拒绝包含路径穿越条目的 PPTX",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 799,
+    "label": "讲师简历上传拒绝空文件",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 814,
+    "label": "讲师简历按声明长度在接收正文前拒绝超限上传",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 821,
+    "label": "讲师简历流式读取执行服务端大小上限",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 823,
+    "label": "失败上传不会覆盖原有有效简历",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 827,
+    "label": "推荐测试中的高相关讲师已安全出库",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 839,
+    "label": "业务管理员可以获得结构化可解释师资推荐",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 844,
+    "label": "推荐硬规则仅允许在库讲师",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 847,
+    "label": "客户文本中的提示注入不能伪造候选讲师",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 852,
+    "label": "国企领导力相关讲师排序高于不相关服务讲师",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 855,
+    "label": "仅性别不同不会影响专业匹配分数",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 865,
+    "label": "简历自述与系统履约指标严格分离",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 868,
+    "label": "师资推荐只提供决策支持且不会自动写入排课",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 873,
+    "label": "业务管理员可以删除讲师私有简历",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 875,
+    "label": "删除后简历目录不再返回该讲师原件",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 878,
+    "label": "删除后讲师简历下载地址立即失效",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_integrity.js",
+    "original_line": 885,
+    "label": "超大请求体在入库前被拒绝",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_integrity.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 126,
+    "label": "职称不自动推定讲师等级",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 130,
+    "label": "讲师等级保存并读取：",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 135,
+    "label": "旧客户端缺省等级不覆盖",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 137,
+    "label": "非法等级拒绝写入：",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 140,
+    "label": "等级显式清空保存为NULL",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 142,
+    "label": "没有高铁参考不伪装已配置",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 143,
+    "label": "参考目录不返回私有文件路径",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 155,
+    "label": "PPTX文字格式分段后仍可提取完整服务机构",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 156,
+    "label": "无书名号的主讲课程也能被提取",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 157,
+    "label": "副教授不会自动升级为教授",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 158,
+    "label": "原始简历自述独立保留",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 164,
+    "label": "有效PDF仍可完成解析",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 165,
+    "label": "英文training不会误识别为AI",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 168,
+    "label": "明确否定句不会成为正向专业标签",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 169,
+    "label": "明确否定的冷门课程不会经课程提取重新成为候选",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 172,
+    "label": "词典外的具体课程仍能依据简历事实检索",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 176,
+    "label": "真实本地量化模型参与API推荐且不改变入选规则",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 177,
+    "label": "API语义证据来自本次专业档案且明确不是资历认证",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 179,
+    "label": "具体服务案例参与匹配而非丢在摘要外",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 180,
+    "label": "证据选中第四段的需求相关服务案例",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 181,
+    "label": "返回证据最多三段且不泄露手机号邮箱全文",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 182,
+    "label": "系统实绩不采用700课时95%自述且无记录不生成履约分",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 183,
+    "label": "匹配结果明确给出证据等级和计分边界",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 185,
+    "label": "没有专业相关证据时返回空结果",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 190,
+    "label": "人工校准按NFKC保存完整画像且仍保存原简历自述",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 192,
+    "label": "人工删除专业后旧基础档案不能重新加回",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 194,
+    "label": "重新解析不会复活人工删除的专业标签",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 195,
+    "label": "重解析仍使用原文自述而非系统实绩",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 199,
+    "label": "替换新版简历保留人工画像与审核时间",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 200,
+    "label": "替换后采用人工校准专业并更新原文声明",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 202,
+    "label": "保存已替换简历不能返回虚假成功",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 203,
+    "label": "旧简历校准失败不部分保存常驻地区",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 206,
+    "label": "硬性每课时预算排除超价和待确认课酬",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 209,
+    "label": "真实语义模型仅引用人工画像而非替换后的旧专业范围",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 213,
+    "label": "软预算下未知课酬不冒充免费且不加达标分",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 215,
+    "label": "总预算不会自动当作每课时上限",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 217,
+    "label": "引导填写的课时和日期进入需求画像",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 219,
+    "label": "预算和讲师经验不被当作本次培训课时",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 221,
+    "label": "无效负课时不会误识别为正课时",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 223,
+    "label": "否定主题不被当作客户必需主题且复杂约束有提示",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 227,
+    "label": "保存排课规范日期格式",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 228,
+    "label": "非法排课日期在写入时拒绝",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 230,
+    "label": "确切日期已有排课时排除并给出原因",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 232,
+    "label": "具体时间不重叠保留在交通待核实池，不声称交通可达",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 233,
+    "label": "具体时段优先于笼统上午下午选择",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 234,
+    "label": "铁路无接口时明确待核验且无虚构票价",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 236,
+    "label": "实际时段重叠仍严格排除",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 237,
+    "label": "仅填一个时间不能绕过排期筛选",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 238,
+    "label": "没有日期不能用时间推断有空",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 241,
+    "label": "推荐始终不自动增加排课",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 249,
+    "label": "系统实绩只计完成的排课且不计未来待发送课程",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 250,
+    "label": "真实授课评价会进入推荐指标",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 251,
+    "label": "简历与人工自述不会覆盖实际完成课时",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 253,
+    "label": "已有高评价的无关讲师也不能靠履约分入选",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 254,
+    "label": "无匹配结果明确三人缺口",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 255,
+    "label": "推荐人数不能低于3",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 258,
+    "label": "新建师资强制常驻地区",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 259,
+    "label": "空白地区不允许保存",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 266,
+    "label": "同城不足且异地路线未知时保留真实缺口",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 267,
+    "label": "相同专业档案同城优先且不改专业分",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 268,
+    "label": "异地不按同省臆断远近",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 269,
+    "label": "省市后缀规范化",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 270,
+    "label": "异地上午课提前到达待核实",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 271,
+    "label": "推荐算法独立升版不混同简历解析版本",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 274,
+    "label": "提前到达日已有课程保留待核实候选并标记衔接",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 276,
+    "label": "目标三人不突破授课当天冲突或未知交通",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 278,
+    "label": "线上专业同分恢复稳定顺序不做地区偏好",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 280,
+    "label": "可以关闭同城偏好",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 282,
+    "label": "同城不让无关专业入选",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 286,
+    "label": "出库不补回、未知交通不假装就近",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 288,
+    "label": "三人目标不突破硬性预算",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 292,
+    "label": "旧客户端编辑不清空已知地区",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 293,
+    "label": "显式清空常驻地区被拒绝",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 296,
+    "label": "地区专用动作不改变姓名状态等其他资料",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 297,
+    "label": "超长地区返回400而不是数据库错误",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 298,
+    "label": "无效地区不修改旧值",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 303,
+    "label": "投标前需求直接带入地点时段",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 305,
+    "label": "投标前推荐不改变任何需求投标项目排课课酬",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 307,
+    "label": "当前显式地区覆盖带入需求地区",
+    "current_label_present": false,
+    "status": "HISTORICAL_OR_CURRENT_CONTRACT_REPLACEMENT",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 310,
+    "label": "旧通用入口不能修改受管需求",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 312,
+    "label": "省略新增字段的需求草稿编辑保留调度字段",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 313,
+    "label": "非法新需求不能绕过草稿入口",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 314,
+    "label": "草稿接口拒绝非法需求日期",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 316,
+    "label": "未知授课地区保存为空而不是空格",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 319,
+    "label": "只读用户不能维护常驻地区",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  },
+  {
+    "file": "test_faculty.js",
+    "original_line": 320,
+    "label": "未登录不能维护常驻地区",
+    "current_label_present": true,
+    "status": "RETAINED",
+    "archive": "scripts/legacy/test_faculty.js.original"
+  }
+]

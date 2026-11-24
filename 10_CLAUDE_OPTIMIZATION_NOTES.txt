@@ -1,0 +1,125 @@
+Claude 审查优化分支说明（2026-11-06）
+
+基线：提交 5e067b2（review/verified-cloud-20261104-20261106）。本分支未合并、未部署、未连接任何服务器。
+09_FILE_MANIFEST.json 是制作方对原审查包的清单，本分支新增/修改的文件不在其中，未改动该清单。
+
+本分支改动
+1. 新增 src/com/training/LegacyLoginThrottle.java
+   默认 legacy 登录模式（login.email.mode 未设置时）原先对密码错误没有次数限制。
+   现在只统计失败：同一账号 15 分钟内失败 10 次、或同一来源地址 15 分钟内失败 100 次，后续尝试返回 429。
+   登录成功清零该账号计数；内存保存、最多 1 万个键，重启清空；不改账号、角色或密码。
+2. 修改 src/com/training/LoginVerificationHost.java（legacy 分支）
+   在校验密码前检查限流，失败计数，成功清零。来源地址沿用 LoginRequestPeer 的规则；
+   若反代配置导致无法识别来源，则只按账号限流，不阻断登录。邮箱核验（required）模式不变。
+3. 新增 scripts/LegacyLoginThrottleTest.java（纯合成，无数据库/网络）。
+
+第二批（用户 2026-11-06 确认：1 彻底关掉 AI；2 冲突只看当天、历史线索每人最近 50 条；3 确认记录 5 年归档）
+4. 纯规则收口
+   - 新增 src/com/training/PureRulePolicy.java；Main.start 第一步调用：若设置 recommendation.cpa.enabled=true，
+     或 semantic.port / semantic.token（含 YANXU_SEMANTIC_* 环境变量）非空，服务拒绝启动并说明原因。
+   - RecommendationDecisionHost：/api/teacher-recommendations/decision/v2/advice 固定返回 410；adviceV2 方法与旧 CPA 代码保留未删。
+   - web/modules/teacher-recommendation/index.js：仅当服务端回执 aiUsage.enabled===true 时才显示 AI 按钮、说明与额度提示；
+     纯规则服务端永不如此回报，故页面不再出现 AI 按钮和额度字样，提示改为“规则筛选结果”。
+   - scripts/RecommendationCpaUI.test.cjs：合成回执默认带 enabled:true 以继续覆盖保留的旧界面逻辑；新增纯规则模式下无按钮、无 AI/额度字样、不发请求的检查。
+   - 新增 scripts/PureRulePolicyTest.java。
+5. 推荐历史排课读取（原先一次读出范围内全部历史，超过 5000 条即整体报错）
+   - RecommendationDecisionHost.v2Bookings：冲突判断只读“本次日期”以及 decide() 视为“日期不确定”的记录（空日期、非法日期）；
+     历史主题线索只取每位老师最近 50 条已完成记录（HISTORY_PER_TEACHER）。不改表结构、不加索引
+     （ReleaseMigrationCheck 要求旧表索引不变）。
+   - RecommendationDecision.validDate 改为包内可见，供上述筛选复用同一日期判断。
+   - 新增 scripts/RecommendationV2BookingWindowTest.java：3000 组随机合成历史，证明缩小读取后 decide() 判断函数结果与读取全部历史一致。
+     更正（2026-11-08）：这只证明判断函数一致，不证明数据库读取、推荐捕获、确认整条链路一致；
+     且当时推荐捕获和最终确认仍按老师读取全部历史（超过 5000 条会 409），见第四批第 1 项。
+   - 影响：参考线索与“经历确认”可选来源只来自最近 50 条已完成记录；冲突与资格判断不变。
+6. 确认记录 5 年归档（原先全系统累计 2 万条后所有排课无法确认）
+   - DispatchConfirmationGuard：新增表 dispatch_confirmation_requests_archive（新表，非旧表改动）。
+     达到 2 万条时，在同一确认事务中把确认时间（dispatches.confirmed_at）早于 5 年前的记录原样复制到归档表，再从活动表移除已复制的记录；
+     若仍满 2 万条，按原样拒绝并提示联系管理员。
+   - 影响（已作废，见第四批第 3 项）：原写“超过 5 年的旧请求编号若被重放会得到 409”。现在归档回执仍可回放、编号不可复用。
+   - 新增 scripts/DispatchConfirmationArchiveTest.java（只测年限计算；归档 SQL 需在有 H2 的环境验证）。
+
+第三批（用户 2026-11-06 确认：交通信息可由预先核对的城市交通参考表预填；同城不留路上时间；预填后须人工点保存）
+7. 新增 src/com/training/TravelReference.java
+   - 读取数据目录（data.dir，与 H2 数据库同目录）下的 travel-reference.csv；表头固定为：
+     出发城市,到达城市,交通方式,单程时长分钟,单程参考票价元,核对日期,核对人,备注
+   - 支持 UTF-8（含 BOM）与 GBK/GB18030；按文件修改时间缓存，改文件无需重启；坏行跳过并给出行号，不猜测。
+   - 规则：同城 → 本地出行、0 分钟；否则按原则选择：高铁≤180 分钟优先，其次飞机≤150 分钟，否则有高铁选高铁、无则飞机；
+     进出站另加：高铁 90 分钟、飞机 150 分钟（RAIL_ACCESS_MINUTES / AIR_ACCESS_MINUTES，可调）；
+     门到门 = 单程 + 进出站，并同时作为课前、课后缓冲；票价按单程 CNY，未知留空不当 0；
+     （2026-11-08 起进出站附加时间已改为 0，见第四批第 13 项。）
+     行核对日期起 365 天内有效（REVIEW_DAYS；2026-11-07 用户确认由 90 天改为一年），过期不预填；只有反方向记录时使用并在说明中注明。
+   - 只预填交通相关字段；服务意愿、完整档期从不预填。
+8. RecommendationDecisionHost：新增只读接口 /api/teacher-recommendations/decision/v2/assessments/travel-reference，
+   权限与读取本次核对相同（同一机构范围、已绑定且可见的教师），线上授课拒绝；不写库、不参与排序。
+9. web/modules/teacher-recommendation/index.js：线下核对表单增加“授课城市”与“按交通参考表预填出行信息”按钮；
+   预填只改表单，工作人员核对后点“保存本次核对记录”才生效。
+10. 测试：新增 scripts/TravelReferenceTest.java（32 项，含与排序规则的端到端分档检查）；RecommendationV2UI.test.cjs 新增 9 项预填界面检查（共 62 项）。
+
+本地实际运行（使用仅供编译的 pdfbox/ip2region 桩类，未带 H2 驱动）
+- 全部 155 个 Java 源文件可编译（第三批后）。
+- 通过：LegacyLoginThrottleTest 22、RecommendationV2RankingTest 63、RecommendationV2JointPlannerTest 30、
+  M01OrganizationAccessTest 108、M03ApprovalSnapshotsTest 47、M03ApprovalWorkflowTest 84、
+  M03CombinedApprovalTest 135、M04CourseCatalogTest 95、RecommendationCpa*（Deadline 11 / Payload 64 /
+  Semantic 98 / Transport 145 / SemanticAdvisor）、RecommendationV2UI.test.cjs 53、RecommendationCpaUI.test.cjs 207。
+- 第二批新增通过：RecommendationV2BookingWindowTest 3004、PureRulePolicyTest 7、DispatchConfirmationArchiveTest 5、
+  RecommendationCpaSemanticAdvisorTest 82、RecommendationCpaUI.test.cjs 215（含新增纯规则检查）。
+- 不稳定：M04RecommendationDecisionTest（旧可选模型模拟路径，1 秒计时断言，3 次运行 1 次通过），与本次改动无关。
+- 未运行：所有需要 H2 数据库的集成测试（包内未带 h2.jar，环境不能联网安装）。
+  请原研发重点在有 H2 的环境运行：RecommendationV2HostTest、RecommendationConfirmedExperienceHostTest、M04RecommendationDecisionHostTest、
+  IntegrationLoginVerificationHostTest、IntegrationRecommendationHttp.cjs、RecommendationV2Http.cjs，以及迁移检查（确认新表 dispatch_confirmation_requests_archive 可接受）。
+
+第四批（2026-11-08，按研发与独立 QA 问题原文逐项处理；业务方当日确认：不另加进出站时间，只计高铁和飞机本身的时长）
+对照文件：《Claude逐项复核与处理方案_20261108.txt》（16 个去重问题）。提交：929fb1b、ee2f919、b388dff 及本说明所在提交。
+1. 单个老师历史超过 5000 条（DEV-BOOK-01、QA-F01）
+   DispatchConfirmationGuard.bookings(teacher, from, to)：只读该老师在本次占用时段（已含本次缓冲）前后各 8 天内的已确认/已完成记录，
+   以及日期为空或不是合法日历日期的记录（保持“日期不明即可能冲突”）。8 天 = 服务端缓冲上限 10080 分钟（7 天）+ 1 天。
+   推荐捕获（captureV2）、预览、最终确认三处统一使用；冲突判断逻辑本身未改。新增 DispatchOccupationWindowTest：2 万组随机时段证明不会漏读可能重叠的记录。
+2. 历史读取有界（DEV-BOOK-02、QA-F02）与“最近 50 条”定义（QA-F10）
+   每位老师按授课日期（同日按编号）从新到旧分页读取，每页 50 条，先做可见性与同机构来源检查再计数，凑满 50 条可用记录或累计查看 200 条即停。
+   冲突读取仍是“一次不同日期清单（每个日历日至多一个值）+ 相关日期的记录”。不改旧表、不加索引；性能需在 H2 上实测。
+   说明：已人工确认的课程经历采用“来源清单完全一致”的设计，来源有任何增减都会提示失效，这与窗口无关；该经历记录目前只供已停用的 AI 建议使用。
+3. 归档后的回放与查重（SA-03、QA-F03）
+   归档表加主键（账号 + 请求编号，与活动表相同）；确认时活动表查不到再查归档表，处理方式与活动表完全相同（内容相同返回原回执，不同返回 409）。
+   因此五年归档只是挪表，不改变“请求编号全局唯一、可回放”的约定。
+4. 归档按时间比较（SA-04、QA-F04）
+   不再在 SQL 里比较文字；逐条解析确认时间后判断，无法解析的不归档并在服务日志提示数量。
+5. 登录限流原子化（SA-01、QA-F05）
+   LoginVerificationHost：进入全局业务锁后、校验密码前再检查一次；旧登录方式的密码校验全部在这把锁内，阈值成为硬上限。
+6. 限流容量与未知来源（SA-02）
+   满 1 万个键时只淘汰最早的“未封禁”键；全部是封禁中的键时，新键直接 429，不挤掉任何封禁。
+   来源无法识别时计入同一个“未知来源”键，同样适用每 15 分钟 100 次。注意：反向代理配置错误会使所有人共用这 100 次额度，上线前须确认来源识别正常。
+7. 交通预填不再静默覆盖（TR-F01）
+   查表优先用表单“出发城市”，留空才用教师常驻城市；同城只在本次出发城市等于授课城市时成立。
+   表单已有且与参考值不同的内容（含“不可达”状态）先列出“原值 → 参考值”，点“确认替换为参考值”才写入；出发地变化时清空旧距离并在说明中注明。
+8. 未来核对日期（TR-F02、QA-F06）
+   读表时拒收核对日期晚于当天（上海时间）的行，查询时再判一次。有效期边界：核对当天为第 1 天，第 365 天可用，第 366 天起不再预填。
+9. 参考表错误可见（TR-F03、QA-F07）
+   返回参考表状态（未配置/为空/表头不对/没有可用行/超过 2MB/无法读取/正常）和最多 20 条“第 N 行：原因”（只含行号和原因，不含行内容），页面显示。
+10. 严格 CSV（TR-F04）：引号只能在单元格开头，结束引号后只能是逗号或换行；文件末尾引号未闭合则整表拒收；行号为文件实际行号（多行备注后仍准确）。
+11. 预填出错处理（TR-F05）：401/403 清除页面私有内容；404/409 关闭核对表单并提示刷新；“没有这条路线”是正常结果，不清除手工填写。
+12. 交通口径（TR-D01、QA-F08）
+   只接受“高铁”“飞机”（不再把“火车”“动车”“航班”当别名）；只有反方向记录时返回“反方向参考”（FOUND_REVERSE）并醒目提示；
+   正方向已过期而反方向有效时也按“反方向参考”处理。
+13. 进出站附加时间：业务方 2026-11-08 确认不另加，RAIL_ACCESS_MINUTES = AIR_ACCESS_MINUTES = 0，门到门与课前课后缓冲都等于参考表单程时长。
+14. 参考表重读（TR-N01）：时间或大小变化、日期变化时重读；即使两者不变，也至少每 60 秒按内容指纹核对一次。
+15. 测试（DEV-BOOK-03、QA-F09、SA-V01、TR-V01、SA-FOLLOWUP-4）
+   - TravelReferenceTest 重写（58 项）：分档辅助函数按服务端规则只比较 TOTAL_REQUEST 费用，并断言单程票价不参与费用比较；去掉“端到端”说法。
+   - DispatchConfirmationArchiveTest（21 项）：整秒/毫秒/微秒/纳秒、恰好 5 年、闰日、上海时区、无法解析。
+   - LegacyLoginThrottleTest（183 项）：含 9 失败 + 2 并发、来源 99 + 2 并发（同步屏障）、满键不挤掉封禁、未知来源共用额度。
+   - PureRulePolicyTest（13 项）：真实调用 Main.start，配置任一模型开关即在建库和监听前拒绝启动。
+   - RecommendationV2UI.test.cjs（74 项）：新增替换确认、清距离、出发城市、表问题提示、401/403/409、反方向参考。
+   - 新增 H2 集成测试 RecommendationScaleHostTest：单老师 5001 条、合计超 5000 条、日期不明仍阻断、4 天冻结缓冲跨日冲突、
+     历史分页与可见性、归档后回放与查重、容量满时整笔回滚。RecommendationV2Http.cjs 新增“/advice 返回 410”。
+16. 一键运行：bash scripts/run_review_tests.sh <依赖目录>（全新合成数据、/tmp 临时目录、只绑定 127.0.0.1、-Xmx512m、nice 10）。
+
+本地实际运行（2026-11-08，Java 21，编译桩代替 pdfbox/ip2region，无 H2 驱动）
+- 通过：DispatchConfirmationArchiveTest 21、DispatchOccupationWindowTest 7044、RecommendationV2BookingWindowTest 3004、
+  LegacyLoginThrottleTest 183、PureRulePolicyTest 13、TravelReferenceTest 58、RecommendationV2RankingTest 63、RecommendationV2JointPlannerTest 30、
+  RecommendationV2UI.test.cjs 74、RecommendationCpaUI.test.cjs 215。
+- 第三轮交通表 travel-reference.csv（4137 行）用新读表代码核对：以 2026-11-08 为当天，0 问题行、全部可预填、无附加时间；
+  以 2026-11-07 为当天则全部因“核对日期晚于今天”拒收——服务器日期须不早于 2026-11-08。
+- 未运行（需 H2 驱动和正式依赖）：RecommendationScaleHostTest、RecommendationV2HostTest、RecommendationConfirmedExperienceHostTest、
+  M04RecommendationDecisionHostTest、IntegrationLoginVerificationHostTest、ReleaseMigrationCheck、IntegrationRecommendationHttp.cjs、RecommendationV2Http.cjs。
+  已用空驱动试跑脚本，确认这些项只因缺少 H2 驱动而失败，脚本流程本身正常。
+- 已知待判断：ReleaseMigrationCheck 的新表白名单（NEW_TABLES）未包含推荐核对与确认冻结等既有新表（Db.init 会创建），
+  基线本身可能就在 NEW_INTEGRATION_TABLE_SET 处失败；若只因此失败，请把输出发回由 Claude 判断，不要自行改白名单。

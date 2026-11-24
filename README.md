@@ -1,30 +1,172 @@
-# 研序系统私有源码备份
+# Yanxu Training OS · 研序培训运营中心
 
-备份日期：2026-09-29。对应 2026-09-28 已上线的 v1.10.0 / R33，包含截至备份时的完整应用工作区源码与尚未提交的模块改动。
+A full-lifecycle training-operations platform: from client demand to bid, project, faculty matching, scheduling, delivery, evaluation and financial settlement.
 
-## 内容
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![java](https://img.shields.io/badge/Java-17-orange.svg)](src/com/training/Main.java)
+[![no-build](https://img.shields.io/badge/frontend-no--build-brightgreen.svg)](web/)
+[![db](https://img.shields.io/badge/db-embedded%20H2-lightgrey.svg)](src/com/training/Db.java)
+[![tests](https://github.com/eerrr6621-boop/yanxu-training-os/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/eerrr6621-boop/yanxu-training-os/actions/workflows/ci.yml)
 
-- `app/src/`：Java 17 后端，包括身份权限、需求审批、课程师资、课酬结算、统计、问卷结果导入和培训总结。
-- `app/web/`：原电脑端界面及模块页面，包含 09-28 更新记录。
-- `app/scripts/`：检查脚本和合成测试夹具。
-- `app/lib/` 与 `app/third_party_licenses/`：编译/运行依赖、地区查询数据及许可证。
-- `app/docs/`、`app/design/`、`app/semantic/`：技术说明、设计源素材与可选语义模块源码；不含模型权重。
-- `SNAPSHOT_MANIFEST.json`：逐文件 SHA-256、原工作区基线和明确排除范围。
+> 中文文档见 [README_zh.md](README_zh.md)
 
-## 恢复开发
+Current release: **1.10.0** (2026-09-28), with source synchronized on 2026-09-29.
+See the [live site](https://training.jxyftd.tech/),
+[product updates](https://training.jxyftd.tech/updates.html), and [release and setup notes](docs/RELEASE_V1_10.md).
 
-安装 Java 17 后，进入 `app/` 运行 `./run.sh`（Windows 使用 `run.bat`）。启动说明保留在 `app/README.md` 和 `app/README_zh.md`；其中早期版本号、模块文档中的阶段记录属于历史说明，以本备份日期和 manifest 为准。
+This release adds organization-scoped roles, email enrollment and verification,
+internal demand approvals, course-specific instructor qualifications, delivery
+and settlement ledgers, imported survey results, and reviewed Word summaries to
+the existing desktop interface. Real personnel, account credentials, production
+databases, email configuration and private source documents are not distributed.
 
-新环境应使用自己的空数据库及私有配置。生产登录邮箱、真实组织人员来源、SMTP 和服务器配置需要从本机/服务器的私有备份单独恢复。本仓库不能替代生产数据库备份，也不能直接覆盖正在运行的数据库。
+The V13 interface uses a continuous project workspace, quiet navigation and
+native system typography. See the [visual maintenance guide](docs/DESIGN_V13.md).
+Existing files in `docs/screenshots/` are historical demo-only screenshots, not
+the current V13 interface; they contain no production records or credentials.
 
-历史浏览器检查和部分模块脚本仍引用原开发机的外部工作区或运行时路径；这些私有材料未上传，使用时需按目标环境配置。核心后端源码可仅使用仓库内依赖编译。本次备份不会触发部署，也未开启自动测试工作流。
+## What it is
 
-本次从备份副本独立编译 132 个 Java 源文件成功，更新记录专项 194 项检查通过，纳入的 992 个应用文件均已逐项校验。未重跑依赖原开发环境的完整历史测试。
+Yanju Training OS (internal name “研序”) runs the entire business chain of a corporate training company:
 
-## 隐私与备份边界
+```
+Demand → Bid & Approval → Project → Faculty & Scheduling → Delivery
+       → Evaluation → Collection → Instructor Fees → Costs → Archive
+```
 
-本仓库为私有仓库。没有上传教师账号密码表、实际口令、验证码、邮件/SSH凭据、真实人员原始名单、生产数据库、上传附件、运行日志、构建缓存或完整任务历史。原公开仓库和本机开发仓库保持不变。
+It is deliberately built with **no framework and no build step**: a single Java 17 process (JDK `HttpServer` + embedded H2) serves a vanilla-JavaScript SPA. One binary-less deploy, one static folder, full control.
 
-复制后仅将更新记录页面及对应测试中的作者个人联系邮箱改为 `contact@example.com`；未改原工作区或线上页面。其余纳入文件按 manifest 与原工作区逐字节核对。被排除的私有资料继续保留在原位置。
+## Highlights
 
-181 名教师的拼音账号及初始密码已于 09-28 在线上更新，这属于数据库维护，不包含在本源码备份中。旧教师账号密码表已经失效，现用私有表须单独保管。
+- **Operations Cockpit (今日运营)** — a single continuous “command deck” that auto-ranks what to do now: overdue invitations, classes starting soon, scheduling gaps, material readiness and collection follow-ups, with severity filters (all / urgent / watch / routine), a day-grouped class timeline, per-project health bars and a finance snapshot band.
+- **V13 clarity** — the established technology-showcase identity is now quieter: a new ImageGen transparent mark, native typography, continuous workspaces, a light sidebar and a compact search/account toolbar. Desktop, tablet and phone share the same visual rules.
+- **Public training-material library** — a no-login download center for course packs and templates, with editable multi-file upload queues for system admins and business managers, publishing controls, download counts and safe file storage.
+- **Private faculty intelligence** — upload PDF or PPTX instructor profiles, review the extracted professional profile, and turn an existing demand or pasted client brief into explainable teacher recommendations. Verified delivery metrics stay separate from claims written in a resume.
+- **Project workspace** — risk-first view per project: blockers and warnings are merged per business record and deep-link to the exact row that needs action; completion and archive are gated by real closure checks (hours scheduled & confirmed, collections, fees).
+- **Roles and internal approvals** — base `admin` / `manager` / `viewer` roles combine with organization, region and assigned-post scopes. Direct requests pass through branch and regional approval before team acceptance; externally managed bids record their outcomes.
+- **Imported feedback and reviewed summaries** — import results from the existing survey provider, preview and validate revisions, independently review replacements, then use the accepted results in internal summaries and Word export. Legacy survey routes remain for compatibility.
+- **Delivery and settlement** — distinguish estimated, planned, actual and payable hours; support teaching and development fees, explicit policy approval, paid and unpaid corrections, cross-day adjustments, legacy migration and coded settlement exports. Each currency entry rounds before aggregation.
+- **Responsive & accessible** — desktop / tablet / phone layouts, keyboard navigation, focus management, `prefers-reduced-motion` respected everywhere.
+- **Regression suite** — isolated API, authorization, business, module and frontend checks, with separate locality/migration, semantic, sourced-railway and offline weather suites. Tests use synthetic data and disposable databases.
+
+## Quick start
+
+Requirements: Java 17+ (the complete regression suite also needs Node.js 18+ and
+Python 3). Optional offline semantic assistance requires its own Python runtime;
+see the [setup and limits](semantic/README.md).
+
+The legacy `run.sh` and `启动系统.command` entries in this source checkout are disabled.
+They print guidance and exit without compiling, creating a database, opening a browser,
+or starting/stopping a service. This also applies to old numeric-port and `--demo` arguments;
+`--help` only prints guidance.
+
+This machine's previously reviewed local launcher is
+`/Users/tongyuqing/Documents/Codex/2026-10-27/task-3/local-db-adoption/launch_local.py`.
+Follow its existing launch procedure and explicitly choose `rules` or `ai`; it checks
+the designated existing working database and refuses an occupied runtime before launch.
+The legacy entries do not invoke it automatically. Source fixes in this checkout do not
+update that launcher's separate compiled classes or replace an already running instance.
+
+The historical Windows `run.bat` entry has not been reviewed or changed in this repair;
+do not treat it as an equivalent safe local launcher. Regression checks use their own
+explicitly isolated synthetic directories and do not use these legacy startup entries.
+
+## Architecture
+
+| Layer | Choice | Notes |
+|---|---|---|
+| Backend | Java 17, JDK `com.sun.net.httpserver` | No Spring; single process, explicit routing in `Api.java`, `Materials.java` and `TeacherIntelligence.java` |
+| Database | Embedded H2 | Schema + compatible migrations in `Db.java` |
+| Auth | Salted PBKDF2 + in-memory sliding sessions (12 h) | HttpOnly cookie; legacy hash/token compatibility migration |
+| Frontend | Vanilla JS SPA, no build step | `web/app.js`; CSS layers `style → studio → ledger → v10` |
+| Charts | ECharts (vendored) | Business insight & survey stats |
+| Icons | Lucide (vendored) + hand-drawn SVG set | Custom gradient job-icon set on the landing page |
+
+```
+src/com/training/   Main.java  Api.java  Materials.java  TeacherIntelligence.java  Db.java  Auth.java  Json.java
+web/                index.html app.js materials.html materials.js materials.css v10.css …
+lib/                h2.jar     ecj.jar     pdfbox-app-3.0.8.jar
+test.js             end-to-end API regression (writes data — use isolated DB)
+test_integrity.js   business-invariant regression (writes data — use isolated DB)
+```
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for endpoint groups, workflow rules and the deployment topology, [docs/SECURITY.md](docs/SECURITY.md) for the security model, and [CHANGELOG.md](CHANGELOG.md) for the design evolution (Ledger V4 → Technology Showcase V10).
+
+Faculty operators can follow the [faculty guide (Chinese)](docs/FACULTY_GUIDE.md)
+for resume maintenance, matching limits and verified delivery metrics. Matching
+uses local rules, with optional offline small-model evidence assistance. It does
+not use an external language model or OCR. Railway live data is not connected;
+the official 12306 link is a manual verification entry, not a ticket API.
+
+The unreleased local v7 source enumerates the entire product city directory for
+[rail-first / air-backup coverage](docs/TRANSPORT_COVERAGE_V7.md). Railway witnesses
+remain a partial, expiring reference set; a complete city list is not a complete
+transport dataset. No full nationwide timetable feed or airline API is enabled.
+
+## Running the regression suite
+
+The suites create and modify records — never point them at a production database.
+The release-check script compiles Java into a temporary directory, starts a fresh
+loopback-only database for each suite, and stops every instance afterward:
+
+```bash
+bash scripts/check.sh
+```
+
+Offline frontend checks, 95 financial/icon-mapping/stage assertions, deterministic
+login-book lifecycle/interaction and curved-page geometry assertions, and a 14-asset
+mapping/renderer/PNG-decode gate run first. All three
+API suites (`test.js`, `test_integrity.js`, `test_faculty.js`) must also pass.
+The third covers recommendation relevance, manual-profile retention, claims,
+budget and schedule constraints.
+
+For frontend-only diagnostics without Java or a database, run
+`node scripts/check_frontend.cjs`, `node scripts/test_frontend.cjs`,
+`node scripts/test_login_book.cjs`, `node scripts/test_book_geometry.mjs` and
+`node scripts/check_business_art.cjs`.
+Optionally add `--base-url http://127.0.0.1:8080` to the first command to verify
+served static resource status, MIME and hashes using read-only HTTP requests.
+The frontend gate also parses and links the local login ESM dependency closure
+(including vendored Three.js core) without evaluating it. Run
+`node scripts/test_local_esm.cjs` to test missing files/exports and boundary checks.
+Dynamic module paths must be string literals; computed imports need a separately
+reviewed explicit manifest and are not inferred by this gate.
+
+## Maintenance
+
+Every release must compile the Java 17 backend and run all regression checks against three
+separate throwaway, loopback-only databases. Production data and credentials are
+never part of this quality gate. Security-sensitive changes should also update
+[docs/SECURITY.md](docs/SECURITY.md) and the release notes in
+[CHANGELOG.md](CHANGELOG.md).
+
+## Deployment (reference)
+
+The reference production topology is a systemd service bound to `127.0.0.1` behind an nginx TLS reverse proxy, with the H2 file owned by a dedicated unprivileged user and hardened unit options (`ProtectSystem=strict`, `PrivateTmp=true`, `NoNewPrivileges=true`). Front-end releases are atomic: stage → checksum-verify → snapshot `web-before` → swap → verify, with a one-command rollback path. No credentials, visitor IP records or private business data are shipped in this repository.
+
+R7 adds an optional local-IP city/weather surface and public update timeline.
+Weather is disabled until configured; see [docs/WEATHER.md](docs/WEATHER.md) for
+provider credentials, trusted proxy requirements and privacy/accuracy boundaries.
+Version 1.10.0 was deployed on 2026-09-28. Public update notes contain
+only actual releases, with daily grouping and verified timestamps. Source pushes
+and production deployments are tracked separately.
+
+## Vendor assets & licenses
+
+- [ECharts](https://github.com/apache/echarts) — Apache-2.0 (vendored `web/echarts.min.js`)
+- [Lucide](https://github.com/lucide-icons/lucide) — ISC (vendored `web/lucide.min.js`)
+- [H2 Database Engine](https://github.com/h2database/h2database) — MPL-2.0 / EPL-1.0 (`lib/h2.jar`)
+- [Apache PDFBox](https://pdfbox.apache.org/) — Apache-2.0 (`lib/pdfbox-app-3.0.8.jar`)
+- Eclipse ECJ compiler — EPL-2.0 (`lib/ecj.jar`, used only by the launch scripts)
+- [ip2region](https://github.com/lionsoul2014/ip2region) — Apache-2.0 OR MIT (Java 3.3.7 and pinned v3.17.0 offline city data; source/checksums in `lib/ip2region/README.md`)
+
+Full redistributed license and notice texts are collected in
+[third_party_licenses](third_party_licenses/README.md).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Short version: keep backend dependencies minimal and vendored with their licenses, keep the frontend build-free, scope new V10 visual work to `v10.css`, and run all regression suites against separate fresh loopback-only databases before proposing a change.
+
+## License
+
+[MIT](LICENSE)
